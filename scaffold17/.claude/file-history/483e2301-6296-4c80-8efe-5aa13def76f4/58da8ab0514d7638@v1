@@ -1,0 +1,142 @@
+'use client';
+
+import Link from 'next/link';
+import { Github, Twitter, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { SPRING } from '@/lib/utils/constants';
+
+const footerLinks = {
+  explorer: [
+    { name: 'Transactions', href: '/transactions' },
+    { name: 'Blocks', href: '/blocks' },
+    { name: 'Tokens', href: '/tokens' },
+    { name: 'Contracts', href: '/contracts' },
+  ],
+  resources: [
+    { name: 'API Docs', href: '/docs' },
+    { name: 'Stellar Docs', href: 'https://developers.stellar.org' },
+    { name: 'Soroban Docs', href: 'https://soroban.stellar.org' },
+    { name: 'Network Stats', href: '/stats' },
+  ],
+  social: [
+    { name: 'GitHub', href: 'https://github.com/stellar', icon: Github },
+    { name: 'Twitter', href: 'https://twitter.com/StellarOrg', icon: Twitter },
+    { name: 'Discord', href: 'https://discord.gg/stellar', icon: MessageCircle },
+  ],
+};
+
+export function Footer() {
+  return (
+    <footer className="border-t bg-muted/30">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="relative h-8 w-8">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-purple-600" />
+                <div className="absolute inset-1 rounded-full bg-background flex items-center justify-center">
+                  <span className="text-xs font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    S
+                  </span>
+                </div>
+              </div>
+              <span className="font-bold text-lg">Soroscan</span>
+            </Link>
+            <p className="text-sm text-muted-foreground max-w-xs">
+              The next-generation block explorer for Stellar and Soroban smart
+              contracts.
+            </p>
+          </div>
+
+          {/* Explorer Links */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4">Explorer</h4>
+            <ul className="space-y-2">
+              {footerLinks.explorer.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4">Resources</h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      link.href.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4">Community</h4>
+            <div className="flex gap-3">
+              {footerLinks.social.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={SPRING.snappy}
+                  className="flex items-center justify-center h-10 w-10 rounded-full bg-muted hover:bg-primary/10 transition-colors"
+                >
+                  <link.icon className="h-4 w-4" />
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} Soroscan. Built on Stellar.
+          </p>
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <Link href="/privacy" className="hover:text-foreground">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-foreground">
+              Terms
+            </Link>
+            <span>
+              Powered by{' '}
+              <Link
+                href="https://stellar.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Stellar
+              </Link>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -1,0 +1,303 @@
+2025-12-16T23:16:36.572Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (34.9ms): security find-generic-password -a $USER -w -s "Claude Code"
+2025-12-16T23:16:36.610Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (37.2ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T23:16:36.658Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2025-12-16T23:16:36.658Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2025-12-16T23:16:36.658Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2025-12-16T23:16:36.659Z [DEBUG] LSP server manager initialized successfully
+2025-12-16T23:16:36.659Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2025-12-16T23:16:36.663Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2025-12-16T23:16:36.666Z [DEBUG] Stats cache does not exist, returning empty cache
+2025-12-16T23:16:36.666Z [DEBUG] Stats cache empty, processing all historical data in background
+2025-12-16T23:16:36.668Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2025-12-16T23:16:36.669Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2025-12-16T23:16:36.683Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.5ms): cursor --version
+2025-12-16T23:16:36.684Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2025-12-16T23:16:36.709Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2025-12-16T23:16:36.709Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2025-12-16T23:16:36.709Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2025-12-16T23:16:36.709Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2025-12-16T23:16:36.709Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1765926996709-lvg7rc.sh
+2025-12-16T23:16:36.709Z [DEBUG] Shell binary exists: true
+2025-12-16T23:16:36.709Z [DEBUG] Execution timeout: 10000ms
+2025-12-16T23:16:36.710Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/0f134417-81f1-4e8d-9c32-1603bfce2ed7-agent-0f134417-81f1-4e8d-9c32-1603bfce2ed7.json.tmp.38419.1765926996710
+2025-12-16T23:16:36.715Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.5ms)
+2025-12-16T23:16:36.715Z [DEBUG] Temp file written successfully, size: 2 bytes
+2025-12-16T23:16:36.715Z [DEBUG] Renaming /Users/george/.claude/todos/0f134417-81f1-4e8d-9c32-1603bfce2ed7-agent-0f134417-81f1-4e8d-9c32-1603bfce2ed7.json.tmp.38419.1765926996710 to /Users/george/.claude/todos/0f134417-81f1-4e8d-9c32-1603bfce2ed7-agent-0f134417-81f1-4e8d-9c32-1603bfce2ed7.json
+2025-12-16T23:16:36.716Z [DEBUG] File /Users/george/.claude/todos/0f134417-81f1-4e8d-9c32-1603bfce2ed7-agent-0f134417-81f1-4e8d-9c32-1603bfce2ed7.json written atomically
+2025-12-16T23:16:36.721Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2025-12-16T23:16:36.721Z [DEBUG] Total plugin skills loaded: 0
+2025-12-16T23:16:36.721Z [DEBUG] Total plugin commands loaded: 0
+2025-12-16T23:16:36.721Z [DEBUG] Registered 0 hooks from 0 plugins
+2025-12-16T23:16:36.724Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+2025-12-16T23:16:36.731Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2025-12-16T23:16:36.732Z [DEBUG] Total plugin agents loaded: 0
+2025-12-16T23:16:36.747Z [DEBUG] Git remote URL: null
+2025-12-16T23:16:36.747Z [DEBUG] No git remote URL found
+2025-12-16T23:16:36.747Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2025-12-16T23:16:36.923Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996923
+2025-12-16T23:16:36.923Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:36.926Z [DEBUG] Temp file written successfully, size: 52954 bytes
+2025-12-16T23:16:36.926Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:36.926Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996923 to /Users/george/.claude.json
+2025-12-16T23:16:36.927Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:36.957Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996957
+2025-12-16T23:16:36.957Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:36.964Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.2ms)
+2025-12-16T23:16:36.965Z [DEBUG] Temp file written successfully, size: 53035 bytes
+2025-12-16T23:16:36.965Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:36.965Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996957 to /Users/george/.claude.json
+2025-12-16T23:16:36.967Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:36.968Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996968
+2025-12-16T23:16:36.968Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:36.973Z [DEBUG] Temp file written successfully, size: 53071 bytes
+2025-12-16T23:16:36.973Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:36.973Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996968 to /Users/george/.claude.json
+2025-12-16T23:16:36.973Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:36.982Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996982
+2025-12-16T23:16:36.982Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:36.986Z [DEBUG] Temp file written successfully, size: 53211 bytes
+2025-12-16T23:16:36.986Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:36.986Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996982 to /Users/george/.claude.json
+2025-12-16T23:16:36.986Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:36.990Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996990
+2025-12-16T23:16:36.990Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:36.994Z [DEBUG] Temp file written successfully, size: 53269 bytes
+2025-12-16T23:16:36.994Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:36.994Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996990 to /Users/george/.claude.json
+2025-12-16T23:16:36.995Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:36.998Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926996998
+2025-12-16T23:16:36.998Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:37.002Z [DEBUG] Temp file written successfully, size: 53306 bytes
+2025-12-16T23:16:37.002Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:37.002Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926996998 to /Users/george/.claude.json
+2025-12-16T23:16:37.002Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:37.025Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.3ms)
+2025-12-16T23:16:37.025Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2025-12-16T23:16:37.025Z [DEBUG] Plugin autoupdate: checking installed plugins
+2025-12-16T23:16:37.057Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2025-12-16T23:16:37.066Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926997066
+2025-12-16T23:16:37.066Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:37.071Z [DEBUG] Temp file written successfully, size: 53306 bytes
+2025-12-16T23:16:37.071Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:37.071Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926997066 to /Users/george/.claude.json
+2025-12-16T23:16:37.071Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:37.072Z [DEBUG] Passes eligibility cached for org 7a959856-bd04-4381-8348-1522884d02db: true
+2025-12-16T23:16:37.548Z [DEBUG] Shell snapshot created successfully (848 bytes)
+2025-12-16T23:16:39.673Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765926999673
+2025-12-16T23:16:39.673Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:39.680Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.6ms)
+2025-12-16T23:16:39.680Z [DEBUG] Temp file written successfully, size: 53677 bytes
+2025-12-16T23:16:39.680Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:39.680Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765926999673 to /Users/george/.claude.json
+2025-12-16T23:16:39.681Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:39.937Z [DEBUG] Passes: Using fresh cached eligibility data
+2025-12-16T23:16:39.988Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2025-12-16T23:16:39.994Z [DEBUG] [ColorDiff] Not in bundled mode, using JS fallback
+2025-12-16T23:16:40.030Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000030
+2025-12-16T23:16:40.030Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.040Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.3ms)
+2025-12-16T23:16:40.040Z [DEBUG] Temp file written successfully, size: 53677 bytes
+2025-12-16T23:16:40.041Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.041Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000030 to /Users/george/.claude.json
+2025-12-16T23:16:40.041Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.078Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2025-12-16T23:16:40.078Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:16:40.078Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2025-12-16T23:16:40.092Z [DEBUG] Skills and commands included in Skill tool:
+2025-12-16T23:16:40.092Z [DEBUG] Slash commands included in SlashCommand tool:
+2025-12-16T23:16:40.158Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000158
+2025-12-16T23:16:40.158Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.161Z [DEBUG] Temp file written successfully, size: 53604 bytes
+2025-12-16T23:16:40.161Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.161Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000158 to /Users/george/.claude.json
+2025-12-16T23:16:40.162Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.166Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000166
+2025-12-16T23:16:40.166Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.169Z [DEBUG] Temp file written successfully, size: 53604 bytes
+2025-12-16T23:16:40.170Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.170Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000166 to /Users/george/.claude.json
+2025-12-16T23:16:40.170Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.174Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000174
+2025-12-16T23:16:40.174Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.177Z [DEBUG] Temp file written successfully, size: 53604 bytes
+2025-12-16T23:16:40.177Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.177Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000174 to /Users/george/.claude.json
+2025-12-16T23:16:40.178Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.183Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2025-12-16T23:16:40.184Z [DEBUG] performStartupChecks called
+2025-12-16T23:16:40.184Z [DEBUG] Starting background plugin installations
+2025-12-16T23:16:40.185Z [DEBUG] performBackgroundPluginInstallations called
+2025-12-16T23:16:40.206Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (18.2ms): ps -o command= -p 37573
+2025-12-16T23:16:40.226Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (20.1ms): ps -o ppid= -p 37573
+2025-12-16T23:16:40.243Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.9ms): ps -o command= -p 79090
+2025-12-16T23:16:40.259Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.9ms): ps -o ppid= -p 79090
+2025-12-16T23:16:40.276Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.1ms): ps -o command= -p 78549
+2025-12-16T23:16:40.290Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (14.6ms): ps -o ppid= -p 78549
+2025-12-16T23:16:40.296Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2025-12-16T23:16:40.297Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000297
+2025-12-16T23:16:40.297Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.301Z [DEBUG] Temp file written successfully, size: 53677 bytes
+2025-12-16T23:16:40.301Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.301Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000297 to /Users/george/.claude.json
+2025-12-16T23:16:40.301Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.303Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2025-12-16T23:16:40.304Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2025-12-16T23:16:40.308Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2025-12-16T23:16:40.308Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:16:40.308Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2025-12-16T23:16:40.310Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2025-12-16T23:16:40.310Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:16:40.310Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2025-12-16T23:16:40.335Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.2ms): ps -o command= -p 37573
+2025-12-16T23:16:40.346Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.7ms): ps -o ppid= -p 37573
+2025-12-16T23:16:40.359Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.7ms): ps -o command= -p 79090
+2025-12-16T23:16:40.371Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.0ms): ps -o ppid= -p 79090
+2025-12-16T23:16:40.384Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.2ms): ps -o command= -p 78549
+2025-12-16T23:16:40.395Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.5ms): ps -o ppid= -p 78549
+2025-12-16T23:16:40.406Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000406
+2025-12-16T23:16:40.406Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.410Z [DEBUG] Temp file written successfully, size: 53677 bytes
+2025-12-16T23:16:40.410Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.410Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000406 to /Users/george/.claude.json
+2025-12-16T23:16:40.410Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.411Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000411
+2025-12-16T23:16:40.411Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.415Z [DEBUG] Temp file written successfully, size: 53858 bytes
+2025-12-16T23:16:40.415Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.415Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000411 to /Users/george/.claude.json
+2025-12-16T23:16:40.415Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.437Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927000437
+2025-12-16T23:16:40.437Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:16:40.441Z [DEBUG] Temp file written successfully, size: 53858 bytes
+2025-12-16T23:16:40.441Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:16:40.441Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927000437 to /Users/george/.claude.json
+2025-12-16T23:16:40.441Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:16:40.924Z [ERROR] Error: Error: 1: 1 
+    at xK3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1026:3956)
+    at async PK3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1026:1579)
+2025-12-16T23:16:41.142Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:16:42.207Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-16T23:16:42.207Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:16:42.207Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T23:16:42.437Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:16:45.524Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-16T23:16:45.524Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:16:45.524Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T23:17:17.687Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (14.3ms)
+2025-12-16T23:17:26.638Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2025-12-16T23:17:26.638Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2025-12-16T23:17:26.638Z [DEBUG] Hooks: Found 0 total hooks in registry
+2025-12-16T23:17:26.638Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2025-12-16T23:17:26.662Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2025-12-16T23:17:26.662Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:17:26.662Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T23:17:26.664Z [DEBUG] FileHistory: Added snapshot for 215eb466-5777-46b3-ba08-17b38180c2b7, tracking 0 files
+2025-12-16T23:17:26.678Z [DEBUG] Total plugin output styles loaded: 0
+2025-12-16T23:17:27.539Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:17:29.379Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:17:52.669Z [DEBUG] executePreToolHooks called for tool: Write
+2025-12-16T23:17:52.672Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2025-12-16T23:17:52.672Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:17:52.672Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2025-12-16T23:17:52.681Z [DEBUG] Permission suggestions for Write: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2025-12-16T23:17:52.711Z [DEBUG] executePermissionRequestHooks called for tool: Write
+2025-12-16T23:17:52.713Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927072713
+2025-12-16T23:17:52.713Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:17:52.720Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.7ms)
+2025-12-16T23:17:52.720Z [DEBUG] Temp file written successfully, size: 53899 bytes
+2025-12-16T23:17:52.720Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:17:52.720Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927072713 to /Users/george/.claude.json
+2025-12-16T23:17:52.720Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:17:52.742Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Write
+2025-12-16T23:17:52.742Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:17:52.742Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2025-12-16T23:17:56.227Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2025-12-16T23:17:56.236Z [DEBUG] FileHistory: Tracked file modification for /Users/george/checktx/check_stellar_tx.sh
+2025-12-16T23:17:56.246Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2025-12-16T23:17:56.284Z [DEBUG] Writing to temp file: /Users/george/checktx/check_stellar_tx.sh.tmp.38419.1765927076284
+2025-12-16T23:17:56.288Z [DEBUG] Temp file written successfully, size: 3865 bytes
+2025-12-16T23:17:56.288Z [DEBUG] Renaming /Users/george/checktx/check_stellar_tx.sh.tmp.38419.1765927076284 to /Users/george/checktx/check_stellar_tx.sh
+2025-12-16T23:17:56.288Z [DEBUG] File /Users/george/checktx/check_stellar_tx.sh written atomically
+2025-12-16T23:17:56.294Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2025-12-16T23:17:56.294Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:17:56.294Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2025-12-16T23:17:56.304Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2025-12-16T23:17:56.304Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2025-12-16T23:17:56.304Z [DEBUG] Hooks: Found 0 total hooks in registry
+2025-12-16T23:17:56.304Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2025-12-16T23:17:58.798Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:18:00.031Z [DEBUG] executePreToolHooks called for tool: Bash
+2025-12-16T23:18:00.034Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2025-12-16T23:18:00.034Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:00.034Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2025-12-16T23:18:00.046Z [DEBUG] tree-sitter: WASM files not found
+2025-12-16T23:18:00.558Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:18:00.726Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "chmod:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2025-12-16T23:18:00.742Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2025-12-16T23:18:00.753Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2025-12-16T23:18:00.753Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:00.753Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2025-12-16T23:18:06.752Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2025-12-16T23:18:06.752Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:06.752Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2025-12-16T23:18:07.494Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2025-12-16T23:18:07.494Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2025-12-16T23:18:07.496Z [DEBUG] Writing to temp file: /Users/george/checktx/.claude/settings.local.json.tmp.38419.1765927087496
+2025-12-16T23:18:07.504Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.2ms)
+2025-12-16T23:18:07.504Z [DEBUG] Temp file written successfully, size: 70 bytes
+2025-12-16T23:18:07.504Z [DEBUG] Renaming /Users/george/checktx/.claude/settings.local.json.tmp.38419.1765927087496 to /Users/george/checktx/.claude/settings.local.json
+2025-12-16T23:18:07.504Z [DEBUG] File /Users/george/checktx/.claude/settings.local.json written atomically
+2025-12-16T23:18:07.513Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(chmod:*)"]
+2025-12-16T23:18:07.529Z [DEBUG] No session environment scripts found
+2025-12-16T23:18:07.553Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2025-12-16T23:18:08.466Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2025-12-16T23:18:08.466Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:08.466Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2025-12-16T23:18:08.470Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2025-12-16T23:18:08.470Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2025-12-16T23:18:08.470Z [DEBUG] Hooks: Found 0 total hooks in registry
+2025-12-16T23:18:08.470Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2025-12-16T23:18:09.883Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:18:10.888Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:18:15.715Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2025-12-16T23:18:15.715Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:15.715Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T23:18:15.746Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927095746
+2025-12-16T23:18:15.747Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:18:15.752Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.6ms)
+2025-12-16T23:18:15.752Z [DEBUG] Temp file written successfully, size: 53923 bytes
+2025-12-16T23:18:15.752Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:18:15.752Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927095746 to /Users/george/.claude.json
+2025-12-16T23:18:15.752Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:18:15.759Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.38419.1765927095759
+2025-12-16T23:18:15.759Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:18:15.765Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.5ms)
+2025-12-16T23:18:15.765Z [DEBUG] Temp file written successfully, size: 53945 bytes
+2025-12-16T23:18:15.765Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:18:15.765Z [DEBUG] Renaming /Users/george/.claude.json.tmp.38419.1765927095759 to /Users/george/.claude.json
+2025-12-16T23:18:15.765Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:18:18.026Z [DEBUG] Stream started - received first chunk
+2025-12-16T23:18:20.743Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-16T23:18:20.743Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:18:20.743Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T23:19:15.741Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2025-12-16T23:19:15.742Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:19:15.742Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)

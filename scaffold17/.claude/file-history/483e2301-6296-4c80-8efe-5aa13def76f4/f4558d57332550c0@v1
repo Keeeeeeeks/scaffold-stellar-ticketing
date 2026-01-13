@@ -1,0 +1,191 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useQuery } from 'urql';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
+import { TRANSACTIONS_BY_ACCOUNT } from '@/lib/graphql/queries';
+import { formatTimeAgo, formatLedgerNumber } from '@/lib/utils/format';
+import { OPERATION_TYPES, SPRING } from '@/lib/utils/constants';
+import { Activity, ChevronRight, Loader2 } from 'lucide-react';
+
+interface TransactionHistoryProps {
+  address: string;
+  initialData?: any;
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: SPRING.snappy,
+  },
+};
+
+export function TransactionHistory({
+  address,
+  initialData,
+}: TransactionHistoryProps) {
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [allTransactions, setAllTransactions] = useState(
+    initialData?.edges || []
+  );
+
+  const [{ data, fetching }] = useQuery({
+    query: TRANSACTIONS_BY_ACCOUNT,
+    variables: { address, first: 20, after: cursor },
+    pause: !cursor,
+  });
+
+  const pageInfo = data?.accountByAddress?.transactions?.pageInfo ||
+    initialData?.pageInfo || { hasNextPage: false };
+
+  const loadMore = () => {
+    if (pageInfo.endCursor) {
+      setCursor(pageInfo.endCursor);
+    }
+  };
+
+  // Append new transactions when loaded
+  const transactions =
+    cursor && data?.accountByAddress?.transactions?.edges
+      ? [...allTransactions, ...data.accountByAddress.transactions.edges]
+      : allTransactions;
+
+  if (transactions.length === 0 && !fetching) {
+    return (
+      <Card>
+        <CardContent className="py-8 text-center text-muted-foreground">
+          No transactions found for this account.
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="space-y-2"
+      >
+        {transactions.map(({ node: tx }: any, index: number) => (
+          <motion.div key={tx.hash} variants={itemVariants}>
+            <TransactionRow tx={tx} />
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Loading state */}
+      {fetching && <TransactionHistorySkeleton count={3} />}
+
+      {/* Load More */}
+      {pageInfo.hasNextPage && !fetching && (
+        <div className="flex justify-center pt-4">
+          <Button variant="outline" onClick={loadMore} className="gap-2">
+            Load More
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TransactionRow({ tx }: { tx: any }) {
+  const operations = tx.operations?.edges || [];
+  const operationTypes = operations.map(
+    (op: any) =>
+      OPERATION_TYPES[op.node.operationType] ||
+      op.node.operationType.replace(/_/g, ' ')
+  );
+
+  return (
+    <Link href={`/tx/${tx.hash}`}>
+      <motion.div
+        whileHover={{ x: 4 }}
+        transition={SPRING.snappy}
+      >
+        <Card className="hover:border-primary/50 transition-colors cursor-pointer">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
+                  <Activity className="h-5 w-5 text-blue-500" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-mono text-sm truncate">
+                    {tx.hash.slice(0, 8)}...{tx.hash.slice(-8)}
+                  </p>
+                  <div className="flex items-center gap-2 mt-1 flex-wrap">
+                    {operationTypes.slice(0, 2).map((type: string, i: number) => (
+                      <Badge key={i} variant="secondary" className="text-xs">
+                        {type}
+                      </Badge>
+                    ))}
+                    {operationTypes.length > 2 && (
+                      <Badge variant="outline" className="text-xs">
+                        +{operationTypes.length - 2} more
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-right shrink-0">
+                <p className="text-sm text-muted-foreground">
+                  {formatTimeAgo(tx.ledgerCreatedAt)}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Block {formatLedgerNumber(tx.ledgerNumber)}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </Link>
+  );
+}
+
+function TransactionHistorySkeleton({ count = 3 }: { count?: number }) {
+  return (
+    <div className="space-y-2">
+      {[...Array(count)].map((_, i) => (
+        <Card key={i}>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-10 w-10 rounded-lg" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-3 w-24" />
+                </div>
+              </div>
+              <div className="text-right space-y-2">
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-3 w-20 ml-auto" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}

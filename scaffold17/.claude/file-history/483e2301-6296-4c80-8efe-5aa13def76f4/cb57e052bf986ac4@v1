@@ -1,0 +1,64 @@
+'use client';
+
+import { cn } from '@/lib/utils';
+import { formatXLM, formatTokenAmount } from '@/lib/utils/format';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
+interface AmountDisplayProps {
+  amount: string | number;
+  symbol?: string;
+  decimals?: number;
+  showSign?: boolean;
+  className?: string;
+  isXLM?: boolean;
+}
+
+export function AmountDisplay({
+  amount,
+  symbol = 'XLM',
+  decimals = 7,
+  showSign = false,
+  className,
+  isXLM = true,
+}: AmountDisplayProps) {
+  const numAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+  const isPositive = numAmount >= 0;
+
+  const formattedAmount = isXLM
+    ? formatXLM(amount)
+    : formatTokenAmount(amount, decimals);
+
+  // Full precision amount for tooltip
+  const fullAmount = isXLM
+    ? (numAmount / 10_000_000).toFixed(7)
+    : (numAmount / Math.pow(10, decimals)).toFixed(decimals);
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <span
+            className={cn(
+              'font-mono tabular-nums',
+              showSign && (isPositive ? 'text-emerald-500' : 'text-red-500'),
+              className
+            )}
+          >
+            {showSign && isPositive && '+'}
+            {formattedAmount} {symbol}
+          </span>
+        </TooltipTrigger>
+        <TooltipContent>
+          <span className="font-mono">
+            {fullAmount} {symbol}
+          </span>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}

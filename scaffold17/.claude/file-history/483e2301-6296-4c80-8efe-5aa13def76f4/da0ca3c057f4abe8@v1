@@ -1,0 +1,229 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { AddressDisplay } from '@/components/shared/AddressDisplay';
+import { AmountDisplay } from '@/components/shared/AmountDisplay';
+import {
+  ArrowRight,
+  Code,
+  Users,
+  Settings,
+  FileUp,
+  RefreshCw,
+} from 'lucide-react';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+import type { ParsedOperation } from '@/types/stellar';
+
+interface OperationsListProps {
+  operations: { node: any }[];
+  parsedOperations: ParsedOperation[];
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: SPRING.snappy,
+  },
+};
+
+export function OperationsList({
+  operations,
+  parsedOperations,
+}: OperationsListProps) {
+  if (operations.length === 0) {
+    return (
+      <Card>
+        <CardContent className="py-8 text-center text-muted-foreground">
+          No operations found in this transaction.
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="space-y-3"
+    >
+      {parsedOperations.map((op, index) => (
+        <motion.div key={index} variants={itemVariants}>
+          <OperationCard operation={op} index={index} />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+function OperationCard({
+  operation,
+  index,
+}: {
+  operation: ParsedOperation;
+  index: number;
+}) {
+  const { icon: Icon, color } = getOperationIcon(operation.type);
+
+  return (
+    <Card className="overflow-hidden">
+      <CardContent className="p-4">
+        <div className="flex items-start gap-4">
+          {/* Index & Icon */}
+          <div
+            className={cn(
+              'flex items-center justify-center h-10 w-10 rounded-lg shrink-0',
+              color
+            )}
+          >
+            <Icon className="h-5 w-5" />
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap mb-2">
+              <Badge variant="secondary" className="text-xs">
+                #{index + 1}
+              </Badge>
+              <span className="font-medium">{operation.typeLabel}</span>
+            </div>
+
+            {/* Operation-specific details */}
+            <OperationDetails operation={operation} />
+
+            {/* Source Account */}
+            <div className="mt-2 text-sm text-muted-foreground">
+              Source: <AddressDisplay address={operation.sourceAccount} />
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function OperationDetails({ operation }: { operation: ParsedOperation }) {
+  const { type, details } = operation;
+
+  switch (type) {
+    case 'payment':
+      return (
+        <div className="flex items-center gap-2 flex-wrap text-sm">
+          <span className="text-muted-foreground">Send</span>
+          <AmountDisplay
+            amount={details.amount as string}
+            symbol={(details.asset as any)?.code || 'XLM'}
+            isXLM={(details.asset as any)?.type === 'native'}
+          />
+          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+          <AddressDisplay address={details.destination as string} />
+        </div>
+      );
+
+    case 'create_account':
+      return (
+        <div className="flex items-center gap-2 flex-wrap text-sm">
+          <span className="text-muted-foreground">Create account</span>
+          <AddressDisplay address={details.destination as string} />
+          <span className="text-muted-foreground">with</span>
+          <AmountDisplay amount={details.startingBalance as string} />
+        </div>
+      );
+
+    case 'invoke_host_function':
+      return (
+        <div className="space-y-1 text-sm">
+          {details.contractId && (
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">Contract:</span>
+              <AddressDisplay address={details.contractId as string} />
+            </div>
+          )}
+          {details.functionName && (
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">Function:</span>
+              <code className="px-1.5 py-0.5 bg-muted rounded text-xs font-mono">
+                {details.functionName as string}()
+              </code>
+            </div>
+          )}
+          {details.action && (
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">Action:</span>
+              <span>{details.action as string}</span>
+            </div>
+          )}
+        </div>
+      );
+
+    case 'change_trust':
+      return (
+        <div className="flex items-center gap-2 flex-wrap text-sm">
+          <span className="text-muted-foreground">
+            {(details.limit as string) === '0' ? 'Remove' : 'Add'} trust for
+          </span>
+          <Badge variant="outline">
+            {(details.asset as any)?.code ||
+              (details.asset as any)?.type ||
+              'Unknown'}
+          </Badge>
+        </div>
+      );
+
+    default:
+      // Generic display for other operations
+      if (Object.keys(details).length > 0) {
+        return (
+          <div className="text-sm text-muted-foreground">
+            {Object.entries(details)
+              .slice(0, 3)
+              .map(([key, value]) => (
+                <div key={key} className="flex items-center gap-2">
+                  <span className="capitalize">{key.replace(/_/g, ' ')}:</span>
+                  <span className="font-mono text-foreground">
+                    {typeof value === 'object'
+                      ? JSON.stringify(value)
+                      : String(value)}
+                  </span>
+                </div>
+              ))}
+          </div>
+        );
+      }
+      return null;
+  }
+}
+
+function getOperationIcon(type: string): { icon: any; color: string } {
+  const icons: Record<string, { icon: any; color: string }> = {
+    payment: { icon: ArrowRight, color: 'bg-blue-500/10 text-blue-500' },
+    create_account: { icon: Users, color: 'bg-emerald-500/10 text-emerald-500' },
+    invoke_host_function: {
+      icon: Code,
+      color: 'bg-purple-500/10 text-purple-500',
+    },
+    change_trust: { icon: Settings, color: 'bg-orange-500/10 text-orange-500' },
+    extend_footprint_ttl: {
+      icon: RefreshCw,
+      color: 'bg-cyan-500/10 text-cyan-500',
+    },
+    restore_footprint: { icon: FileUp, color: 'bg-yellow-500/10 text-yellow-500' },
+  };
+
+  return icons[type] || { icon: Settings, color: 'bg-zinc-500/10 text-zinc-500' };
+}

@@ -1,0 +1,83 @@
+import { Button, Profile, Icon } from "@stellar/design-system";
+import { useMultiWallet } from "../../hooks/useMultiWallet";
+import type { ConnectedWallet } from "../../util/storage";
+import "./WalletList.css";
+
+interface WalletListProps {
+  onClose: () => void;
+}
+
+export const WalletList = ({ onClose }: WalletListProps) => {
+  const {
+    wallets,
+    activeWallet,
+    connectWallet,
+    disconnectWallet,
+    switchActiveWallet,
+    balances,
+  } = useMultiWallet();
+
+  const handleSelect = (wallet: ConnectedWallet) => {
+    switchActiveWallet(wallet.id);
+    onClose();
+  };
+
+  const handleDisconnect = async (walletId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    await disconnectWallet(walletId);
+    if (wallets.length <= 1) {
+      onClose();
+    }
+  };
+
+  const handleAddWallet = async () => {
+    await connectWallet();
+  };
+
+  const xlmBalance = balances?.xlm?.balance ?? "0";
+
+  return (
+    <div className="wallet-list">
+      {wallets.map((wallet) => (
+        <div
+          key={`${wallet.id}-${wallet.address}`}
+          className={`wallet-list-item ${
+            wallet.id === activeWallet?.id ? "active" : ""
+          }`}
+          onClick={() => handleSelect(wallet)}
+        >
+          <div className="wallet-info">
+            <Profile publicAddress={wallet.address} size="sm" isShort />
+            <div className="wallet-details">
+              <span className="wallet-name">{wallet.id}</span>
+              {wallet.id === activeWallet?.id && (
+                <span className="wallet-balance">{xlmBalance} XLM</span>
+              )}
+            </div>
+          </div>
+          <div className="wallet-actions">
+            {wallet.id === activeWallet?.id && (
+              <span className="active-badge">Active</span>
+            )}
+            <button
+              className="disconnect-btn"
+              onClick={(e) => void handleDisconnect(wallet.id, e)}
+              title="Disconnect wallet"
+            >
+              <Icon.XClose />
+            </button>
+          </div>
+        </div>
+      ))}
+
+      <Button
+        variant="tertiary"
+        size="md"
+        onClick={() => void handleAddWallet()}
+        icon={<Icon.PlusCircle />}
+      >
+        Add Wallet
+      </Button>
+    </div>
+  );
+};

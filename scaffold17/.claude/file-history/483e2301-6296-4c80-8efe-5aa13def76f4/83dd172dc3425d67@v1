@@ -1,0 +1,117 @@
+import { StrKey } from '@stellar/stellar-sdk';
+
+export type SearchResultType =
+  | 'transaction'
+  | 'account'
+  | 'contract'
+  | 'ledger'
+  | 'asset'
+  | 'unknown';
+
+export interface SearchResult {
+  type: SearchResultType;
+  value: string;
+  route: string;
+}
+
+/**
+ * Parse a search query and determine what type of Stellar entity it represents
+ */
+export function parseSearchQuery(query: string): SearchResult {
+  const trimmed = query.trim();
+
+  // Transaction hash: 64 hex characters
+  if (/^[a-fA-F0-9]{64}$/.test(trimmed)) {
+    return {
+      type: 'transaction',
+      value: trimmed.toLowerCase(),
+      route: `/tx/${trimmed.toLowerCase()}`,
+    };
+  }
+
+  // Stellar address: starts with G, 56 chars
+  if (trimmed.startsWith('G') && trimmed.length === 56) {
+    try {
+      StrKey.decodeEd25519PublicKey(trimmed);
+      return {
+        type: 'account',
+        value: trimmed,
+        route: `/account/${trimmed}`,
+      };
+    } catch {
+      // Not a valid address
+    }
+  }
+
+  // Contract address: starts with C, 56 chars
+  if (trimmed.startsWith('C') && trimmed.length === 56) {
+    try {
+      StrKey.decodeContract(trimmed);
+      return {
+        type: 'contract',
+        value: trimmed,
+        route: `/contract/${trimmed}`,
+      };
+    } catch {
+      // Not a valid contract
+    }
+  }
+
+  // Ledger/block sequence: numeric
+  if (/^\d+$/.test(trimmed)) {
+    const sequence = parseInt(trimmed, 10);
+    if (sequence > 0 && sequence < 2147483647) {
+      return {
+        type: 'ledger',
+        value: trimmed,
+        route: `/block/${trimmed}`,
+      };
+    }
+  }
+
+  // Asset: CODE:ISSUER or CODE-ISSUER format
+  const assetMatch = trimmed.match(/^([A-Z0-9]{1,12})[-:]([A-Z0-9]{56})$/i);
+  if (assetMatch) {
+    return {
+      type: 'asset',
+      value: `${assetMatch[1].toUpperCase()}-${assetMatch[2]}`,
+      route: `/asset/${assetMatch[1].toUpperCase()}-${assetMatch[2]}`,
+    };
+  }
+
+  return {
+    type: 'unknown',
+    value: trimmed,
+    route: `/search?q=${encodeURIComponent(trimmed)}`,
+  };
+}
+
+/**
+ * Get display label for search result type
+ */
+export function getTypeLabel(type: SearchResultType): string {
+  const labels: Record<SearchResultType, string> = {
+    transaction: 'Transaction',
+    account: 'Account',
+    contract: 'Contract',
+    ledger: 'Ledger',
+    asset: 'Asset',
+    unknown: 'Search',
+  };
+  return labels[type];
+}
+
+/**
+ * Get color classes for search result type badge
+ */
+export function getTypeColor(type: SearchResultType): string {
+  const colors: Record<SearchResultType, string> = {
+    transaction: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
+    account: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20',
+    contract: 'bg-purple-500/10 text-purple-500 border-purple-500/20',
+    ledger: 'bg-orange-500/10 text-orange-500 border-orange-500/20',
+    asset: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
+    unknown: 'bg-zinc-500/10 text-zinc-500 border-zinc-500/20',
+  };
+  return colors[type];
+}

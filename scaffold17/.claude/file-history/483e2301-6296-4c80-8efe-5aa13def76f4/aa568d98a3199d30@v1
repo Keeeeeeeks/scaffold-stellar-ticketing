@@ -1,0 +1,151 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { AddressDisplay } from '@/components/shared/AddressDisplay';
+import { AmountDisplay } from '@/components/shared/AmountDisplay';
+import { ArrowUp, ArrowDown, RefreshCw, Coins } from 'lucide-react';
+import { STATE_CHANGE_REASONS, SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+
+interface StateChangeVisualizerProps {
+  stateChanges: { node: any }[];
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: SPRING.snappy,
+  },
+};
+
+export function StateChangeVisualizer({
+  stateChanges,
+}: StateChangeVisualizerProps) {
+  if (stateChanges.length === 0) {
+    return (
+      <Card>
+        <CardContent className="py-8 text-center text-muted-foreground">
+          No state changes recorded for this transaction.
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Group state changes by account
+  const groupedChanges = stateChanges.reduce((acc, { node }) => {
+    const accountId = node.accountId || 'Unknown';
+    if (!acc[accountId]) {
+      acc[accountId] = [];
+    }
+    acc[accountId].push(node);
+    return acc;
+  }, {} as Record<string, any[]>);
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="space-y-4"
+    >
+      {Object.entries(groupedChanges).map(([accountId, changes]) => (
+        <motion.div key={accountId} variants={itemVariants}>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+                  <Coins className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <div className="font-medium">
+                  <AddressDisplay address={accountId} />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                {changes.map((change, index) => (
+                  <StateChangeRow key={index} change={change} />
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+function StateChangeRow({ change }: { change: any }) {
+  const isBalanceChange = change.amount !== undefined;
+  const amount = isBalanceChange ? parseInt(change.amount, 10) : 0;
+  const isPositive = amount >= 0;
+
+  const reason =
+    STATE_CHANGE_REASONS[change.stateChangeReason] || change.stateChangeReason;
+
+  if (isBalanceChange) {
+    return (
+      <div className="flex items-center justify-between py-2 border-t first:border-t-0">
+        <div className="flex items-center gap-2">
+          <div
+            className={cn(
+              'h-6 w-6 rounded flex items-center justify-center',
+              isPositive
+                ? 'bg-emerald-500/10 text-emerald-500'
+                : 'bg-red-500/10 text-red-500'
+            )}
+          >
+            {isPositive ? (
+              <ArrowUp className="h-3 w-3" />
+            ) : (
+              <ArrowDown className="h-3 w-3" />
+            )}
+          </div>
+          <Badge variant="outline" className="text-xs">
+            {reason}
+          </Badge>
+          {change.tokenId && (
+            <span className="text-xs text-muted-foreground font-mono">
+              {change.tokenId.length > 20
+                ? `${change.tokenId.slice(0, 8)}...${change.tokenId.slice(-8)}`
+                : change.tokenId}
+            </span>
+          )}
+        </div>
+        <AmountDisplay
+          amount={Math.abs(amount)}
+          showSign
+          className={cn(isPositive ? 'text-emerald-500' : 'text-red-500')}
+        />
+      </div>
+    );
+  }
+
+  // Account state change (non-balance)
+  return (
+    <div className="flex items-center justify-between py-2 border-t first:border-t-0">
+      <div className="flex items-center gap-2">
+        <div className="h-6 w-6 rounded flex items-center justify-center bg-blue-500/10 text-blue-500">
+          <RefreshCw className="h-3 w-3" />
+        </div>
+        <Badge variant="outline" className="text-xs">
+          {change.stateChangeCategory || reason}
+        </Badge>
+      </div>
+      <span className="text-sm text-muted-foreground">{reason}</span>
+    </div>
+  );
+}

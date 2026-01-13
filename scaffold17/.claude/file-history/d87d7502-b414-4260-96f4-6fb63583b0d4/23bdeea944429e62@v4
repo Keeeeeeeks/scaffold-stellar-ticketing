@@ -1,0 +1,88 @@
+import { useState, useMemo } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useMultiWallet } from "./useMultiWallet";
+import { Client, type PaymentToken } from "ticketing";
+import { rpcUrl, networkPassphrase } from "../contracts/util";
+
+const CONTRACT_ID = "CDRJKUDLICSBKEHN6NMYFKRMPSLOYB635H7ITVAQAGGXKRYFJKVLZCJS";
+
+export const useTicketContract = () => {
+  const { activeAddress, signTransaction, updateBalances } = useMultiWallet();
+  const queryClient = useQueryClient();
+  const [isPurchasing, setIsPurchasing] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  const [txHash, setTxHash] = useState<string | null>(null);
+
+  // Create a client with the user's publicKey for proper Soroban transactions
+  const client = useMemo(() => {
+    return new Client({
+      networkPassphrase,
+      contractId: CONTRACT_ID,
+      rpcUrl,
+      allowHttp: true,
+      publicKey: activeAddress,
+    });
+  }, [activeAddress]);
+
+  const purchaseTicket = async (
+    eventId: bigint,
+    paymentToken: PaymentToken
+  ): Promise<number | null> => {
+    if (!activeAddress) {
+      setError(new Error("No wallet connected"));
+      return null;
+    }
+
+    setIsPurchasing(true);
+    setError(null);
+    setTxHash(null);
+
+    try {
+      // Build the transaction with the user's publicKey as source
+      const tx = await client.purchase_ticket({
+        event_id: eventId,
+        buyer: activeAddress,
+        payment_token: paymentToken,
+      });
+
+      // Sign and send the transaction
+      const result = await tx.signAndSend({
+        signTransaction: async (xdr: string) => {
+          const signed = await signTransaction(xdr);
+          return { signedTxXdr: signed };
+        },
+      });
+
+      // Store the transaction hash
+      if (result.sendTransactionResponse?.hash) {
+        setTxHash(result.sendTransactionResponse.hash);
+        console.log("Transaction hash:", result.sendTransactionResponse.hash);
+      }
+
+      // Get the token ID from the result
+      const tokenId = result.result;
+
+      // Invalidate queries to refresh data
+      await queryClient.invalidateQueries({ queryKey: ["userTickets"] });
+      await queryClient.invalidateQueries({ queryKey: ["events"] });
+      await updateBalances();
+
+      return tokenId;
+    } catch (err) {
+      console.error("Purchase failed:", err);
+      const e = err instanceof Error ? err : new Error("Purchase failed");
+      setError(e);
+      return null;
+    } finally {
+      setIsPurchasing(false);
+    }
+  };
+
+  return {
+    purchaseTicket,
+    isPurchasing,
+    error,
+    txHash,
+    client, // Export client for other uses
+  };
+};

@@ -1,0 +1,18 @@
+const SOROSCAN_BASE_URL = "http://localhost:3000";
+
+export const getTransactionUrl = (txHash: string): string => {
+  return `${SOROSCAN_BASE_URL}/tx/${txHash}`;
+};
+
+export const getAccountUrl = (address: string): string => {
+  return `${SOROSCAN_BASE_URL}/account/${address}`;
+};
+
+export const getContractUrl = (contractId: string): string => {
+  return `${SOROSCAN_BASE_URL}/contract/${contractId}`;
+};
+
+export const truncateHash = (hash: string, chars = 6): string => {
+  if (hash.length <= chars * 2) return hash;
+  return `${hash.slice(0, chars)}...${hash.slice(-chars)}`;
+};

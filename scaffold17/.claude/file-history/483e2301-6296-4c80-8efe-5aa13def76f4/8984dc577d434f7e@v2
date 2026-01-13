@@ -1,0 +1,345 @@
+import {
+  TransactionBuilder,
+  Networks,
+  xdr,
+  StrKey,
+} from '@stellar/stellar-sdk';
+import type { ParsedTransaction, ParsedOperation, SorobanResourceData } from '@/types/stellar';
+import { OPERATION_TYPES } from '@/lib/utils/constants';
+
+/**
+ * Parse a transaction XDR envelope, result, and meta into a human-readable format
+ */
+export function parseTransactionXDR(
+  envelopeXdr: string,
+  resultXdr?: string,
+  metaXdr?: string
+): ParsedTransaction {
+  try {
+    const envelope = xdr.TransactionEnvelope.fromXDR(envelopeXdr, 'base64');
+    const tx = envelope.v1().tx();
+
+    // Get source account
+    const sourceAccount = StrKey.encodeEd25519PublicKey(
+      tx.sourceAccount().ed25519()
+    );
+
+    // Get sequence number
+    const sequenceNumber = tx.seqNum().toString();
+
+    // Get fee
+    const maxFee = tx.fee();
+
+    // Get memo
+    const memo = parseMemo(tx.memo());
+
+    // Parse operations
+    const operations = tx.operations().map((op, index) => parseOperation(op, index, sourceAccount));
+
+    // Check if this is a Soroban transaction
+    const isSoroban = operations.some(
+      (op) =>
+        op.type === 'invoke_host_function' ||
+        op.type === 'extend_footprint_ttl' ||
+        op.type === 'restore_footprint'
+    );
+
+    // Parse result to get actual fee charged and status
+    let status: 'success' | 'failed' | 'pending' = 'pending';
+    let feeCharged = maxFee;
+
+    if (resultXdr) {
+      try {
+        const result = xdr.TransactionResult.fromXDR(resultXdr, 'base64');
+        feeCharged = Number(result.feeCharged().toString());
+        const resultCode = result.result().switch();
+        status = resultCode.name === 'txSuccess' || resultCode.name === 'txFeeBumpInnerSuccess'
+          ? 'success'
+          : 'failed';
+      } catch {
+        // Keep defaults if result parsing fails
+      }
+    }
+
+    // Parse Soroban resource data from meta if available
+    let sorobanData: SorobanResourceData | undefined;
+    if (isSoroban && metaXdr) {
+      sorobanData = parseSorobanMeta(metaXdr);
+    }
+
+    return {
+      status,
+      sourceAccount,
+      sequenceNumber,
+      feeCharged,
+      maxFee,
+      memo: memo.value,
+      memoType: memo.type,
+      isSoroban,
+      sorobanData,
+      operations,
+    };
+  } catch (error) {
+    console.error('Error parsing transaction XDR:', error);
+    // Return a minimal parsed result on error
+    return {
+      status: 'pending',
+      sourceAccount: '',
+      sequenceNumber: '0',
+      feeCharged: 0,
+      maxFee: 0,
+      isSoroban: false,
+      operations: [],
+    };
+  }
+}
+
+/**
+ * Parse a memo from the transaction
+ */
+function parseMemo(memo: xdr.Memo): { type: string; value?: string } {
+  const memoType = memo.switch();
+
+  switch (memoType.name) {
+    case 'memoNone':
+      return { type: 'none' };
+    case 'memoText':
+      return { type: 'text', value: memo.text().toString('utf8') };
+    case 'memoId':
+      return { type: 'id', value: memo.id().toString() };
+    case 'memoHash':
+      return { type: 'hash', value: memo.hash().toString('hex') };
+    case 'memoReturn':
+      return { type: 'return', value: memo.retHash().toString('hex') };
+    default:
+      return { type: 'unknown' };
+  }
+}
+
+/**
+ * Parse a single operation
+ */
+function parseOperation(
+  op: xdr.Operation,
+  index: number,
+  txSourceAccount: string
+): ParsedOperation {
+  const opType = op.body().switch();
+  const typeName = opType.name
+    .replace(/^op/, '')
+    .replace(/([A-Z])/g, '_$1')
+    .toLowerCase()
+    .slice(1);
+
+  const sourceAccount = op.sourceAccount()
+    ? StrKey.encodeEd25519PublicKey(op.sourceAccount()!.ed25519())
+    : txSourceAccount;
+
+  return {
+    type: typeName,
+    typeLabel: OPERATION_TYPES[typeName] || typeName.replace(/_/g, ' '),
+    sourceAccount,
+    details: parseOperationDetails(op, typeName),
+  };
+}
+
+/**
+ * Parse operation-specific details
+ */
+function parseOperationDetails(
+  op: xdr.Operation,
+  typeName: string
+): Record<string, unknown> {
+  const body = op.body();
+  const details: Record<string, unknown> = {};
+
+  try {
+    switch (typeName) {
+      case 'create_account': {
+        const createAccountOp = body.createAccountOp();
+        details.destination = StrKey.encodeEd25519PublicKey(
+          createAccountOp.destination().ed25519()
+        );
+        details.startingBalance = createAccountOp.startingBalance().toString();
+        break;
+      }
+      case 'payment': {
+        const paymentOp = body.paymentOp();
+        details.destination = StrKey.encodeEd25519PublicKey(
+          paymentOp.destination().ed25519()
+        );
+        details.amount = paymentOp.amount().toString();
+        details.asset = parseAsset(paymentOp.asset());
+        break;
+      }
+      case 'invoke_host_function': {
+        const invokeOp = body.invokeHostFunctionOp();
+        const hostFunc = invokeOp.hostFunction();
+        const funcType = hostFunc.switch();
+
+        details.functionType = funcType.name;
+
+        if (funcType.name === 'hostFunctionTypeInvokeContract') {
+          const invokeArgs = hostFunc.invokeContract();
+          const contractIdHash = invokeArgs.contractAddress().contractId();
+          // Convert Hash (Opaque[]) to Buffer
+          const hashBytes = new Uint8Array(contractIdHash as unknown as number[]);
+          details.contractId = StrKey.encodeContract(Buffer.from(hashBytes));
+          details.functionName = invokeArgs.functionName().toString();
+        } else if (funcType.name === 'hostFunctionTypeCreateContractV2') {
+          details.action = 'Deploy Contract';
+        } else if (funcType.name === 'hostFunctionTypeUploadContractWasm') {
+          details.action = 'Upload WASM';
+        }
+        break;
+      }
+      case 'change_trust': {
+        const changeTrustOp = body.changeTrustOp();
+        details.asset = parseChangeTrustAsset(changeTrustOp.line());
+        details.limit = changeTrustOp.limit().toString();
+        break;
+      }
+      // Add more operation types as needed
+    }
+  } catch (error) {
+    console.warn(`Error parsing ${typeName} operation details:`, error);
+  }
+
+  return details;
+}
+
+/**
+ * Parse an asset from XDR
+ */
+function parseAsset(asset: xdr.Asset): { type: string; code?: string; issuer?: string } {
+  const assetType = asset.switch();
+
+  if (assetType.name === 'assetTypeNative') {
+    return { type: 'native' };
+  }
+
+  if (assetType.name === 'assetTypeCreditAlphanum4') {
+    const creditAsset = asset.alphaNum4();
+    return {
+      type: 'credit_alphanum4',
+      code: creditAsset.assetCode().toString('utf8').replace(/\0/g, ''),
+      issuer: StrKey.encodeEd25519PublicKey(creditAsset.issuer().ed25519()),
+    };
+  }
+
+  if (assetType.name === 'assetTypeCreditAlphanum12') {
+    const creditAsset = asset.alphaNum12();
+    return {
+      type: 'credit_alphanum12',
+      code: creditAsset.assetCode().toString('utf8').replace(/\0/g, ''),
+      issuer: StrKey.encodeEd25519PublicKey(creditAsset.issuer().ed25519()),
+    };
+  }
+
+  return { type: 'unknown' };
+}
+
+/**
+ * Parse a change trust asset from XDR
+ */
+function parseChangeTrustAsset(asset: xdr.ChangeTrustAsset): { type: string; code?: string; issuer?: string } {
+  const assetType = asset.switch();
+
+  if (assetType.name === 'assetTypeNative') {
+    return { type: 'native' };
+  }
+
+  if (assetType.name === 'assetTypeCreditAlphanum4') {
+    const creditAsset = asset.alphaNum4();
+    return {
+      type: 'credit_alphanum4',
+      code: creditAsset.assetCode().toString('utf8').replace(/\0/g, ''),
+      issuer: StrKey.encodeEd25519PublicKey(creditAsset.issuer().ed25519()),
+    };
+  }
+
+  if (assetType.name === 'assetTypeCreditAlphanum12') {
+    const creditAsset = asset.alphaNum12();
+    return {
+      type: 'credit_alphanum12',
+      code: creditAsset.assetCode().toString('utf8').replace(/\0/g, ''),
+      issuer: StrKey.encodeEd25519PublicKey(creditAsset.issuer().ed25519()),
+    };
+  }
+
+  if (assetType.name === 'assetTypePoolShare') {
+    return { type: 'pool_share' };
+  }
+
+  return { type: 'unknown' };
+}
+
+/**
+ * Parse Soroban resource data from transaction meta
+ */
+function parseSorobanMeta(metaXdr: string): SorobanResourceData | undefined {
+  try {
+    const meta = xdr.TransactionMeta.fromXDR(metaXdr, 'base64');
+
+    if (meta.switch() !== 3) {
+      return undefined;
+    }
+
+    const metaV3 = meta.v3();
+    const sorobanMeta = metaV3.sorobanMeta();
+
+    if (!sorobanMeta) {
+      return undefined;
+    }
+
+    const ext = sorobanMeta.ext();
+    if (!ext || ext.switch() === 0) {
+      return {
+        cpuInstructions: 0,
+        memoryBytes: 0,
+        readBytes: 0,
+        writeBytes: 0,
+        ledgerReadEntries: 0,
+        ledgerWriteEntries: 0,
+      };
+    }
+
+    // For v1 extension
+    const extV1 = ext.v1();
+
+    return {
+      cpuInstructions: Number(extV1.totalNonRefundableResourceFeeCharged().toString()),
+      memoryBytes: 0, // Would need to parse from diagnostics
+      readBytes: 0,
+      writeBytes: 0,
+      ledgerReadEntries: Number(extV1.totalRefundableResourceFeeCharged().toString()),
+      ledgerWriteEntries: 0,
+    };
+  } catch (error) {
+    console.warn('Error parsing Soroban meta:', error);
+    return undefined;
+  }
+}
+
+/**
+ * Format XDR for display (pretty print JSON representation)
+ */
+export function formatXDRForDisplay(xdrString: string, type: 'envelope' | 'result' | 'meta'): string {
+  try {
+    let parsed;
+    switch (type) {
+      case 'envelope':
+        parsed = xdr.TransactionEnvelope.fromXDR(xdrString, 'base64');
+        break;
+      case 'result':
+        parsed = xdr.TransactionResult.fromXDR(xdrString, 'base64');
+        break;
+      case 'meta':
+        parsed = xdr.TransactionMeta.fromXDR(xdrString, 'base64');
+        break;
+    }
+    return JSON.stringify(parsed, null, 2);
+  } catch {
+    return xdrString;
+  }
+}

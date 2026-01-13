@@ -1,0 +1,26 @@
+import { useQuery } from "@tanstack/react-query";
+import { mockEvents } from "../data/mockEvents";
+import type { Event } from "../types/events";
+
+export const useEvents = () => {
+  return useQuery({
+    queryKey: ["events"],
+    queryFn: async (): Promise<Event[]> => {
+      // For MVP, return mock events directly
+      // In production, this would merge on-chain data with off-chain metadata
+      return mockEvents;
+    },
+    staleTime: 30_000,
+  });
+};
+
+export const useEvent = (eventId: string | undefined) => {
+  const { data: events, ...rest } = useEvents();
+
+  const event = events?.find((e) => e.id.toString() === eventId);
+
+  return {
+    data: event,
+    ...rest,
+  };
+};

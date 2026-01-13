@@ -1,0 +1,20 @@
+use soroban_sdk::{symbol_short, Address, Env};
+
+pub fn emit_event_created(e: &Env, event_id: u64, capacity: u32) {
+    e.events()
+        .publish((symbol_short!("create"), event_id), capacity);
+}
+
+pub fn emit_ticket_purchased(e: &Env, event_id: u64, token_id: u32, buyer: Address) {
+    e.events()
+        .publish((symbol_short!("purchase"), event_id, token_id), buyer);
+}
+
+pub fn emit_event_deactivated(e: &Env, event_id: u64) {
+    e.events().publish((symbol_short!("deactiv"),), event_id);
+}
+
+pub fn emit_withdrawal(e: &Env, token: Address, amount: i128, to: Address) {
+    e.events()
+        .publish((symbol_short!("withdraw"), token), (amount, to));
+}

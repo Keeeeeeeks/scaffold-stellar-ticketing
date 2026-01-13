@@ -1,0 +1,102 @@
+.event-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--sds-clr-gray-02);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.event-card-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.event-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.event-card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.event-card-venue {
+  font-size: 0.875rem;
+  color: var(--sds-clr-gray-09);
+  margin: 0;
+}
+
+.event-card-date {
+  font-size: 0.875rem;
+  color: var(--sds-clr-gray-09);
+  margin: 0;
+}
+
+.event-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sds-clr-gray-04);
+}
+
+.event-card-price {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.price-xlm {
+  font-weight: 600;
+  color: var(--sds-clr-lilac-09);
+}
+
+.price-divider {
+  color: var(--sds-clr-gray-07);
+}
+
+.price-usdc {
+  color: var(--sds-clr-gray-09);
+}
+
+.event-card-availability {
+  font-size: 0.75rem;
+}
+
+.tickets-left {
+  color: var(--sds-clr-green-09);
+  font-weight: 500;
+}
+
+.sold-out {
+  color: var(--sds-clr-red-09);
+  font-weight: 500;
+}

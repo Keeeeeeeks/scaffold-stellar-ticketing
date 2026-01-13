@@ -1,0 +1,14 @@
+.multi-wallet-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--sds-clr-gray-03);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.multi-wallet-button:hover {
+  background: var(--sds-clr-gray-04);
+}

@@ -1,0 +1,346 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Activity,
+  Zap,
+  Clock,
+  Database,
+  TrendingUp,
+  Users,
+  Box,
+  Cpu,
+  HardDrive,
+  FileInput,
+  FileOutput,
+} from 'lucide-react';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+
+// Mock data - in production, this would come from the API
+const MOCK_STATS = {
+  latestLedger: 54321098,
+  avgCloseTime: 5.2,
+  tps24h: 127.5,
+  activeAccounts24h: 15432,
+  totalAccounts: 8523456,
+  totalTransactions24h: 11016000,
+  fees: {
+    slow: 100,
+    normal: 200,
+    fast: 500,
+  },
+  soroban: {
+    cpuCost: 0.0001,
+    memoryCost: 0.00005,
+    readCost: 0.0002,
+    writeCost: 0.0005,
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: SPRING.gentle,
+  },
+};
+
+export function NetworkStats() {
+  const [stats, setStats] = useState(MOCK_STATS);
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+
+  // Simulate real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats((prev) => ({
+        ...prev,
+        latestLedger: prev.latestLedger + Math.floor(Math.random() * 3),
+        tps24h: prev.tps24h + (Math.random() - 0.5) * 5,
+      }));
+      setLastUpdate(new Date());
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={SPRING.gentle}
+      className="space-y-6"
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Network Statistics</h1>
+          <p className="text-muted-foreground">
+            Real-time metrics for the Stellar network.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          Last updated: {lastUpdate.toLocaleTimeString()}
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-2 md:grid-cols-4 gap-4"
+      >
+        <motion.div variants={itemVariants}>
+          <QuickStat
+            icon={Activity}
+            label="Latest Ledger"
+            value={stats.latestLedger.toLocaleString()}
+            color="text-blue-500"
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <QuickStat
+            icon={Clock}
+            label="Avg Close Time"
+            value={`${stats.avgCloseTime}s`}
+            color="text-emerald-500"
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <QuickStat
+            icon={Zap}
+            label="TPS (24h)"
+            value={stats.tps24h.toFixed(1)}
+            color="text-orange-500"
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <QuickStat
+            icon={Users}
+            label="Active Accounts (24h)"
+            value={stats.activeAccounts24h.toLocaleString()}
+            color="text-purple-500"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Fee Recommendation */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, ...SPRING.gentle }}
+      >
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-5 w-5" />
+              Fee Tracker
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-3 gap-4">
+              <FeeRecommendation
+                speed="Slow"
+                fee={stats.fees.slow}
+                time="~10s"
+                color="border-emerald-500/50"
+              />
+              <FeeRecommendation
+                speed="Normal"
+                fee={stats.fees.normal}
+                time="~5s"
+                color="border-blue-500/50"
+                recommended
+              />
+              <FeeRecommendation
+                speed="Fast"
+                fee={stats.fees.fast}
+                time="~2s"
+                color="border-orange-500/50"
+              />
+            </div>
+
+            <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+              <p className="text-sm text-muted-foreground">
+                Fee recommendations are based on recent network activity. The
+                base fee on Stellar is 100 stroops (0.00001 XLM), but during
+                high activity periods, higher fees may be required for priority
+                inclusion.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Soroban Resource Costs */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, ...SPRING.gentle }}
+      >
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Database className="h-5 w-5" />
+              Soroban Resource Costs
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <ResourceCost
+                icon={Cpu}
+                label="CPU (per 10k instructions)"
+                value={`${stats.soroban.cpuCost} XLM`}
+              />
+              <ResourceCost
+                icon={HardDrive}
+                label="Memory (per KB)"
+                value={`${stats.soroban.memoryCost} XLM`}
+              />
+              <ResourceCost
+                icon={FileInput}
+                label="Ledger Read (per KB)"
+                value={`${stats.soroban.readCost} XLM`}
+              />
+              <ResourceCost
+                icon={FileOutput}
+                label="Ledger Write (per KB)"
+                value={`${stats.soroban.writeCost} XLM`}
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Network Overview */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, ...SPRING.gentle }}
+      >
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5" />
+              Network Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <OverviewStat
+                label="Total Accounts"
+                value={stats.totalAccounts.toLocaleString()}
+              />
+              <OverviewStat
+                label="Transactions (24h)"
+                value={stats.totalTransactions24h.toLocaleString()}
+              />
+              <OverviewStat
+                label="Avg TPS"
+                value={stats.tps24h.toFixed(1)}
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function QuickStat({
+  icon: Icon,
+  label,
+  value,
+  color,
+}: {
+  icon: any;
+  label: string;
+  value: string;
+  color: string;
+}) {
+  return (
+    <Card>
+      <CardContent className="flex items-center gap-3 p-4">
+        <div className={cn('p-2 rounded-lg bg-muted', color)}>
+          <Icon className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="text-xs text-muted-foreground">{label}</p>
+          <p className="text-xl font-bold tabular-nums">{value}</p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function FeeRecommendation({
+  speed,
+  fee,
+  time,
+  color,
+  recommended,
+}: {
+  speed: string;
+  fee: number;
+  time: string;
+  color: string;
+  recommended?: boolean;
+}) {
+  return (
+    <div className={cn('relative p-4 rounded-lg border-2', color)}>
+      {recommended && (
+        <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full">
+          Recommended
+        </span>
+      )}
+      <div className="text-center">
+        <div className="text-sm text-muted-foreground">{speed}</div>
+        <div className="text-2xl font-bold mt-1">{fee} stroops</div>
+        <div className="text-xs text-muted-foreground mt-1">Est. {time}</div>
+      </div>
+    </div>
+  );
+}
+
+function ResourceCost({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: any;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="text-center p-4 bg-muted/50 rounded-lg">
+      <Icon className="h-5 w-5 mx-auto mb-2 text-muted-foreground" />
+      <div className="text-xs text-muted-foreground mb-1">{label}</div>
+      <div className="font-mono font-bold text-sm">{value}</div>
+    </div>
+  );
+}
+
+function OverviewStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="text-center p-4">
+      <div className="text-sm text-muted-foreground mb-1">{label}</div>
+      <div className="text-2xl font-bold tabular-nums">{value}</div>
+    </div>
+  );
+}

@@ -1,0 +1,180 @@
+// Core Stellar types for the block explorer
+
+export type NetworkType = 'mainnet' | 'testnet' | 'futurenet';
+
+export interface Transaction {
+  hash: string;
+  toId: string;
+  envelopeXdr: string;
+  resultXdr: string;
+  metaXdr: string;
+  ledgerNumber: number;
+  ledgerCreatedAt: string;
+  ingestedAt: string;
+  operations?: OperationConnection;
+  stateChanges?: StateChangeConnection;
+  accounts?: Account[];
+}
+
+export interface Operation {
+  id: string;
+  operationType: string;
+  operationXdr: string;
+  ledgerNumber: number;
+  ledgerCreatedAt: string;
+  sourceAccount?: string;
+}
+
+export interface OperationConnection {
+  edges: { node: Operation; cursor: string }[];
+  pageInfo: PageInfo;
+}
+
+export interface StateChange {
+  accountId?: string;
+  amount?: string;
+  tokenId?: string;
+  stateChangeReason?: string;
+  stateChangeCategory?: string;
+}
+
+export interface StateChangeConnection {
+  edges: { node: StateChange; cursor: string }[];
+  pageInfo: PageInfo;
+}
+
+export interface Account {
+  address: string;
+  createdAt?: string;
+  updatedAt?: string;
+  transactions?: TransactionConnection;
+}
+
+export interface TransactionConnection {
+  edges: { node: Transaction; cursor: string }[];
+  pageInfo: PageInfo;
+}
+
+export interface PageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage?: boolean;
+  startCursor?: string;
+  endCursor?: string;
+}
+
+export interface Balance {
+  balance: string;
+  tokenId: string;
+  tokenType: 'NATIVE' | 'SAC' | 'SEP41' | 'TRUSTLINE';
+  code?: string;
+  issuer?: string;
+  decimals?: number;
+  name?: string;
+  symbol?: string;
+  limit?: string;
+  isAuthorized?: boolean;
+}
+
+export interface AccountBalances {
+  address: string;
+  error?: string;
+  balances: Balance[];
+}
+
+export interface ParsedTransaction {
+  status: 'success' | 'failed' | 'pending';
+  sourceAccount: string;
+  sequenceNumber: string;
+  feeCharged: number;
+  maxFee: number;
+  memo?: string;
+  memoType?: string;
+  isSoroban: boolean;
+  sorobanData?: SorobanResourceData;
+  operations: ParsedOperation[];
+}
+
+export interface ParsedOperation {
+  type: string;
+  typeLabel: string;
+  sourceAccount: string;
+  details: Record<string, unknown>;
+}
+
+export interface SorobanResourceData {
+  cpuInstructions: number;
+  memoryBytes: number;
+  readBytes: number;
+  writeBytes: number;
+  ledgerReadEntries: number;
+  ledgerWriteEntries: number;
+}
+
+export interface ContractFunction {
+  name: string;
+  doc: string;
+  inputs: FunctionInput[];
+  outputs: FunctionOutput[];
+  isMutating: boolean;
+}
+
+export interface FunctionInput {
+  name: string;
+  type: SorobanType;
+  doc?: string;
+}
+
+export interface FunctionOutput {
+  type: SorobanType;
+}
+
+export type SorobanType =
+  | { kind: 'primitive'; type: PrimitiveType }
+  | { kind: 'vec'; elementType: SorobanType }
+  | { kind: 'map'; keyType: SorobanType; valueType: SorobanType }
+  | { kind: 'option'; valueType: SorobanType }
+  | { kind: 'tuple'; elements: SorobanType[] }
+  | { kind: 'struct'; name: string; fields: StructField[] }
+  | { kind: 'enum'; name: string; variants: EnumVariant[] }
+  | { kind: 'result'; okType: SorobanType; errType: SorobanType };
+
+export type PrimitiveType =
+  | 'bool'
+  | 'i32'
+  | 'i64'
+  | 'i128'
+  | 'u32'
+  | 'u64'
+  | 'u128'
+  | 'string'
+  | 'bytes'
+  | 'address'
+  | 'symbol';
+
+export interface StructField {
+  name: string;
+  type: SorobanType;
+}
+
+export interface EnumVariant {
+  name: string;
+  value?: SorobanType;
+}
+
+export interface NetworkStats {
+  latestLedger: number;
+  avgCloseTime: number;
+  tps24h: number;
+  activeAccounts24h: number;
+  fees: {
+    slow: number;
+    normal: number;
+    fast: number;
+  };
+  soroban: {
+    cpuCost: number;
+    memoryCost: number;
+    readCost: number;
+    writeCost: number;
+  };
+}

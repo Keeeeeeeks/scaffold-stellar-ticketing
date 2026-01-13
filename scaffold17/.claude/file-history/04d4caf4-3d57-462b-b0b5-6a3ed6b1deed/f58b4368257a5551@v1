@@ -1,0 +1,12 @@
+export interface UserTicket {
+  tokenId: number;
+  eventId: bigint;
+  eventName: string;
+  eventDate: Date;
+  eventVenue: string;
+  ticketNumber: number;
+  purchaseTimestamp: Date;
+  imageUrl: string;
+}
+
+export type PaymentToken = { Xlm: null } | { Usdc: null };

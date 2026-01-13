@@ -1,0 +1,52 @@
+# Simplified docker-compose for local Stellar network development
+# Only starts database and redis - Go services run on host to access localhost:8000
+
+services:
+  db:
+    container_name: soroscan-db
+    image: postgres:14-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d wallet-backend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: wallet-backend
+      PGDATA: /data/postgres
+      POSTGRES_INITDB_ARGS: "--auth-host=trust"
+    volumes:
+      - soroscan-postgres-db:/data/postgres
+    ports:
+      - 5432:5432
+    command: |
+      bash -c "
+      /usr/local/bin/docker-entrypoint.sh postgres &
+      sleep 10
+      if [ ! -f /data/postgres/schemas_created ]; then
+        psql -U postgres -d wallet-backend -c 'CREATE SCHEMA IF NOT EXISTS wallet_backend_local;'
+        touch /data/postgres/schemas_created
+      fi
+      wait
+      "
+
+  redis:
+    container_name: soroscan-redis
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - 6379:6379
+    volumes:
+      - soroscan-redis-data:/data
+
+volumes:
+  soroscan-postgres-db:
+    driver: local
+  soroscan-redis-data:
+    driver: local

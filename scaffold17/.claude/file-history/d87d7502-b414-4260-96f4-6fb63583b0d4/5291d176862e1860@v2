@@ -1,0 +1,127 @@
+# docker-compose for local Stellar network development
+# Connects to local Stellar network at host.docker.internal:8000
+
+services:
+  db:
+    container_name: soroscan-db
+    image: postgres:14-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d wallet-backend"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: wallet-backend
+      PGDATA: /data/postgres
+      POSTGRES_INITDB_ARGS: "--auth-host=trust"
+    volumes:
+      - soroscan-postgres-db:/data/postgres
+    ports:
+      - 5432:5432
+    command: |
+      bash -c "
+      /usr/local/bin/docker-entrypoint.sh postgres &
+      sleep 10
+      if [ ! -f /data/postgres/schemas_created ]; then
+        psql -U postgres -d wallet-backend -c 'CREATE SCHEMA IF NOT EXISTS wallet_backend_local;'
+        touch /data/postgres/schemas_created
+      fi
+      wait
+      "
+
+  redis:
+    container_name: soroscan-redis
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - 6379:6379
+    volumes:
+      - soroscan-redis-data:/data
+
+  ingest-local:
+    container_name: soroscan-ingest-local
+    image: wallet-backend:latest
+    healthcheck:
+      test: "curl --fail --silent --show-error --location 'http://localhost:8004/health' | grep -q '\"status\": \"ok\"'"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    entrypoint: ""
+    command:
+      - sh
+      - -c
+      - |
+        sleep 5
+        ./wallet-backend migrate up
+        # Start from a recent ledger - skip history archive requirement
+        ./wallet-backend ingest --start-ledger 9000 --checkpoint-frequency 8
+    environment:
+      RPC_URL: http://host.docker.internal:8000/soroban/rpc
+      DATABASE_URL: postgres://postgres@db:5432/wallet-backend?sslmode=disable&search_path=wallet_backend_local
+      INGEST_SERVER_PORT: 8004
+      NETWORK: local
+      NETWORK_PASSPHRASE: "Standalone Network ; February 2017"
+      LOG_LEVEL: DEBUG
+      GET_LEDGERS_LIMIT: 150
+      STELLAR_ENVIRONMENT: development
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ""
+      LEDGER_BACKEND_TYPE: rpc
+      CHECKPOINT_FREQUENCY: 8
+
+  api-local:
+    container_name: soroscan-api-local
+    image: wallet-backend:latest
+    healthcheck:
+      test: "curl --fail --silent --show-error --location 'http://localhost:8002/health' | grep -q '\"status\": \"ok\"'"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+      ingest-local:
+        condition: service_healthy
+    ports:
+      - 8002:8002
+    entrypoint: ""
+    command:
+      - sh
+      - -c
+      - |
+        ./wallet-backend channel-account ensure 2
+        ./wallet-backend serve
+    environment:
+      RPC_URL: http://host.docker.internal:8000/soroban/rpc
+      DATABASE_URL: postgres://postgres@db:5432/wallet-backend?sslmode=disable&search_path=wallet_backend_local
+      PORT: 8002
+      SERVER_BASE_URL: http://localhost:8002
+      LOG_LEVEL: DEBUG
+      NETWORK: local
+      NETWORK_PASSPHRASE: "Standalone Network ; February 2017"
+      CLIENT_AUTH_PUBLIC_KEYS: GBC5WRK65I5BKCPE3OBJZ7WD3IIFHRCKTQVILAZ4CL3GNT3XWIDJ3A6Q
+      DISTRIBUTION_ACCOUNT_PUBLIC_KEY: GBAMVQ5U2MZNOHZJ2VV7PZZIPWKSRW5MKENPLITOAKJ5NU5KOEDKD3TF
+      DISTRIBUTION_ACCOUNT_PRIVATE_KEY: SBPL3K6APXY6WO3TO5SZNBHP5CCQ63YFRKLPNAJ7RYBICXFVCXJS64H2
+      DISTRIBUTION_ACCOUNT_SIGNATURE_PROVIDER: ENV
+      NUMBER_CHANNEL_ACCOUNTS: 2
+      CHANNEL_ACCOUNT_ENCRYPTION_PASSPHRASE: soroscan-local-dev-1766547242388
+      STELLAR_ENVIRONMENT: development
+
+volumes:
+  soroscan-postgres-db:
+    driver: local
+  soroscan-redis-data:
+    driver: local

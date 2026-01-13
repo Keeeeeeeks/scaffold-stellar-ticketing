@@ -1,0 +1,66 @@
+import { Link } from "react-router-dom";
+import { Button, Loader } from "@stellar/design-system";
+import { useMultiWallet } from "../hooks/useMultiWallet";
+import { useUserTickets } from "../hooks/useUserTickets";
+import { TicketCard } from "../components/tickets/TicketCard";
+import "./MyTicketsPage.css";
+
+const MyTicketsPage = () => {
+  const { activeAddress, connectWallet } = useMultiWallet();
+  const { data: tickets, isLoading } = useUserTickets();
+
+  if (!activeAddress) {
+    return (
+      <div className="my-tickets-page empty-state">
+        <h2>Connect Your Wallet</h2>
+        <p>Connect your wallet to view your tickets</p>
+        <Button
+          variant="primary"
+          size="md"
+          onClick={() => void connectWallet()}
+        >
+          Connect Wallet
+        </Button>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="my-tickets-page loading">
+        <Loader size="lg" />
+      </div>
+    );
+  }
+
+  if (!tickets || tickets.length === 0) {
+    return (
+      <div className="my-tickets-page empty-state">
+        <h2>No Tickets Yet</h2>
+        <p>You haven't purchased any tickets yet</p>
+        <Link to="/events">
+          <Button variant="primary" size="md">
+            Browse Events
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="my-tickets-page">
+      <div className="tickets-header">
+        <h1>My Tickets</h1>
+        <p>Your NFT tickets on Stellar</p>
+      </div>
+
+      <div className="tickets-grid">
+        {tickets.map((ticket) => (
+          <TicketCard key={ticket.tokenId} ticket={ticket} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default MyTicketsPage;

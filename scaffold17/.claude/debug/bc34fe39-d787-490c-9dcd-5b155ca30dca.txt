@@ -1,0 +1,442 @@
+2025-12-16T19:03:52.587Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (44.6ms): security find-generic-password -a $USER -w -s "Claude Code"
+2025-12-16T19:03:52.615Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (28.0ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T19:03:52.664Z [ERROR] Failed to save config with lock: Error: ENOENT: no such file or directory, lstat '/Users/george/.claude.json'
+2025-12-16T19:03:52.664Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911832664
+2025-12-16T19:03:52.664Z [DEBUG] Setting permissions for new file: 600
+2025-12-16T19:03:52.668Z [DEBUG] Temp file written successfully, size: 82 bytes
+2025-12-16T19:03:52.668Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911832664 to /Users/george/.claude.json
+2025-12-16T19:03:52.669Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:52.672Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911832672
+2025-12-16T19:03:52.672Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:52.676Z [DEBUG] Temp file written successfully, size: 130 bytes
+2025-12-16T19:03:52.676Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:52.676Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911832672 to /Users/george/.claude.json
+2025-12-16T19:03:52.677Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:52.680Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2025-12-16T19:03:52.680Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2025-12-16T19:03:52.680Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2025-12-16T19:03:52.681Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911832681
+2025-12-16T19:03:52.681Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:52.686Z [DEBUG] Temp file written successfully, size: 167 bytes
+2025-12-16T19:03:52.686Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:52.686Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911832681 to /Users/george/.claude.json
+2025-12-16T19:03:52.686Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:52.687Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911832687
+2025-12-16T19:03:52.687Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:52.690Z [DEBUG] Temp file written successfully, size: 202 bytes
+2025-12-16T19:03:52.690Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:52.690Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911832687 to /Users/george/.claude.json
+2025-12-16T19:03:52.690Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:52.691Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911832691
+2025-12-16T19:03:52.691Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:52.695Z [DEBUG] Temp file written successfully, size: 239 bytes
+2025-12-16T19:03:52.695Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:52.695Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911832691 to /Users/george/.claude.json
+2025-12-16T19:03:52.695Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:52.696Z [DEBUG] LSP server manager initialized successfully
+2025-12-16T19:03:52.696Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2025-12-16T19:03:52.708Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2025-12-16T19:03:52.711Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2025-12-16T19:03:52.952Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (239.0ms): cursor --version
+2025-12-16T19:03:52.953Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2025-12-16T19:03:52.994Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2025-12-16T19:03:52.994Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2025-12-16T19:03:52.995Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2025-12-16T19:03:52.995Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2025-12-16T19:03:52.995Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1765911832995-nt3r2d.sh
+2025-12-16T19:03:52.995Z [DEBUG] Shell binary exists: true
+2025-12-16T19:03:52.995Z [DEBUG] Execution timeout: 10000ms
+2025-12-16T19:03:52.997Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/bc34fe39-d787-490c-9dcd-5b155ca30dca-agent-bc34fe39-d787-490c-9dcd-5b155ca30dca.json.tmp.22001.1765911832997
+2025-12-16T19:03:53.001Z [DEBUG] Temp file written successfully, size: 2 bytes
+2025-12-16T19:03:53.001Z [DEBUG] Renaming /Users/george/.claude/todos/bc34fe39-d787-490c-9dcd-5b155ca30dca-agent-bc34fe39-d787-490c-9dcd-5b155ca30dca.json.tmp.22001.1765911832997 to /Users/george/.claude/todos/bc34fe39-d787-490c-9dcd-5b155ca30dca-agent-bc34fe39-d787-490c-9dcd-5b155ca30dca.json
+2025-12-16T19:03:53.001Z [DEBUG] File /Users/george/.claude/todos/bc34fe39-d787-490c-9dcd-5b155ca30dca-agent-bc34fe39-d787-490c-9dcd-5b155ca30dca.json written atomically
+2025-12-16T19:03:53.010Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2025-12-16T19:03:53.010Z [DEBUG] Total plugin skills loaded: 0
+2025-12-16T19:03:53.010Z [DEBUG] Total plugin commands loaded: 0
+2025-12-16T19:03:53.010Z [DEBUG] Registered 0 hooks from 0 plugins
+2025-12-16T19:03:53.012Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+2025-12-16T19:03:53.014Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2025-12-16T19:03:53.015Z [DEBUG] Total plugin agents loaded: 0
+2025-12-16T19:03:53.032Z [DEBUG] Git remote URL: https://github.com/stellar/freighter-mobile.git
+2025-12-16T19:03:53.032Z [DEBUG] Parsed repository: stellar/freighter-mobile from https://github.com/stellar/freighter-mobile.git
+2025-12-16T19:03:53.032Z [DEBUG] Parsed repository: stellar/freighter-mobile from URL: https://github.com/stellar/freighter-mobile.git
+2025-12-16T19:03:53.033Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833033
+2025-12-16T19:03:53.033Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.038Z [DEBUG] Temp file written successfully, size: 346 bytes
+2025-12-16T19:03:53.038Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.038Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833033 to /Users/george/.claude.json
+2025-12-16T19:03:53.038Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.039Z [DEBUG] Added /Users/george/freighter-mobile to tracked paths for repo stellar/freighter-mobile
+2025-12-16T19:03:53.163Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833163
+2025-12-16T19:03:53.163Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.167Z [DEBUG] Temp file written successfully, size: 48715 bytes
+2025-12-16T19:03:53.167Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.167Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833163 to /Users/george/.claude.json
+2025-12-16T19:03:53.168Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.187Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833187
+2025-12-16T19:03:53.188Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.192Z [DEBUG] Temp file written successfully, size: 48778 bytes
+2025-12-16T19:03:53.192Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.192Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833187 to /Users/george/.claude.json
+2025-12-16T19:03:53.192Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.194Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833194
+2025-12-16T19:03:53.194Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.198Z [DEBUG] Temp file written successfully, size: 48830 bytes
+2025-12-16T19:03:53.198Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.198Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833194 to /Users/george/.claude.json
+2025-12-16T19:03:53.198Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.200Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833200
+2025-12-16T19:03:53.200Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.205Z [DEBUG] Temp file written successfully, size: 48874 bytes
+2025-12-16T19:03:53.205Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.205Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833200 to /Users/george/.claude.json
+2025-12-16T19:03:53.205Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.208Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833208
+2025-12-16T19:03:53.208Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.211Z [DEBUG] Temp file written successfully, size: 48904 bytes
+2025-12-16T19:03:53.211Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.211Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833208 to /Users/george/.claude.json
+2025-12-16T19:03:53.211Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.212Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833212
+2025-12-16T19:03:53.213Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.216Z [DEBUG] Temp file written successfully, size: 48934 bytes
+2025-12-16T19:03:53.216Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.216Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833212 to /Users/george/.claude.json
+2025-12-16T19:03:53.216Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.217Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833217
+2025-12-16T19:03:53.217Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.221Z [DEBUG] Temp file written successfully, size: 48959 bytes
+2025-12-16T19:03:53.221Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.221Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833217 to /Users/george/.claude.json
+2025-12-16T19:03:53.221Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.244Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911833244
+2025-12-16T19:03:53.244Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:03:53.247Z [DEBUG] Temp file written successfully, size: 49005 bytes
+2025-12-16T19:03:53.247Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:03:53.247Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911833244 to /Users/george/.claude.json
+2025-12-16T19:03:53.247Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:03:53.253Z [ERROR] Error streaming, falling back to non-streaming mode: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+2025-12-16T19:03:53.263Z [ERROR] Error in non-streaming fallback: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+2025-12-16T19:03:53.263Z [ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at q_.validateHeaders (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:796:1008)
+    at q_.buildHeaders (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:796:8501)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async q_.buildRequest (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:796:7559)
+    at async q_.makeRequest (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:796:3387)
+    at async w11.model (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4493:6319)
+    at async w11 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1232:18701)
+    at async $d2 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4493:6473)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4491:3555
+    at async Jp1 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:946:2037)
+2025-12-16T19:03:53.518Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2025-12-16T19:03:53.690Z [DEBUG] Shell snapshot created successfully (848 bytes)
+2025-12-16T19:04:02.870Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911842870
+2025-12-16T19:04:02.870Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:04:02.876Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.6ms)
+2025-12-16T19:04:02.876Z [DEBUG] Temp file written successfully, size: 49005 bytes
+2025-12-16T19:04:02.876Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:04:02.876Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911842870 to /Users/george/.claude.json
+2025-12-16T19:04:02.876Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T19:04:02.878Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765911842878
+2025-12-16T19:04:02.878Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T19:04:02.883Z [DEBUG] Temp file written successfully, size: 49005 bytes
+2025-12-16T19:04:02.883Z [DEBUG] Applied original permissions to temp file
+2025-12-16T19:04:02.883Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765911842878 to /Users/george/.claude.json
+2025-12-16T19:04:02.883Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:39.588Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (36.2ms): security delete-generic-password -a $USER -s "Claude Code"
+2025-12-16T20:42:39.592Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917759592
+2025-12-16T20:42:39.592Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:42:39.597Z [DEBUG] Temp file written successfully, size: 49005 bytes
+2025-12-16T20:42:39.597Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:42:39.597Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917759592 to /Users/george/.claude.json
+2025-12-16T20:42:39.597Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:39.640Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (42.2ms): security delete-generic-password -a "george" -s "Claude Code-credentials"
+2025-12-16T20:42:39.699Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (55.9ms): security find-generic-password -a $USER -w -s "Claude Code"
+2025-12-16T20:42:39.762Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (63.5ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T20:42:39.779Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917759778
+2025-12-16T20:42:39.779Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:42:39.798Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (19.3ms)
+2025-12-16T20:42:39.798Z [DEBUG] Temp file written successfully, size: 49005 bytes
+2025-12-16T20:42:39.798Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:42:39.798Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917759778 to /Users/george/.claude.json
+2025-12-16T20:42:39.798Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:40.009Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917760009
+2025-12-16T20:42:40.009Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:42:40.013Z [DEBUG] Temp file written successfully, size: 49274 bytes
+2025-12-16T20:42:40.013Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:42:40.013Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917760009 to /Users/george/.claude.json
+2025-12-16T20:42:40.013Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:40.045Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (29.1ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T20:42:40.073Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (27.7ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T20:42:40.291Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917760291
+2025-12-16T20:42:40.291Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:42:40.296Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.2ms)
+2025-12-16T20:42:40.296Z [DEBUG] Temp file written successfully, size: 49399 bytes
+2025-12-16T20:42:40.296Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:42:40.296Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917760291 to /Users/george/.claude.json
+2025-12-16T20:42:40.297Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:40.351Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (53.9ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T20:42:40.489Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917760489
+2025-12-16T20:42:40.489Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:42:40.494Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.4ms)
+2025-12-16T20:42:40.494Z [DEBUG] Temp file written successfully, size: 49460 bytes
+2025-12-16T20:42:40.494Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:42:40.494Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917760489 to /Users/george/.claude.json
+2025-12-16T20:42:40.495Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:42:40.499Z [DEBUG] Skipping Notification:auth_success hook execution - workspace trust not accepted
+2025-12-16T20:42:40.543Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (42.8ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2025-12-16T20:43:07.382Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917787382
+2025-12-16T20:43:07.383Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:07.389Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.1ms)
+2025-12-16T20:43:07.389Z [DEBUG] Temp file written successfully, size: 49501 bytes
+2025-12-16T20:43:07.389Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:07.389Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917787382 to /Users/george/.claude.json
+2025-12-16T20:43:07.389Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:07.394Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917787394
+2025-12-16T20:43:07.394Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:07.399Z [DEBUG] Temp file written successfully, size: 49572 bytes
+2025-12-16T20:43:07.399Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:07.399Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917787394 to /Users/george/.claude.json
+2025-12-16T20:43:07.399Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.190Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792190
+2025-12-16T20:43:12.190Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.195Z [DEBUG] Temp file written successfully, size: 49998 bytes
+2025-12-16T20:43:12.195Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.195Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792190 to /Users/george/.claude.json
+2025-12-16T20:43:12.196Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.535Z [DEBUG] Passes: No cache, fetching eligibility
+2025-12-16T20:43:12.562Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2025-12-16T20:43:12.567Z [DEBUG] [ColorDiff] Not in bundled mode, using JS fallback
+2025-12-16T20:43:12.570Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792570
+2025-12-16T20:43:12.570Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.573Z [DEBUG] Temp file written successfully, size: 50018 bytes
+2025-12-16T20:43:12.573Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.573Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792570 to /Users/george/.claude.json
+2025-12-16T20:43:12.573Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.581Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2025-12-16T20:43:12.581Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T20:43:12.581Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2025-12-16T20:43:12.603Z [DEBUG] Skills and commands included in Skill tool:
+2025-12-16T20:43:12.603Z [DEBUG] Slash commands included in SlashCommand tool:
+2025-12-16T20:43:12.688Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792688
+2025-12-16T20:43:12.688Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.692Z [DEBUG] Temp file written successfully, size: 50054 bytes
+2025-12-16T20:43:12.692Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.692Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792688 to /Users/george/.claude.json
+2025-12-16T20:43:12.692Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.693Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792693
+2025-12-16T20:43:12.693Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.698Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.2ms)
+2025-12-16T20:43:12.698Z [DEBUG] Temp file written successfully, size: 50054 bytes
+2025-12-16T20:43:12.698Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.698Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792693 to /Users/george/.claude.json
+2025-12-16T20:43:12.699Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.702Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792702
+2025-12-16T20:43:12.702Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.707Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.5ms)
+2025-12-16T20:43:12.707Z [DEBUG] Temp file written successfully, size: 50136 bytes
+2025-12-16T20:43:12.708Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.708Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792702 to /Users/george/.claude.json
+2025-12-16T20:43:12.708Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.711Z [DEBUG] performStartupChecks called
+2025-12-16T20:43:12.711Z [DEBUG] Starting background plugin installations
+2025-12-16T20:43:12.711Z [DEBUG] performBackgroundPluginInstallations called
+2025-12-16T20:43:12.733Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (20.4ms): ps -o command= -p 82432
+2025-12-16T20:43:12.750Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.3ms): ps -o ppid= -p 82432
+2025-12-16T20:43:12.765Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.2ms): ps -o command= -p 79090
+2025-12-16T20:43:12.780Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (14.1ms): ps -o ppid= -p 79090
+2025-12-16T20:43:12.797Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.2ms): ps -o command= -p 78549
+2025-12-16T20:43:12.814Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (17.1ms): ps -o ppid= -p 78549
+2025-12-16T20:43:12.819Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2025-12-16T20:43:12.824Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792824
+2025-12-16T20:43:12.824Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.828Z [DEBUG] Temp file written successfully, size: 50171 bytes
+2025-12-16T20:43:12.828Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.828Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792824 to /Users/george/.claude.json
+2025-12-16T20:43:12.828Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.829Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792829
+2025-12-16T20:43:12.829Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.833Z [DEBUG] Temp file written successfully, size: 50276 bytes
+2025-12-16T20:43:12.833Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.833Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792829 to /Users/george/.claude.json
+2025-12-16T20:43:12.833Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.835Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792835
+2025-12-16T20:43:12.835Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.839Z [DEBUG] Temp file written successfully, size: 50324 bytes
+2025-12-16T20:43:12.839Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.839Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792835 to /Users/george/.claude.json
+2025-12-16T20:43:12.839Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:12.840Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2025-12-16T20:43:12.841Z [DEBUG] Attempting to auto-install official marketplace
+2025-12-16T20:43:12.844Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2025-12-16T20:43:12.850Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2025-12-16T20:43:12.850Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T20:43:12.850Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2025-12-16T20:43:12.855Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2025-12-16T20:43:12.855Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T20:43:12.855Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2025-12-16T20:43:12.894Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (14.4ms): ps -o command= -p 82432
+2025-12-16T20:43:12.907Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.1ms): ps -o ppid= -p 82432
+2025-12-16T20:43:12.924Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.7ms): ps -o command= -p 79090
+2025-12-16T20:43:12.940Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (16.5ms): ps -o ppid= -p 79090
+2025-12-16T20:43:12.960Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (19.5ms): ps -o command= -p 78549
+2025-12-16T20:43:12.969Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.2ms): ps -o ppid= -p 78549
+2025-12-16T20:43:12.983Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917792983
+2025-12-16T20:43:12.983Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:12.988Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.1ms)
+2025-12-16T20:43:12.988Z [DEBUG] Temp file written successfully, size: 50500 bytes
+2025-12-16T20:43:12.988Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:12.988Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917792983 to /Users/george/.claude.json
+2025-12-16T20:43:12.989Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:13.010Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917793010
+2025-12-16T20:43:13.010Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:13.013Z [DEBUG] Temp file written successfully, size: 50681 bytes
+2025-12-16T20:43:13.013Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:13.013Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917793010 to /Users/george/.claude.json
+2025-12-16T20:43:13.014Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:13.049Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917793049
+2025-12-16T20:43:13.049Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:13.054Z [DEBUG] Temp file written successfully, size: 50681 bytes
+2025-12-16T20:43:13.054Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:13.054Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917793049 to /Users/george/.claude.json
+2025-12-16T20:43:13.055Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:13.167Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917793167
+2025-12-16T20:43:13.167Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:13.172Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.2ms)
+2025-12-16T20:43:13.172Z [DEBUG] Temp file written successfully, size: 51008 bytes
+2025-12-16T20:43:13.172Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:13.172Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917793167 to /Users/george/.claude.json
+2025-12-16T20:43:13.172Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:13.172Z [DEBUG] Passes eligibility cached for org 7a959856-bd04-4381-8348-1522884d02db: true
+2025-12-16T20:43:13.360Z [INFO] SSH not configured for GitHub, using HTTPS for anthropics/claude-plugins-official
+2025-12-16T20:43:13.485Z [ERROR] Error: Error: 1: 1 
+    at bP6 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:983:3956)
+    at async kP6 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:983:1579)
+2025-12-16T20:43:14.059Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (13.6ms)
+2025-12-16T20:43:14.059Z [DEBUG] Added marketplace source: claude-plugins-official
+2025-12-16T20:43:14.059Z [DEBUG] Successfully auto-installed official marketplace
+2025-12-16T20:43:14.060Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765917794060
+2025-12-16T20:43:14.060Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T20:43:14.065Z [DEBUG] Temp file written successfully, size: 51103 bytes
+2025-12-16T20:43:14.065Z [DEBUG] Applied original permissions to temp file
+2025-12-16T20:43:14.065Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765917794060 to /Users/george/.claude.json
+2025-12-16T20:43:14.066Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T20:43:14.066Z [DEBUG] Showing marketplace installation success notification
+2025-12-16T20:43:14.072Z [DEBUG] Stream started - received first chunk
+2025-12-16T20:43:15.265Z [DEBUG] Stream started - received first chunk
+2025-12-16T20:43:15.625Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-16T20:43:15.625Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T20:43:15.625Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T20:43:41.392Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.3ms)
+2025-12-16T20:44:04.121Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-16T20:44:04.121Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T20:44:04.121Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-16T20:47:46.518Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (7.4ms)
+2025-12-16T20:47:59.122Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (13.3ms)
+2025-12-16T20:49:01.743Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (18.8ms)
+2025-12-16T20:50:17.980Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.4ms)
+2025-12-16T20:51:01.436Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.8ms)
+2025-12-16T20:51:08.847Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.2ms)
+2025-12-16T20:51:08.930Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (7.3ms)
+2025-12-16T20:51:59.177Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (36.0ms)
+2025-12-16T20:52:12.446Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (6.5ms)
+2025-12-16T20:54:58.984Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (30.5ms)
+2025-12-16T20:54:59.008Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (23.2ms)
+2025-12-16T20:55:00.518Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.9ms)
+2025-12-16T20:56:59.230Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (5.4ms)
+2025-12-16T20:57:58.635Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (24.4ms)
+2025-12-16T20:57:58.785Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (25.8ms)
+2025-12-16T20:57:58.799Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (13.8ms)
+2025-12-16T21:00:55.851Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.0ms)
+2025-12-16T21:11:24.945Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (42.1ms)
+2025-12-16T21:13:25.035Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (30.7ms)
+2025-12-16T21:14:25.006Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (50.5ms)
+2025-12-16T21:15:25.391Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.3ms)
+2025-12-16T21:18:24.947Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (23.6ms)
+2025-12-16T21:22:25.365Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (8.3ms)
+2025-12-16T21:23:25.310Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (16.5ms)
+2025-12-16T21:25:35.020Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (17.7ms)
+2025-12-16T21:34:24.947Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (24.8ms)
+2025-12-16T21:34:24.964Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (7.2ms)
+2025-12-16T21:35:25.093Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (32.7ms)
+2025-12-16T21:36:25.649Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (14.5ms)
+2025-12-16T21:41:01.696Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (9.1ms)
+2025-12-16T21:41:25.287Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (11.6ms)
+2025-12-16T21:41:25.884Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (32.8ms)
+2025-12-16T21:41:25.926Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (15.4ms)
+2025-12-16T21:43:44.479Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (11.3ms)
+2025-12-16T21:48:37.397Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (9.7ms)
+2025-12-16T21:49:26.625Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (7.4ms)
+2025-12-16T21:50:25.383Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (8.3ms)
+2025-12-16T21:54:25.613Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (5.1ms)
+2025-12-16T22:01:24.904Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (17.2ms)
+2025-12-16T22:05:24.902Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.6ms)
+2025-12-16T22:05:25.560Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (9.8ms)
+2025-12-16T22:09:20.683Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (11.9ms)
+2025-12-16T22:24:19.093Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (12.7ms)
+2025-12-16T22:24:20.892Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (27.8ms)
+2025-12-16T22:27:13.869Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.3ms)
+2025-12-16T22:29:10.601Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (16.5ms)
+2025-12-16T22:29:13.843Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.1ms)
+2025-12-16T22:29:13.853Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (9.3ms)
+2025-12-16T22:32:13.816Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (44.4ms)
+2025-12-16T22:34:38.048Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (5.5ms)
+2025-12-16T22:35:56.090Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (16.5ms)
+2025-12-16T22:39:13.990Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.7ms)
+2025-12-16T22:40:42.624Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.8ms)
+2025-12-16T22:41:15.321Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (5.6ms)
+2025-12-16T22:41:17.688Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (20.9ms)
+2025-12-16T22:45:13.812Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (41.7ms)
+2025-12-16T22:46:17.199Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (5.3ms)
+2025-12-16T22:48:14.693Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.7ms)
+2025-12-16T22:50:13.787Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (6.3ms)
+2025-12-16T22:54:13.942Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.8ms)
+2025-12-16T22:59:13.830Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (18.0ms)
+2025-12-16T22:59:13.868Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (9.2ms)
+2025-12-16T23:00:13.905Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (62.9ms)
+2025-12-16T23:05:13.970Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (44.3ms)
+2025-12-16T23:06:14.464Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.6ms)
+2025-12-16T23:07:50.829Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (8.2ms)
+2025-12-16T23:08:13.938Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (6.8ms)
+2025-12-16T23:11:13.893Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (11.4ms)
+2025-12-16T23:12:14.136Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (9.3ms)
+2025-12-16T23:14:43.236Z [DEBUG] UserCommandMessage rendering: "status" (args: "none")
+2025-12-16T23:14:43.236Z [DEBUG] isSkillFormat: false, prefix: "/"
+2025-12-16T23:14:43.293Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2025-12-16T23:14:43.334Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765926883334
+2025-12-16T23:14:43.334Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:14:43.340Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.2ms)
+2025-12-16T23:14:43.340Z [DEBUG] Temp file written successfully, size: 51152 bytes
+2025-12-16T23:14:43.340Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:14:43.340Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765926883334 to /Users/george/.claude.json
+2025-12-16T23:14:43.341Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:14:43.345Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765926883345
+2025-12-16T23:14:43.345Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:14:43.350Z [DEBUG] Temp file written successfully, size: 51190 bytes
+2025-12-16T23:14:43.350Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:14:43.350Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765926883345 to /Users/george/.claude.json
+2025-12-16T23:14:43.350Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:14:43.354Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765926883354
+2025-12-16T23:14:43.354Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:14:43.359Z [DEBUG] Temp file written successfully, size: 51215 bytes
+2025-12-16T23:14:43.359Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:14:43.359Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765926883354 to /Users/george/.claude.json
+2025-12-16T23:14:43.359Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:14:44.475Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2025-12-16T23:14:44.475Z [DEBUG] AutoUpdater: Using global update method
+2025-12-16T23:14:45.931Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765926885931
+2025-12-16T23:14:45.931Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:14:45.939Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.4ms)
+2025-12-16T23:14:45.939Z [DEBUG] Temp file written successfully, size: 51244 bytes
+2025-12-16T23:14:45.939Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:14:45.939Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765926885931 to /Users/george/.claude.json
+2025-12-16T23:14:45.940Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:15:27.233Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.22001.1765926927233
+2025-12-16T23:15:27.233Z [DEBUG] Preserving file permissions: 100600
+2025-12-16T23:15:27.238Z [DEBUG] Temp file written successfully, size: 51272 bytes
+2025-12-16T23:15:27.238Z [DEBUG] Applied original permissions to temp file
+2025-12-16T23:15:27.238Z [DEBUG] Renaming /Users/george/.claude.json.tmp.22001.1765926927233 to /Users/george/.claude.json
+2025-12-16T23:15:27.238Z [DEBUG] File /Users/george/.claude.json written atomically
+2025-12-16T23:15:28.492Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2025-12-16T23:15:28.492Z [DEBUG] Found 0 hook matchers in settings
+2025-12-16T23:15:28.492Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

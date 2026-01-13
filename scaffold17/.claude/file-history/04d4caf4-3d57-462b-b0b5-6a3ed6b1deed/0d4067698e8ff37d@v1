@@ -1,0 +1,54 @@
+import { Link } from "react-router-dom";
+import { Badge } from "@stellar/design-system";
+import type { Event } from "../../types/events";
+import "./EventCard.css";
+
+interface EventCardProps {
+  event: Event;
+}
+
+export const EventCard = ({ event }: EventCardProps) => {
+  const ticketsRemaining = event.capacity - event.sold;
+  const isSoldOut = ticketsRemaining === 0;
+  const xlmPrice = Number(event.xlmPrice) / 10_000_000;
+  const usdcPrice = Number(event.usdcPrice) / 10_000_000;
+
+  return (
+    <Link to={`/events/${event.id}`} className="event-card">
+      <div className="event-card-image">
+        <img src={event.imageUrl} alt={event.name} />
+        {isSoldOut && (
+          <Badge variant="error" size="md" className="sold-out-badge">
+            Sold Out
+          </Badge>
+        )}
+      </div>
+      <div className="event-card-content">
+        <h3 className="event-card-title">{event.name}</h3>
+        <p className="event-card-venue">{event.venue}</p>
+        <p className="event-card-date">
+          {event.date.toLocaleDateString("en-US", {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </p>
+        <div className="event-card-footer">
+          <div className="event-card-price">
+            <span className="price-xlm">{xlmPrice} XLM</span>
+            <span className="price-divider">/</span>
+            <span className="price-usdc">{usdcPrice} USDC</span>
+          </div>
+          <div className="event-card-availability">
+            {isSoldOut ? (
+              <span className="sold-out">Sold Out</span>
+            ) : (
+              <span className="tickets-left">{ticketsRemaining} left</span>
+            )}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};

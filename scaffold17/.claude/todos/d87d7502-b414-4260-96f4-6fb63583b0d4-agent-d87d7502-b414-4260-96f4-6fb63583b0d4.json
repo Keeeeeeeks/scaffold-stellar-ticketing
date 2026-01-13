@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Fix wallet-backend authentication for local development",
+    "status": "completed",
+    "activeForm": "Fixing authentication"
+  },
+  {
+    "content": "Add local network to Soroscan network selector",
+    "status": "in_progress",
+    "activeForm": "Adding local network option"
+  }
+]

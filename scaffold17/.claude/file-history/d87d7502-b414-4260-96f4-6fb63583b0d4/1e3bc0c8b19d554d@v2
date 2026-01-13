@@ -1,0 +1,41 @@
+import { Link } from "react-router-dom";
+import type { UserTicket } from "../../types/tickets";
+import "./TicketCard.css";
+
+interface TicketCardProps {
+  ticket: UserTicket;
+}
+
+export const TicketCard = ({ ticket }: TicketCardProps) => {
+  return (
+    <div className="ticket-card">
+      <div className="ticket-card-image">
+        <img src={ticket.imageUrl} alt={ticket.eventName} />
+      </div>
+      <div className="ticket-card-content">
+        <div className="ticket-header">
+          <h3 className="ticket-event-name">{ticket.eventName}</h3>
+          <span className="ticket-number">#{ticket.ticketNumber}</span>
+        </div>
+        <p className="ticket-venue">{ticket.eventVenue}</p>
+        <p className="ticket-date">
+          {ticket.eventDate.toLocaleDateString("en-US", {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </p>
+        <div className="ticket-qr-placeholder">
+          <span>QR Code</span>
+        </div>
+        <div className="ticket-footer">
+          <span className="ticket-id">Token ID: {ticket.tokenId}</span>
+          <Link to={`/events/${ticket.eventId}`} className="ticket-link">
+            View Event
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};

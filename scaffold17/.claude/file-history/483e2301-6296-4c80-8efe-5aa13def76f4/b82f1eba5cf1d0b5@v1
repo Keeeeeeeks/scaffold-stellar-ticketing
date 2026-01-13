@@ -1,0 +1,377 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import {
+  ChevronDown,
+  ChevronUp,
+  Play,
+  Loader2,
+  HelpCircle,
+  AlertCircle,
+  CheckCircle,
+  Wallet,
+} from 'lucide-react';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+import type { ContractFunction, SorobanType } from '@/types/stellar';
+
+interface ContractFunctionsProps {
+  contractId: string;
+  functions: ContractFunction[];
+  types: Map<string, SorobanType>;
+  isWrite: boolean;
+}
+
+export function ContractFunctions({
+  contractId,
+  functions,
+  types,
+  isWrite,
+}: ContractFunctionsProps) {
+  return (
+    <TooltipProvider>
+      <div className="space-y-3">
+        {functions.map((fn, index) => (
+          <motion.div
+            key={fn.name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, ...SPRING.snappy }}
+          >
+            <FunctionCard
+              contractId={contractId}
+              fn={fn}
+              types={types}
+              isWrite={isWrite}
+            />
+          </motion.div>
+        ))}
+      </div>
+    </TooltipProvider>
+  );
+}
+
+function FunctionCard({
+  contractId,
+  fn,
+  types,
+  isWrite,
+}: {
+  contractId: string;
+  fn: ContractFunction;
+  types: Map<string, SorobanType>;
+  isWrite: boolean;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [inputValues, setInputValues] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<{
+    success: boolean;
+    data?: any;
+    error?: string;
+  } | null>(null);
+
+  const handleExecute = async () => {
+    setLoading(true);
+    setResult(null);
+
+    try {
+      // Simulate execution delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // For now, just return a simulated result
+      // In production, this would call the Soroban RPC
+      setResult({
+        success: true,
+        data: isWrite
+          ? { txHash: '0x' + Math.random().toString(16).slice(2, 66) }
+          : { value: 'Simulated result for ' + fn.name },
+      });
+    } catch (error) {
+      setResult({
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateInput = (name: string, value: string) => {
+    setInputValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <Card className={cn(expanded && 'ring-1 ring-primary/20')}>
+      <CardHeader className="py-3 px-4">
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="flex items-center justify-between w-full text-left"
+        >
+          <div className="flex items-center gap-2 flex-wrap">
+            <code className="font-mono text-sm font-medium">{fn.name}</code>
+            <Badge
+              variant="outline"
+              className={cn(
+                'text-xs',
+                isWrite
+                  ? 'border-orange-500/30 text-orange-500'
+                  : 'border-emerald-500/30 text-emerald-500'
+              )}
+            >
+              {isWrite ? 'write' : 'read'}
+            </Badge>
+            {fn.inputs.length > 0 && (
+              <span className="text-xs text-muted-foreground">
+                ({fn.inputs.length} arg{fn.inputs.length !== 1 ? 's' : ''})
+              </span>
+            )}
+          </div>
+          <motion.div
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={SPRING.snappy}
+          >
+            <ChevronDown className="h-4 w-4 text-muted-foreground" />
+          </motion.div>
+        </button>
+        {fn.doc && (
+          <p className="text-sm text-muted-foreground mt-1 pr-8">{fn.doc}</p>
+        )}
+      </CardHeader>
+
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={SPRING.snappy}
+            style={{ overflow: 'hidden' }}
+          >
+            <CardContent className="pt-0 pb-4 px-4 border-t">
+              <div className="pt-4 space-y-4">
+                {/* Inputs */}
+                {fn.inputs.length > 0 ? (
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-medium">Parameters</h4>
+                    {fn.inputs.map((input, i) => (
+                      <FunctionInput
+                        key={input.name}
+                        input={input}
+                        value={inputValues[input.name] || ''}
+                        onChange={(value) => updateInput(input.name, value)}
+                        types={types}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">
+                    This function takes no parameters.
+                  </p>
+                )}
+
+                {/* Execute Button */}
+                <div className="flex items-center gap-3">
+                  <Button
+                    onClick={handleExecute}
+                    disabled={loading}
+                    className={cn(
+                      'gap-2',
+                      isWrite
+                        ? 'bg-orange-500 hover:bg-orange-600'
+                        : 'bg-emerald-500 hover:bg-emerald-600'
+                    )}
+                  >
+                    {loading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Play className="h-4 w-4" />
+                    )}
+                    {isWrite ? 'Execute' : 'Query'}
+                  </Button>
+                  {isWrite && (
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Wallet className="h-3 w-3" />
+                      Requires wallet signature
+                    </span>
+                  )}
+                </div>
+
+                {/* Output Types */}
+                {fn.outputs.length > 0 && (
+                  <div className="text-sm">
+                    <span className="text-muted-foreground">Returns: </span>
+                    <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">
+                      {formatType(fn.outputs[0].type)}
+                    </code>
+                  </div>
+                )}
+
+                {/* Result */}
+                <AnimatePresence mode="wait">
+                  {result && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={SPRING.snappy}
+                    >
+                      <ResultDisplay result={result} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </CardContent>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Card>
+  );
+}
+
+function FunctionInput({
+  input,
+  value,
+  onChange,
+  types,
+}: {
+  input: { name: string; type: SorobanType; doc?: string };
+  value: string;
+  onChange: (value: string) => void;
+  types: Map<string, SorobanType>;
+}) {
+  const typeLabel = formatType(input.type);
+  const placeholder = getPlaceholder(input.type);
+
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-center gap-2">
+        <label className="text-sm font-medium">{input.name}</label>
+        <code className="text-xs text-muted-foreground font-mono bg-muted px-1.5 py-0.5 rounded">
+          {typeLabel}
+        </code>
+        {input.doc && (
+          <Tooltip>
+            <TooltipTrigger>
+              <HelpCircle className="h-3 w-3 text-muted-foreground" />
+            </TooltipTrigger>
+            <TooltipContent className="max-w-xs">{input.doc}</TooltipContent>
+          </Tooltip>
+        )}
+      </div>
+      <Input
+        type="text"
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="font-mono text-sm"
+      />
+    </div>
+  );
+}
+
+function ResultDisplay({
+  result,
+}: {
+  result: { success: boolean; data?: any; error?: string };
+}) {
+  return (
+    <Card
+      className={cn(
+        'border',
+        result.success
+          ? 'bg-emerald-500/5 border-emerald-500/20'
+          : 'bg-red-500/5 border-red-500/20'
+      )}
+    >
+      <CardContent className="p-3">
+        <div className="flex items-start gap-2">
+          {result.success ? (
+            <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+          ) : (
+            <AlertCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+          )}
+          <div className="min-w-0 flex-1">
+            <p
+              className={cn(
+                'text-sm font-medium',
+                result.success ? 'text-emerald-500' : 'text-red-500'
+              )}
+            >
+              {result.success ? 'Success' : 'Error'}
+            </p>
+            <ScrollArea className="max-h-32 mt-1">
+              <pre className="text-xs font-mono text-muted-foreground whitespace-pre-wrap break-all">
+                {result.success
+                  ? JSON.stringify(result.data, null, 2)
+                  : result.error}
+              </pre>
+            </ScrollArea>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function formatType(type: SorobanType): string {
+  switch (type.kind) {
+    case 'primitive':
+      return type.type;
+    case 'vec':
+      return `Vec<${formatType(type.elementType)}>`;
+    case 'map':
+      return `Map<${formatType(type.keyType)}, ${formatType(type.valueType)}>`;
+    case 'option':
+      return `Option<${formatType(type.valueType)}>`;
+    case 'tuple':
+      return `(${type.elements.map(formatType).join(', ')})`;
+    case 'struct':
+      return type.name;
+    case 'enum':
+      return type.name;
+    case 'result':
+      return `Result<${formatType(type.okType)}, ${formatType(type.errType)}>`;
+    default:
+      return 'unknown';
+  }
+}
+
+function getPlaceholder(type: SorobanType): string {
+  if (type.kind === 'primitive') {
+    switch (type.type) {
+      case 'bool':
+        return 'true or false';
+      case 'i32':
+      case 'u32':
+      case 'i64':
+      case 'u64':
+      case 'i128':
+      case 'u128':
+        return 'Enter a number';
+      case 'string':
+        return 'Enter text';
+      case 'symbol':
+        return 'Enter a symbol';
+      case 'address':
+        return 'G... or C...';
+      case 'bytes':
+        return 'Hex-encoded bytes';
+      default:
+        return 'Enter value';
+    }
+  }
+  return 'Enter value';
+}

@@ -1,0 +1,125 @@
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import { CopyButton } from '@/components/shared/CopyButton';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Check, Copy, FileCode, FileText } from 'lucide-react';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+
+interface RawXDRViewerProps {
+  envelope: string;
+  result?: string;
+  meta?: string;
+}
+
+export function RawXDRViewer({ envelope, result, meta }: RawXDRViewerProps) {
+  return (
+    <Card>
+      <CardContent className="p-4">
+        <Tabs defaultValue="envelope">
+          <TabsList className="mb-4">
+            <TabsTrigger value="envelope" className="gap-2">
+              <FileCode className="h-4 w-4" />
+              Envelope
+            </TabsTrigger>
+            {result && (
+              <TabsTrigger value="result" className="gap-2">
+                <FileText className="h-4 w-4" />
+                Result
+              </TabsTrigger>
+            )}
+            {meta && (
+              <TabsTrigger value="meta" className="gap-2">
+                <FileText className="h-4 w-4" />
+                Meta
+              </TabsTrigger>
+            )}
+          </TabsList>
+
+          <TabsContent value="envelope">
+            <XDRBlock xdr={envelope} label="Transaction Envelope XDR" />
+          </TabsContent>
+
+          {result && (
+            <TabsContent value="result">
+              <XDRBlock xdr={result} label="Transaction Result XDR" />
+            </TabsContent>
+          )}
+
+          {meta && (
+            <TabsContent value="meta">
+              <XDRBlock xdr={meta} label="Transaction Meta XDR" />
+            </TabsContent>
+          )}
+        </Tabs>
+      </CardContent>
+    </Card>
+  );
+}
+
+function XDRBlock({ xdr, label }: { xdr: string; label: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(xdr);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  // Format the XDR for display (wrap long lines)
+  const formattedXDR = formatXDRForDisplay(xdr);
+
+  return (
+    <div className="relative">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-sm text-muted-foreground">{label}</span>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={SPRING.snappy}
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleCopy}
+            className="gap-2"
+          >
+            {copied ? (
+              <>
+                <Check className="h-4 w-4 text-emerald-500" />
+                Copied!
+              </>
+            ) : (
+              <>
+                <Copy className="h-4 w-4" />
+                Copy XDR
+              </>
+            )}
+          </Button>
+        </motion.div>
+      </div>
+      <ScrollArea className="h-64 rounded-lg border bg-muted/30">
+        <pre className="p-4 text-xs font-mono text-muted-foreground whitespace-pre-wrap break-all">
+          {formattedXDR}
+        </pre>
+      </ScrollArea>
+    </div>
+  );
+}
+
+function formatXDRForDisplay(xdr: string): string {
+  // Split into chunks for readability
+  const chunkSize = 76;
+  const chunks: string[] = [];
+
+  for (let i = 0; i < xdr.length; i += chunkSize) {
+    chunks.push(xdr.slice(i, i + chunkSize));
+  }
+
+  return chunks.join('\n');
+}

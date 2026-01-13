@@ -1,0 +1,15 @@
+import { Metadata } from 'next';
+import { NetworkStats } from '@/components/stats/NetworkStats';
+
+export const metadata: Metadata = {
+  title: 'Network Stats',
+  description: 'Real-time statistics and metrics for the Stellar network.',
+};
+
+export default function StatsPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <NetworkStats />
+    </div>
+  );
+}

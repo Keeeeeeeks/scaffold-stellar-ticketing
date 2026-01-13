@@ -1,0 +1,142 @@
+import { STROOPS_PER_XLM } from './constants';
+
+/**
+ * Format a stroop amount to XLM with proper decimal places
+ */
+export function formatXLM(stroops: number | string, decimals = 7): string {
+  const value = typeof stroops === 'string' ? parseInt(stroops, 10) : stroops;
+  const xlm = value / STROOPS_PER_XLM;
+
+  return xlm.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: decimals,
+  });
+}
+
+/**
+ * Format a token amount with its decimals
+ */
+export function formatTokenAmount(
+  amount: string | number,
+  decimals: number = 7
+): string {
+  const value = typeof amount === 'string' ? parseInt(amount, 10) : amount;
+  const formatted = value / Math.pow(10, decimals);
+
+  return formatted.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: Math.min(decimals, 8),
+  });
+}
+
+/**
+ * Truncate a Stellar address for display
+ */
+export function truncateAddress(
+  address: string,
+  startChars = 6,
+  endChars = 4
+): string {
+  if (!address || address.length <= startChars + endChars) {
+    return address;
+  }
+  return `${address.slice(0, startChars)}...${address.slice(-endChars)}`;
+}
+
+/**
+ * Format a large number with K, M, B suffixes
+ */
+export function formatCompactNumber(num: number): string {
+  if (num >= 1_000_000_000) {
+    return (num / 1_000_000_000).toFixed(2) + 'B';
+  }
+  if (num >= 1_000_000) {
+    return (num / 1_000_000).toFixed(2) + 'M';
+  }
+  if (num >= 1_000) {
+    return (num / 1_000).toFixed(2) + 'K';
+  }
+  return num.toFixed(2);
+}
+
+/**
+ * Format a timestamp relative to now
+ */
+export function formatTimeAgo(timestamp: string | Date): string {
+  const date = typeof timestamp === 'string' ? new Date(timestamp) : timestamp;
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffSecs = Math.floor(diffMs / 1000);
+  const diffMins = Math.floor(diffSecs / 60);
+  const diffHours = Math.floor(diffMins / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffSecs < 60) return `${diffSecs}s ago`;
+  if (diffMins < 60) return `${diffMins}m ago`;
+  if (diffHours < 24) return `${diffHours}h ago`;
+  if (diffDays < 7) return `${diffDays}d ago`;
+
+  return date.toLocaleDateString();
+}
+
+/**
+ * Format a ledger/block number with commas
+ */
+export function formatLedgerNumber(ledger: number): string {
+  return ledger.toLocaleString();
+}
+
+/**
+ * Format bytes to human-readable size
+ */
+export function formatBytes(bytes: number): string {
+  if (bytes === 0) return '0 B';
+
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+/**
+ * Format CPU instructions
+ */
+export function formatCpuInstructions(instructions: number): string {
+  if (instructions >= 1_000_000) {
+    return (instructions / 1_000_000).toFixed(2) + 'M';
+  }
+  if (instructions >= 1_000) {
+    return (instructions / 1_000).toFixed(2) + 'K';
+  }
+  return instructions.toString();
+}
+
+/**
+ * Get the explorer route type from an identifier
+ */
+export function getIdentifierType(
+  identifier: string
+): 'transaction' | 'account' | 'contract' | 'ledger' | 'unknown' {
+  // Transaction hash: 64 hex characters
+  if (/^[a-fA-F0-9]{64}$/.test(identifier)) {
+    return 'transaction';
+  }
+
+  // Stellar address: starts with G, 56 chars
+  if (identifier.startsWith('G') && identifier.length === 56) {
+    return 'account';
+  }
+
+  // Contract address: starts with C, 56 chars
+  if (identifier.startsWith('C') && identifier.length === 56) {
+    return 'contract';
+  }
+
+  // Ledger sequence: numeric
+  if (/^\d+$/.test(identifier)) {
+    return 'ledger';
+  }
+
+  return 'unknown';
+}

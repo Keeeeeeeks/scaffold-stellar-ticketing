@@ -1,0 +1,251 @@
+import { gql } from 'urql';
+
+// ========================
+// Transaction Queries
+// ========================
+
+export const TRANSACTION_BY_HASH = gql`
+  query TransactionByHash($hash: String!) {
+    transactionByHash(hash: $hash) {
+      hash
+      toId
+      envelopeXdr
+      resultXdr
+      metaXdr
+      ledgerNumber
+      ledgerCreatedAt
+      ingestedAt
+      operations(first: 100) {
+        edges {
+          node {
+            id
+            operationType
+            operationXdr
+            ledgerNumber
+            ledgerCreatedAt
+          }
+        }
+      }
+      stateChanges(first: 100) {
+        edges {
+          node {
+            ... on BalanceStateChange {
+              accountId
+              amount
+              tokenId
+              stateChangeReason
+            }
+            ... on AccountStateChange {
+              accountId
+              stateChangeCategory
+              stateChangeReason
+            }
+          }
+        }
+      }
+      accounts {
+        address
+      }
+    }
+  }
+`;
+
+export const RECENT_TRANSACTIONS = gql`
+  query RecentTransactions($first: Int!, $after: String) {
+    transactions(first: $first, after: $after) {
+      edges {
+        node {
+          hash
+          ledgerNumber
+          ledgerCreatedAt
+          operations(first: 1) {
+            edges {
+              node {
+                operationType
+              }
+            }
+          }
+        }
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`;
+
+export const TRANSACTIONS_BY_ACCOUNT = gql`
+  query TransactionsByAccount($address: String!, $first: Int!, $after: String) {
+    accountByAddress(address: $address) {
+      transactions(first: $first, after: $after) {
+        edges {
+          node {
+            hash
+            ledgerNumber
+            ledgerCreatedAt
+            operations(first: 3) {
+              edges {
+                node {
+                  operationType
+                }
+              }
+            }
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+`;
+
+// ========================
+// Account Queries
+// ========================
+
+export const ACCOUNT_BY_ADDRESS = gql`
+  query AccountByAddress($address: String!) {
+    accountByAddress(address: $address) {
+      address
+      createdAt
+      updatedAt
+      transactions(first: 20) {
+        edges {
+          node {
+            hash
+            ledgerNumber
+            ledgerCreatedAt
+          }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+`;
+
+export const ACCOUNT_BALANCES = gql`
+  query AccountBalances($addresses: [String!]!) {
+    accountBalances(addresses: $addresses) {
+      address
+      error
+      balances {
+        ... on NativeBalance {
+          balance
+          tokenId
+          tokenType
+        }
+        ... on SACBalance {
+          balance
+          tokenId
+          tokenType
+          code
+          issuer
+          decimals
+        }
+        ... on SEP41Balance {
+          balance
+          tokenId
+          tokenType
+          name
+          symbol
+          decimals
+        }
+        ... on TrustlineBalance {
+          balance
+          tokenId
+          tokenType
+          code
+          issuer
+          limit
+          isAuthorized
+        }
+      }
+    }
+  }
+`;
+
+// ========================
+// Operation Queries
+// ========================
+
+export const OPERATIONS_BY_TRANSACTION = gql`
+  query OperationsByTransaction($hash: String!, $first: Int!, $after: String) {
+    transactionByHash(hash: $hash) {
+      operations(first: $first, after: $after) {
+        edges {
+          node {
+            id
+            operationType
+            operationXdr
+            ledgerNumber
+            ledgerCreatedAt
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+`;
+
+// ========================
+// State Change Queries
+// ========================
+
+export const STATE_CHANGES_BY_TRANSACTION = gql`
+  query StateChangesByTransaction($hash: String!, $first: Int!, $after: String) {
+    transactionByHash(hash: $hash) {
+      stateChanges(first: $first, after: $after) {
+        edges {
+          node {
+            ... on BalanceStateChange {
+              accountId
+              amount
+              tokenId
+              stateChangeReason
+            }
+            ... on AccountStateChange {
+              accountId
+              stateChangeCategory
+              stateChangeReason
+            }
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+      }
+    }
+  }
+`;
+
+// ========================
+// Search Query (unified search)
+// ========================
+
+export const SEARCH_QUERY = gql`
+  query Search($query: String!) {
+    # Try as transaction
+    transactionByHash(hash: $query) {
+      hash
+      ledgerNumber
+    }
+    # Try as account
+    accountByAddress(address: $query) {
+      address
+    }
+  }
+`;

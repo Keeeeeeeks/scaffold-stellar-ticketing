@@ -1,0 +1,55 @@
+.purchase-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.purchase-event-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.purchase-venue,
+.purchase-date {
+  font-size: 0.875rem;
+  color: var(--sds-clr-gray-09);
+  margin: 0.25rem 0;
+}
+
+.purchase-payment {
+  padding: 1rem 0;
+  border-top: 1px solid var(--sds-clr-gray-04);
+  border-bottom: 1px solid var(--sds-clr-gray-04);
+}
+
+.purchase-warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--sds-clr-gold-03);
+  border-radius: 0.5rem;
+}
+
+.purchase-warning p {
+  margin: 0;
+  color: var(--sds-clr-gold-11);
+  font-weight: 500;
+}
+
+.purchase-wallet-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--sds-clr-gray-02);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.wallet-address {
+  font-family: monospace;
+  color: var(--sds-clr-gray-11);
+}

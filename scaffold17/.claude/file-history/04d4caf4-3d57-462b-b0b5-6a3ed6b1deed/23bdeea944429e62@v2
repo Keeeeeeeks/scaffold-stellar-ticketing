@@ -1,0 +1,56 @@
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useMultiWallet } from "./useMultiWallet";
+import type { PaymentToken } from "../types/tickets";
+
+export const useTicketContract = () => {
+  const { activeAddress, signTransaction: _signTransaction, updateBalances } = useMultiWallet();
+  const queryClient = useQueryClient();
+  const [isPurchasing, setIsPurchasing] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const purchaseTicket = async (
+    _eventId: bigint,
+    _paymentToken: PaymentToken
+  ): Promise<number | null> => {
+    if (!activeAddress) {
+      setError(new Error("No wallet connected"));
+      return null;
+    }
+
+    setIsPurchasing(true);
+    setError(null);
+
+    try {
+      // For MVP, simulate the purchase
+      // In production, this would:
+      // 1. Build the transaction using the ticketing contract client
+      // 2. Sign with signTransaction
+      // 3. Submit to the network
+      // 4. Return the token ID
+
+      // Simulated delay
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Invalidate queries to refresh data
+      await queryClient.invalidateQueries({ queryKey: ["userTickets"] });
+      await queryClient.invalidateQueries({ queryKey: ["events"] });
+      await updateBalances();
+
+      // Return simulated token ID
+      return Math.floor(Math.random() * 1000);
+    } catch (err) {
+      const e = err instanceof Error ? err : new Error("Purchase failed");
+      setError(e);
+      return null;
+    } finally {
+      setIsPurchasing(false);
+    }
+  };
+
+  return {
+    purchaseTicket,
+    isPurchasing,
+    error,
+  };
+};

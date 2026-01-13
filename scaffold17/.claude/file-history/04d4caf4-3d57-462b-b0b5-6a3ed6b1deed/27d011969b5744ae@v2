@@ -1,0 +1,254 @@
+use soroban_sdk::{contract, contractimpl, token::TokenClient, Address, BytesN, Env, String};
+use stellar_macros::default_impl;
+use stellar_tokens::non_fungible::{
+    enumerable::{Enumerable, NonFungibleEnumerable},
+    Base, NonFungibleToken,
+};
+
+use crate::events;
+use crate::types::{DataKey, EventData, PaymentToken, TicketData};
+
+// Native XLM asset handling
+#[cfg(test)]
+mod xlm {
+    use soroban_sdk::{symbol_short, Address, Env, Symbol};
+
+    const XLM_KEY: &Symbol = &symbol_short!("XLM");
+
+    pub fn contract_id(env: &Env) -> Address {
+        env.storage()
+            .instance()
+            .get::<_, Address>(XLM_KEY)
+            .expect("XLM contract not initialized")
+    }
+
+    pub fn register(env: &Env, admin: &Address) -> soroban_sdk::testutils::StellarAssetContract {
+        let sac = env.register_stellar_asset_contract_v2(admin.clone());
+        env.storage().instance().set(XLM_KEY, &sac.address());
+        soroban_sdk::token::StellarAssetClient::new(env, &sac.address())
+            .mint(admin, &1_000_000_000_000i128);
+        sac
+    }
+}
+
+#[cfg(not(test))]
+stellar_registry::import_asset!("xlm");
+
+#[contract]
+pub struct TicketingContract;
+
+#[contractimpl]
+impl TicketingContract {
+    /// Initialize the contract with admin
+    pub fn __constructor(e: &Env, admin: Address) {
+        admin.require_auth();
+
+        e.storage().instance().set(&DataKey::Admin, &admin);
+        e.storage().instance().set(&DataKey::EventCounter, &0u64);
+
+        Base::set_metadata(
+            e,
+            String::from_str(e, "https://stellartix.example.com/metadata"),
+            String::from_str(e, "StellarTix Tickets"),
+            String::from_str(e, "STIX"),
+        );
+    }
+
+    /// Set USDC token address (admin only) - call after deployment
+    pub fn set_usdc_token(e: &Env, usdc_token: Address) {
+        Self::require_admin(e);
+        e.storage().instance().set(&DataKey::UsdcToken, &usdc_token);
+    }
+
+    // ============ ADMIN FUNCTIONS ============
+
+    /// Create a new event (admin only)
+    pub fn create_event(
+        e: &Env,
+        capacity: u32,
+        xlm_price: i128,
+        usdc_price: i128,
+        metadata_uri: String,
+    ) -> u64 {
+        Self::require_admin(e);
+
+        let event_id = Self::next_event_id(e);
+
+        let event = EventData {
+            event_id,
+            capacity,
+            sold: 0,
+            xlm_price,
+            usdc_price,
+            is_active: true,
+            metadata_uri,
+        };
+
+        e.storage()
+            .persistent()
+            .set(&DataKey::Event(event_id), &event);
+        events::emit_event_created(e, event_id, capacity);
+
+        event_id
+    }
+
+    /// Deactivate an event (admin only)
+    pub fn deactivate_event(e: &Env, event_id: u64) {
+        Self::require_admin(e);
+        let mut event = Self::get_event(e, event_id);
+        event.is_active = false;
+        e.storage()
+            .persistent()
+            .set(&DataKey::Event(event_id), &event);
+        events::emit_event_deactivated(e, event_id);
+    }
+
+    /// Withdraw collected funds (admin only)
+    pub fn withdraw(e: &Env, token: PaymentToken, amount: i128, to: Address) {
+        Self::require_admin(e);
+        let token_address = match token {
+            PaymentToken::Xlm => Self::xlm_token(e),
+            PaymentToken::Usdc => Self::usdc_token(e),
+        };
+        Self::transfer_token(e, &token_address, &e.current_contract_address(), &to, amount);
+        events::emit_withdrawal(e, token_address, amount, to);
+    }
+
+    /// Set new admin (admin only)
+    pub fn set_admin(e: &Env, new_admin: Address) {
+        Self::require_admin(e);
+        new_admin.require_auth();
+        e.storage().instance().set(&DataKey::Admin, &new_admin);
+    }
+
+    /// Upgrade contract (admin only)
+    pub fn upgrade(e: &Env, new_wasm_hash: BytesN<32>) {
+        Self::require_admin(e);
+        e.deployer().update_current_contract_wasm(new_wasm_hash);
+    }
+
+    // ============ TICKET PURCHASE ============
+
+    /// Purchase a ticket for an event
+    pub fn purchase_ticket(e: &Env, event_id: u64, buyer: Address, payment_token: PaymentToken) -> u32 {
+        buyer.require_auth();
+
+        let mut event = Self::get_event(e, event_id);
+
+        if !event.is_active {
+            panic!("Event is not active");
+        }
+        if event.sold >= event.capacity {
+            panic!("Event sold out");
+        }
+
+        let (token_address, price) = match payment_token {
+            PaymentToken::Xlm => (Self::xlm_token(e), event.xlm_price),
+            PaymentToken::Usdc => (Self::usdc_token(e), event.usdc_price),
+        };
+
+        Self::transfer_token(e, &token_address, &buyer, &e.current_contract_address(), price);
+
+        let token_id = Enumerable::sequential_mint(e, &buyer);
+
+        let ticket_number = event.sold + 1;
+        let ticket = TicketData {
+            event_id,
+            ticket_number,
+            purchase_timestamp: e.ledger().timestamp(),
+            original_buyer: buyer.clone(),
+        };
+
+        e.storage()
+            .persistent()
+            .set(&DataKey::Ticket(token_id), &ticket);
+
+        event.sold = ticket_number;
+        e.storage()
+            .persistent()
+            .set(&DataKey::Event(event_id), &event);
+
+        events::emit_ticket_purchased(e, event_id, token_id, buyer);
+
+        token_id
+    }
+
+    // ============ VIEW FUNCTIONS ============
+
+    pub fn get_event(e: &Env, event_id: u64) -> EventData {
+        e.storage()
+            .persistent()
+            .get(&DataKey::Event(event_id))
+            .expect("Event not found")
+    }
+
+    pub fn get_ticket(e: &Env, token_id: u32) -> TicketData {
+        e.storage()
+            .persistent()
+            .get(&DataKey::Ticket(token_id))
+            .expect("Ticket not found")
+    }
+
+    pub fn admin(e: &Env) -> Address {
+        e.storage()
+            .instance()
+            .get(&DataKey::Admin)
+            .expect("Admin not set")
+    }
+
+    pub fn xlm_token(e: &Env) -> Address {
+        xlm::contract_id(e)
+    }
+
+    pub fn usdc_token(e: &Env) -> Address {
+        e.storage()
+            .instance()
+            .get(&DataKey::UsdcToken)
+            .expect("USDC token not set")
+    }
+
+    pub fn tickets_remaining(e: &Env, event_id: u64) -> u32 {
+        let event = Self::get_event(e, event_id);
+        event.capacity - event.sold
+    }
+
+    pub fn event_count(e: &Env) -> u64 {
+        e.storage()
+            .instance()
+            .get(&DataKey::EventCounter)
+            .unwrap_or(0)
+    }
+
+    // ============ PRIVATE HELPERS ============
+
+    fn require_admin(e: &Env) {
+        let admin = Self::admin(e);
+        admin.require_auth();
+    }
+
+    fn next_event_id(e: &Env) -> u64 {
+        let counter: u64 = e
+            .storage()
+            .instance()
+            .get(&DataKey::EventCounter)
+            .unwrap_or(0);
+        let next = counter + 1;
+        e.storage().instance().set(&DataKey::EventCounter, &next);
+        next
+    }
+
+    fn transfer_token(e: &Env, token: &Address, from: &Address, to: &Address, amount: i128) {
+        let client = TokenClient::new(e, token);
+        client.transfer(from, to, &amount);
+    }
+}
+
+#[default_impl]
+#[contractimpl]
+impl NonFungibleToken for TicketingContract {
+    type ContractType = Enumerable;
+}
+
+#[default_impl]
+#[contractimpl]
+impl NonFungibleEnumerable for TicketingContract {}

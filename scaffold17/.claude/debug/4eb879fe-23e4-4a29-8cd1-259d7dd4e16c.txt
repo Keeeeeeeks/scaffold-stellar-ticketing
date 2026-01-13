@@ -1,0 +1,168 @@
+2026-01-07T20:22:31.658Z [DEBUG] Watching for changes in setting files /Users/george/friend-test/.claude...
+2026-01-07T20:22:31.663Z [DEBUG] [init] configureGlobalMTLS starting
+2026-01-07T20:22:31.663Z [DEBUG] [init] configureGlobalMTLS complete
+2026-01-07T20:22:31.663Z [DEBUG] [init] configureGlobalAgents starting
+2026-01-07T20:22:31.663Z [DEBUG] [init] configureGlobalAgents complete
+2026-01-07T20:22:31.669Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-07T20:22:31.669Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-07T20:22:31.669Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-07T20:22:31.670Z [DEBUG] Applying permission update: Adding 2 allow rule(s) to destination 'localSettings': ["Bash(pandoc:*)","Bash(weasyprint:*)"]
+2026-01-07T20:22:31.670Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-01-07T20:22:31.678Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-07T20:22:31.678Z [DEBUG] Total LSP servers loaded: 0
+2026-01-07T20:22:31.678Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-01-07T20:22:31.678Z [DEBUG] LSP manager initialized with 0 servers
+2026-01-07T20:22:31.678Z [DEBUG] [STARTUP] MCP configs loaded in 8ms
+2026-01-07T20:22:31.678Z [DEBUG] LSP server manager initialized successfully
+2026-01-07T20:22:31.678Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-07T20:22:31.679Z [DEBUG] [STARTUP] Running setup()...
+2026-01-07T20:22:31.681Z [DEBUG] Stats cache is up to date
+2026-01-07T20:22:31.683Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-07T20:22:31.683Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-07T20:22:31.821Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-07T20:22:31.823Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/4eb879fe-23e4-4a29-8cd1-259d7dd4e16c-agent-4eb879fe-23e4-4a29-8cd1-259d7dd4e16c.json.tmp.58500.1767817351823
+2026-01-07T20:22:31.823Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-07T20:22:31.823Z [DEBUG] Renaming /Users/george/.claude/todos/4eb879fe-23e4-4a29-8cd1-259d7dd4e16c-agent-4eb879fe-23e4-4a29-8cd1-259d7dd4e16c.json.tmp.58500.1767817351823 to /Users/george/.claude/todos/4eb879fe-23e4-4a29-8cd1-259d7dd4e16c-agent-4eb879fe-23e4-4a29-8cd1-259d7dd4e16c.json
+2026-01-07T20:22:31.823Z [DEBUG] File /Users/george/.claude/todos/4eb879fe-23e4-4a29-8cd1-259d7dd4e16c-agent-4eb879fe-23e4-4a29-8cd1-259d7dd4e16c.json written atomically
+2026-01-07T20:22:31.828Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-07T20:22:31.828Z [DEBUG] Total plugin skills loaded: 0
+2026-01-07T20:22:31.828Z [DEBUG] Total plugin commands loaded: 0
+2026-01-07T20:22:31.828Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-07T20:22:31.830Z [DEBUG] [STARTUP] setup() completed in 151ms
+2026-01-07T20:22:31.830Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-01-07T20:22:31.833Z [DEBUG] Total plugin agents loaded: 0
+2026-01-07T20:22:31.833Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-07T20:22:31.834Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-07T20:22:31.834Z [DEBUG] [STARTUP] Commands and agents loaded in 4ms
+2026-01-07T20:22:31.834Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-01-07T20:22:31.834Z [DEBUG] [render] initYoga starting
+2026-01-07T20:22:31.843Z [DEBUG] Git remote URL: null
+2026-01-07T20:22:31.843Z [DEBUG] No git remote URL found
+2026-01-07T20:22:31.843Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-01-07T20:22:31.849Z [DEBUG] [render] initYoga complete
+2026-01-07T20:22:31.870Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-01-07T20:22:31.870Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2026-01-07T20:22:31.870Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2026-01-07T20:22:31.870Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2026-01-07T20:22:31.871Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767817351870-hkihrb.sh
+2026-01-07T20:22:31.871Z [DEBUG] Shell binary exists: true
+2026-01-07T20:22:31.871Z [DEBUG] Execution timeout: 10000ms
+2026-01-07T20:22:31.874Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817351874
+2026-01-07T20:22:31.874Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:31.874Z [DEBUG] Temp file written successfully, size: 11400 bytes
+2026-01-07T20:22:31.874Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:31.874Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817351874 to /Users/george/.claude.json
+2026-01-07T20:22:31.874Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:31.910Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817351910
+2026-01-07T20:22:31.910Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:31.910Z [DEBUG] Temp file written successfully, size: 11400 bytes
+2026-01-07T20:22:31.910Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:31.910Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817351910 to /Users/george/.claude.json
+2026-01-07T20:22:31.910Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:31.946Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817351946
+2026-01-07T20:22:31.946Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:31.946Z [DEBUG] Temp file written successfully, size: 11400 bytes
+2026-01-07T20:22:31.946Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:31.946Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817351946 to /Users/george/.claude.json
+2026-01-07T20:22:31.946Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:32.017Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817352017
+2026-01-07T20:22:32.017Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:32.017Z [DEBUG] Temp file written successfully, size: 11400 bytes
+2026-01-07T20:22:32.017Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:32.017Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817352017 to /Users/george/.claude.json
+2026-01-07T20:22:32.017Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:32.017Z [DEBUG] Passes eligibility cached for org 7a959856-bd04-4381-8348-1522884d02db: true
+2026-01-07T20:22:32.069Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-07T20:22:32.069Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-07T20:22:32.103Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-01-07T20:22:32.743Z [DEBUG] Shell snapshot created successfully (801 bytes)
+2026-01-07T20:22:35.690Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817355690
+2026-01-07T20:22:35.690Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:35.691Z [DEBUG] Temp file written successfully, size: 11399 bytes
+2026-01-07T20:22:35.691Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:35.691Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817355690 to /Users/george/.claude.json
+2026-01-07T20:22:35.691Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:35.709Z [DEBUG] Grove: No cache, fetching config in background (dialog skipped this session)
+2026-01-07T20:22:35.713Z [DEBUG] [STARTUP] showSetupScreens() completed in 3879ms
+2026-01-07T20:22:35.713Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:35.713Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:35.716Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-01-07T20:22:35.724Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:35.744Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-07T20:22:35.747Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817355747
+2026-01-07T20:22:35.748Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:35.748Z [DEBUG] Temp file written successfully, size: 11399 bytes
+2026-01-07T20:22:35.748Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:35.748Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817355747 to /Users/george/.claude.json
+2026-01-07T20:22:35.749Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:35.757Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-07T20:22:35.757Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:22:35.757Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-07T20:22:35.760Z [DEBUG] [render] initYoga starting
+2026-01-07T20:22:35.760Z [DEBUG] [render] initYoga complete
+2026-01-07T20:22:35.992Z [DEBUG] Summarizing all 50 messages (~17678 tokens)
+2026-01-07T20:22:35.994Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-01-07T20:22:35.996Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817355996
+2026-01-07T20:22:35.996Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:35.997Z [DEBUG] Temp file written successfully, size: 11449 bytes
+2026-01-07T20:22:35.997Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:35.997Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817355996 to /Users/george/.claude.json
+2026-01-07T20:22:35.997Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:36.000Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.000Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.000Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.025Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817356025
+2026-01-07T20:22:36.025Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:36.026Z [DEBUG] Temp file written successfully, size: 11592 bytes
+2026-01-07T20:22:36.026Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:36.026Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817356025 to /Users/george/.claude.json
+2026-01-07T20:22:36.027Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:36.143Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-01-07T20:22:36.144Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.144Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.144Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.156Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-01-07T20:22:36.156Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:22:36.156Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-01-07T20:22:36.156Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-01-07T20:22:36.156Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:22:36.156Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-01-07T20:22:36.156Z [DEBUG] Getting matching hook commands for SubagentStart with query: Bash
+2026-01-07T20:22:36.156Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:22:36.156Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:22:36.161Z [DEBUG] Skills and commands included in Skill tool:
+2026-01-07T20:22:36.168Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.168Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.168Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.210Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817356210
+2026-01-07T20:22:36.210Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:36.211Z [DEBUG] Temp file written successfully, size: 11592 bytes
+2026-01-07T20:22:36.211Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:36.211Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817356210 to /Users/george/.claude.json
+2026-01-07T20:22:36.212Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:36.248Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.58500.1767817356248
+2026-01-07T20:22:36.248Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:22:36.248Z [DEBUG] Temp file written successfully, size: 11638 bytes
+2026-01-07T20:22:36.248Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:22:36.248Z [DEBUG] Renaming /Users/george/.claude.json.tmp.58500.1767817356248 to /Users/george/.claude.json
+2026-01-07T20:22:36.248Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:22:36.249Z [DEBUG] Tool search disabled: MCPSearchTool is not available (may have been disallowed via disallowedTools).
+2026-01-07T20:22:36.249Z [DEBUG] Tool search disabled for model 'claude-haiku-4-5-20251001': model does not support tool_reference blocks. This feature is only available on Claude Sonnet 4+, Opus 4+, and newer models.
+2026-01-07T20:22:36.249Z [DEBUG] Tool search disabled: MCPSearchTool is not available (may have been disallowed via disallowedTools).
+2026-01-07T20:22:36.251Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.251Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.252Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.252Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.252Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.253Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-01-07T20:22:36.253Z [DEBUG] [API:auth] OAuth token check starting
+2026-01-07T20:22:36.253Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.253Z [DEBUG] [API:auth] OAuth token check complete
+2026-01-07T20:22:36.823Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:22:36.937Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:22:37.269Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:22:38.065Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:22:38.572Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T20:22:38.572Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:22:38.572Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T20:22:38.886Z [DEBUG] Stream started - received first chunk

@@ -1,0 +1,277 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useQuery } from 'urql';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ACCOUNT_BY_ADDRESS, ACCOUNT_BALANCES } from '@/lib/graphql/queries';
+import { getContractSpec } from '@/lib/stellar/contract-spec';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { AddressDisplay } from '@/components/shared/AddressDisplay';
+import { CopyButton } from '@/components/shared/CopyButton';
+import { ErrorState, NotFoundState } from '@/components/shared/ErrorState';
+import { AccountSkeleton } from '@/components/shared/LoadingState';
+import { BalanceList } from '@/components/account/BalanceList';
+import { TransactionHistory } from '@/components/account/TransactionHistory';
+import { ContractFunctions } from './ContractFunctions';
+import {
+  Code,
+  Coins,
+  ArrowLeftRight,
+  BookOpen,
+  Edit,
+  Loader2,
+  Sparkles,
+} from 'lucide-react';
+import { formatXLM } from '@/lib/utils/format';
+import { SPRING } from '@/lib/utils/constants';
+import type { ContractFunction, SorobanType } from '@/types/stellar';
+
+interface ContractDetailProps {
+  contractId: string;
+}
+
+export function ContractDetail({ contractId }: ContractDetailProps) {
+  const [spec, setSpec] = useState<{
+    functions: ContractFunction[];
+    types: Map<string, SorobanType>;
+  } | null>(null);
+  const [specLoading, setSpecLoading] = useState(true);
+  const [specError, setSpecError] = useState<string | null>(null);
+
+  const [{ data: accountData, fetching: accountFetching, error: accountError }] =
+    useQuery({
+      query: ACCOUNT_BY_ADDRESS,
+      variables: { address: contractId },
+    });
+
+  const [{ data: balanceData, fetching: balancesFetching }] = useQuery({
+    query: ACCOUNT_BALANCES,
+    variables: { addresses: [contractId] },
+  });
+
+  // Fetch contract spec on mount
+  useEffect(() => {
+    async function fetchSpec() {
+      try {
+        setSpecLoading(true);
+        const contractSpec = await getContractSpec(contractId);
+        setSpec(contractSpec);
+      } catch (error) {
+        setSpecError('Failed to load contract specification');
+      } finally {
+        setSpecLoading(false);
+      }
+    }
+    fetchSpec();
+  }, [contractId]);
+
+  if (accountFetching) return <AccountSkeleton />;
+  if (accountError) return <ErrorState message={accountError.message} />;
+
+  const balances = balanceData?.accountBalances?.[0]?.balances || [];
+  const nativeBalance = balances.find((b: any) => b.tokenType === 'NATIVE');
+
+  const readFunctions = spec?.functions.filter((f) => !f.isMutating) || [];
+  const writeFunctions = spec?.functions.filter((f) => f.isMutating) || [];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={SPRING.gentle}
+      className="space-y-6"
+    >
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-purple-500/10">
+              <Code className="h-6 w-6 text-purple-500" />
+            </div>
+            <h1 className="text-2xl font-bold">Smart Contract</h1>
+            <Badge className="bg-purple-500/10 text-purple-500 border-purple-500/20">
+              Soroban
+            </Badge>
+          </div>
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <span className="font-mono text-sm break-all">{contractId}</span>
+            <CopyButton value={contractId} />
+          </div>
+        </div>
+
+        {/* Quick Balance Display */}
+        {nativeBalance && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, ...SPRING.gentle }}
+            className="text-right"
+          >
+            <div className="text-sm text-muted-foreground">Balance</div>
+            <div className="text-2xl font-bold">
+              {formatXLM(nativeBalance.balance)} XLM
+            </div>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Contract Spec Status */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, ...SPRING.gentle }}
+      >
+        <Card className="bg-gradient-to-r from-purple-500/5 to-blue-500/5 border-purple-500/20">
+          <CardContent className="py-4">
+            <div className="flex items-center gap-3">
+              {specLoading ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin text-purple-500" />
+                  <span className="text-sm">Loading contract specification...</span>
+                </>
+              ) : spec ? (
+                <>
+                  <Sparkles className="h-5 w-5 text-purple-500" />
+                  <span className="text-sm">
+                    Contract spec loaded:{' '}
+                    <span className="font-medium text-purple-500">
+                      {spec.functions.length} functions
+                    </span>{' '}
+                    available for interaction
+                  </span>
+                </>
+              ) : (
+                <>
+                  <Code className="h-5 w-5 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">
+                    Contract specification not available
+                  </span>
+                </>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Main Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, ...SPRING.gentle }}
+      >
+        <Tabs defaultValue="read">
+          <TabsList>
+            <TabsTrigger value="read" className="gap-2">
+              <BookOpen className="h-4 w-4" />
+              Read ({readFunctions.length})
+            </TabsTrigger>
+            <TabsTrigger value="write" className="gap-2">
+              <Edit className="h-4 w-4" />
+              Write ({writeFunctions.length})
+            </TabsTrigger>
+            <TabsTrigger value="balances" className="gap-2">
+              <Coins className="h-4 w-4" />
+              Balances
+            </TabsTrigger>
+            <TabsTrigger value="transactions" className="gap-2">
+              <ArrowLeftRight className="h-4 w-4" />
+              History
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="read" className="mt-4">
+            {specLoading ? (
+              <FunctionsSkeleton />
+            ) : readFunctions.length > 0 ? (
+              <ContractFunctions
+                contractId={contractId}
+                functions={readFunctions}
+                types={spec?.types || new Map()}
+                isWrite={false}
+              />
+            ) : (
+              <EmptyFunctionsState type="read" hasSpec={!!spec} />
+            )}
+          </TabsContent>
+
+          <TabsContent value="write" className="mt-4">
+            {specLoading ? (
+              <FunctionsSkeleton />
+            ) : writeFunctions.length > 0 ? (
+              <ContractFunctions
+                contractId={contractId}
+                functions={writeFunctions}
+                types={spec?.types || new Map()}
+                isWrite={true}
+              />
+            ) : (
+              <EmptyFunctionsState type="write" hasSpec={!!spec} />
+            )}
+          </TabsContent>
+
+          <TabsContent value="balances" className="mt-4">
+            <BalanceList balances={balances} loading={balancesFetching} />
+          </TabsContent>
+
+          <TabsContent value="transactions" className="mt-4">
+            <TransactionHistory
+              address={contractId}
+              initialData={accountData?.accountByAddress?.transactions}
+            />
+          </TabsContent>
+        </Tabs>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function FunctionsSkeleton() {
+  return (
+    <div className="space-y-3">
+      {[...Array(3)].map((_, i) => (
+        <Card key={i}>
+          <CardContent className="p-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="h-5 w-32 bg-muted rounded animate-pulse" />
+                <div className="h-5 w-16 bg-muted rounded animate-pulse" />
+              </div>
+              <div className="h-4 w-3/4 bg-muted rounded animate-pulse" />
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function EmptyFunctionsState({
+  type,
+  hasSpec,
+}: {
+  type: 'read' | 'write';
+  hasSpec: boolean;
+}) {
+  return (
+    <Card>
+      <CardContent className="py-12 text-center">
+        {type === 'read' ? (
+          <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+        ) : (
+          <Edit className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+        )}
+        <h3 className="font-semibold mb-2">
+          No {type === 'read' ? 'Read' : 'Write'} Functions
+        </h3>
+        <p className="text-sm text-muted-foreground max-w-md mx-auto">
+          {hasSpec
+            ? `This contract doesn't have any ${type} functions exposed in its specification.`
+            : 'Connect to the Stellar network to load the contract specification and interact with this contract.'}
+        </p>
+      </CardContent>
+    </Card>
+  );
+}

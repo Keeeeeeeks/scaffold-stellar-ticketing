@@ -1,0 +1,94 @@
+import { Button, Icon, Layout } from "@stellar/design-system";
+import "./App.module.css";
+import { Routes, Route, Outlet, NavLink } from "react-router-dom";
+import Home from "./pages/Home";
+import EventsPage from "./pages/EventsPage";
+import EventDetailPage from "./pages/EventDetailPage";
+import MyTicketsPage from "./pages/MyTicketsPage";
+import Debugger from "./pages/Debugger.tsx";
+import { MultiWalletButton } from "./components/wallet/MultiWalletButton";
+
+const AppLayout: React.FC = () => (
+  <main>
+    <Layout.Header
+      projectId="StellarTix"
+      projectTitle="StellarTix"
+      contentRight={
+        <>
+          <nav style={{ display: "flex", gap: "0.5rem" }}>
+            <NavLink to="/events" style={{ textDecoration: "none" }}>
+              {({ isActive }) => (
+                <Button
+                  variant={isActive ? "secondary" : "tertiary"}
+                  size="md"
+                >
+                  Events
+                </Button>
+              )}
+            </NavLink>
+            <NavLink to="/my-tickets" style={{ textDecoration: "none" }}>
+              {({ isActive }) => (
+                <Button
+                  variant={isActive ? "secondary" : "tertiary"}
+                  size="md"
+                >
+                  My Tickets
+                </Button>
+              )}
+            </NavLink>
+            <NavLink to="/debug" style={{ textDecoration: "none" }}>
+              {({ isActive }) => (
+                <Button
+                  variant={isActive ? "secondary" : "tertiary"}
+                  size="md"
+                >
+                  <Icon.Code02 size="md" />
+                  Debug
+                </Button>
+              )}
+            </NavLink>
+          </nav>
+          <MultiWalletButton />
+        </>
+      }
+    />
+    <Outlet />
+    <Layout.Footer>
+      <span>
+        Powered by{" "}
+        <a
+          href="https://stellar.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Stellar
+        </a>{" "}
+        |{" "}
+        <a
+          href="https://stellar.org/soroban"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Soroban Smart Contracts
+        </a>
+      </span>
+    </Layout.Footer>
+  </main>
+);
+
+function App() {
+  return (
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:eventId" element={<EventDetailPage />} />
+        <Route path="/my-tickets" element={<MyTicketsPage />} />
+        <Route path="/debug" element={<Debugger />} />
+        <Route path="/debug/:contractName" element={<Debugger />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;

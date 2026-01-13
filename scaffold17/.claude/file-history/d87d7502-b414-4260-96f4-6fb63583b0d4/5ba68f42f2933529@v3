@@ -1,0 +1,182 @@
+.event-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.event-detail-page.loading,
+.event-detail-page.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 1rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sds-clr-gray-09);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.back-link:hover {
+  color: var(--sds-clr-lilac-09);
+}
+
+.event-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .event-detail-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.event-detail-image {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.event-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.event-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-detail-info h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sds-clr-gray-09);
+}
+
+.event-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--sds-clr-gray-11);
+  margin: 0;
+}
+
+.event-pricing {
+  padding: 1rem;
+  background: var(--sds-clr-gray-02);
+  border-radius: 0.75rem;
+}
+
+.event-pricing h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sds-clr-gray-09);
+  margin: 0 0 0.75rem 0;
+}
+
+.price-options {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price-option {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--sds-clr-gray-01);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.price-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--sds-clr-lilac-09);
+}
+
+.price-or {
+  color: var(--sds-clr-gray-07);
+  font-size: 0.875rem;
+}
+
+.event-availability {
+  font-size: 0.875rem;
+}
+
+.tickets-remaining {
+  color: var(--sds-clr-green-09);
+}
+
+.sold-out {
+  color: var(--sds-clr-red-09);
+  font-weight: 500;
+}
+
+.purchase-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--sds-clr-green-03);
+  border-radius: 0.75rem;
+  color: var(--sds-clr-green-11);
+}
+
+.purchase-success svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.connect-hint {
+  font-size: 0.875rem;
+  color: var(--sds-clr-gray-09);
+  margin: 0;
+}
+
+.purchase-error {
+  padding: 1rem;
+  background: var(--sds-clr-red-03);
+  border-radius: 0.5rem;
+  color: var(--sds-clr-red-11);
+}
+
+.purchase-error p {
+  margin: 0;
+}
+
+.tx-hash {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tx-hash code {
+  background: var(--sds-clr-gray-02);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}

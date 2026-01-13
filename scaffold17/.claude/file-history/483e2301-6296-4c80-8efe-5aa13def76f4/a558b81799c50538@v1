@@ -1,0 +1,33 @@
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
+import { TransactionDetail } from '@/components/transaction/TransactionDetail';
+import { TransactionSkeleton } from '@/components/shared/LoadingState';
+
+interface PageProps {
+  params: Promise<{ hash: string }>;
+}
+
+export default async function TransactionPage({ params }: PageProps) {
+  const { hash } = await params;
+
+  // Validate hash format
+  if (!/^[a-fA-F0-9]{64}$/.test(hash)) {
+    notFound();
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Suspense fallback={<TransactionSkeleton />}>
+        <TransactionDetail hash={hash.toLowerCase()} />
+      </Suspense>
+    </div>
+  );
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { hash } = await params;
+  return {
+    title: `Transaction ${hash.slice(0, 8)}...`,
+    description: `View details for Stellar transaction ${hash}`,
+  };
+}

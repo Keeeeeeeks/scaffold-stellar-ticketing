@@ -1,0 +1,330 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useQuery } from 'urql';
+import {
+  ArrowRight,
+  Activity,
+  Clock,
+  Zap,
+  Box,
+  Code,
+  Coins,
+} from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { RECENT_TRANSACTIONS } from '@/lib/graphql/queries';
+import { formatTimeAgo, formatLedgerNumber } from '@/lib/utils/format';
+import { OPERATION_TYPES, SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: SPRING.gentle,
+  },
+};
+
+export default function HomePage() {
+  const [{ data, fetching }] = useQuery({
+    query: RECENT_TRANSACTIONS,
+    variables: { first: 10 },
+  });
+
+  const transactions = data?.transactions?.edges || [];
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={SPRING.gentle}
+        className="text-center mb-12"
+      >
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, ...SPRING.gentle }}
+          className="text-4xl md:text-5xl font-bold mb-4"
+        >
+          Explore the{' '}
+          <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            Stellar
+          </span>{' '}
+          Network
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
+          Search transactions, accounts, contracts, and tokens on the Stellar
+          blockchain and Soroban smart contract platform.
+        </motion.p>
+      </motion.section>
+
+      {/* Stats Cards */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+      >
+        <StatsCard
+          icon={Activity}
+          label="Latest Ledger"
+          value="54,321,098"
+          color="text-blue-500"
+        />
+        <StatsCard
+          icon={Clock}
+          label="Avg Close Time"
+          value="5.2s"
+          color="text-emerald-500"
+        />
+        <StatsCard
+          icon={Zap}
+          label="TPS (24h)"
+          value="127.5"
+          color="text-orange-500"
+        />
+        <StatsCard
+          icon={Box}
+          label="Contracts"
+          value="12,456"
+          color="text-purple-500"
+        />
+      </motion.section>
+
+      {/* Quick Links */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+      >
+        <QuickLinkCard
+          icon={Box}
+          title="Browse Blocks"
+          description="Explore the latest ledgers and their transactions"
+          href="/blocks"
+          color="from-blue-500 to-blue-600"
+        />
+        <QuickLinkCard
+          icon={Code}
+          title="Smart Contracts"
+          description="Discover and interact with Soroban contracts"
+          href="/contracts"
+          color="from-purple-500 to-purple-600"
+        />
+        <QuickLinkCard
+          icon={Coins}
+          title="Token Tracker"
+          description="Track SEP-41 and SAC tokens on Stellar"
+          href="/tokens"
+          color="from-emerald-500 to-emerald-600"
+        />
+      </motion.section>
+
+      {/* Recent Transactions */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, ...SPRING.gentle }}
+      >
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle className="text-lg">Recent Transactions</CardTitle>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/transactions" className="gap-1">
+                View All <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </CardHeader>
+          <CardContent>
+            {fetching ? (
+              <TransactionListSkeleton />
+            ) : transactions.length > 0 ? (
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="divide-y"
+              >
+                {transactions.map(({ node: tx }: any, index: number) => (
+                  <TransactionRow key={tx.hash} tx={tx} index={index} />
+                ))}
+              </motion.div>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                No transactions found. Connect to a wallet backend to see live
+                data.
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </motion.section>
+    </div>
+  );
+}
+
+function StatsCard({
+  icon: Icon,
+  label,
+  value,
+  color,
+}: {
+  icon: any;
+  label: string;
+  value: string;
+  color: string;
+}) {
+  return (
+    <motion.div variants={itemVariants}>
+      <Card className="overflow-hidden">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-3">
+            <div className={cn('p-2 rounded-lg bg-muted', color)}>
+              <Icon className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground">{label}</p>
+              <p className="text-xl font-bold tabular-nums">{value}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
+function QuickLinkCard({
+  icon: Icon,
+  title,
+  description,
+  href,
+  color,
+}: {
+  icon: any;
+  title: string;
+  description: string;
+  href: string;
+  color: string;
+}) {
+  return (
+    <motion.div variants={itemVariants}>
+      <Link href={href}>
+        <motion.div
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={SPRING.snappy}
+        >
+          <Card className="h-full hover:border-primary/50 transition-colors cursor-pointer group overflow-hidden">
+            <CardContent className="p-6 relative">
+              <div
+                className={cn(
+                  'absolute top-0 right-0 w-32 h-32 -mr-16 -mt-16 rounded-full bg-gradient-to-br opacity-10 group-hover:opacity-20 transition-opacity',
+                  color
+                )}
+              />
+              <div
+                className={cn(
+                  'inline-flex p-3 rounded-lg bg-gradient-to-br mb-4',
+                  color
+                )}
+              >
+                <Icon className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                {title}
+              </h3>
+              <p className="text-sm text-muted-foreground">{description}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </Link>
+    </motion.div>
+  );
+}
+
+function TransactionRow({ tx, index }: { tx: any; index: number }) {
+  const operationType =
+    tx.operations?.edges?.[0]?.node?.operationType || 'unknown';
+  const operationLabel =
+    OPERATION_TYPES[operationType] || operationType.replace(/_/g, ' ');
+
+  return (
+    <motion.div
+      variants={itemVariants}
+      custom={index}
+      className="py-3 first:pt-0 last:pb-0"
+    >
+      <Link
+        href={`/tx/${tx.hash}`}
+        className="flex items-center justify-between gap-4 hover:bg-muted/50 -mx-2 px-2 py-2 rounded-lg transition-colors"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
+            <Activity className="h-5 w-5 text-blue-500" />
+          </div>
+          <div className="min-w-0">
+            <p className="font-mono text-sm truncate">
+              {tx.hash.slice(0, 8)}...{tx.hash.slice(-8)}
+            </p>
+            <div className="flex items-center gap-2 mt-0.5">
+              <Badge variant="secondary" className="text-xs">
+                {operationLabel}
+              </Badge>
+              <span className="text-xs text-muted-foreground">
+                Block {formatLedgerNumber(tx.ledgerNumber)}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="text-right shrink-0">
+          <p className="text-sm text-muted-foreground">
+            {formatTimeAgo(tx.ledgerCreatedAt)}
+          </p>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+function TransactionListSkeleton() {
+  return (
+    <div className="space-y-3">
+      {[...Array(5)].map((_, i) => (
+        <div key={i} className="flex items-center justify-between gap-4 py-3">
+          <div className="flex items-center gap-3">
+            <Skeleton className="h-10 w-10 rounded-lg" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-32" />
+              <Skeleton className="h-3 w-24" />
+            </div>
+          </div>
+          <Skeleton className="h-4 w-16" />
+        </div>
+      ))}
+    </div>
+  );
+}

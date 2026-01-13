@@ -1,0 +1,338 @@
+import { Contract, SorobanRpc, xdr, StrKey, scValToNative } from '@stellar/stellar-sdk';
+import type { ContractFunction, SorobanType, FunctionInput } from '@/types/stellar';
+
+const RPC_URL = process.env.NEXT_PUBLIC_SOROBAN_RPC_URL || 'https://soroban-testnet.stellar.org';
+
+/**
+ * Fetch and parse contract spec from the Stellar network
+ */
+export async function getContractSpec(contractId: string): Promise<{
+  functions: ContractFunction[];
+  types: Map<string, SorobanType>;
+} | null> {
+  try {
+    const server = new SorobanRpc.Server(RPC_URL);
+
+    // Get the contract's WASM code hash from the ledger
+    const contractKey = xdr.LedgerKey.contractData(
+      new xdr.LedgerKeyContractData({
+        contract: new Contract(contractId).address().toScAddress(),
+        key: xdr.ScVal.scvLedgerKeyContractInstance(),
+        durability: xdr.ContractDataDurability.persistent(),
+      })
+    );
+
+    const ledgerEntries = await server.getLedgerEntries(contractKey);
+
+    if (!ledgerEntries.entries || ledgerEntries.entries.length === 0) {
+      console.warn('Contract not found on ledger');
+      return null;
+    }
+
+    const entry = ledgerEntries.entries[0];
+    const contractData = entry.val.contractData();
+    const instance = contractData.val().instance();
+
+    if (!instance.executable().wasmHash()) {
+      console.warn('Contract has no WASM hash');
+      return null;
+    }
+
+    const wasmHash = instance.executable().wasmHash();
+
+    // Get the WASM code
+    const wasmKey = xdr.LedgerKey.contractCode(
+      new xdr.LedgerKeyContractCode({
+        hash: wasmHash!,
+      })
+    );
+
+    const wasmEntries = await server.getLedgerEntries(wasmKey);
+
+    if (!wasmEntries.entries || wasmEntries.entries.length === 0) {
+      console.warn('WASM code not found');
+      return null;
+    }
+
+    const wasmEntry = wasmEntries.entries[0];
+    const wasmCode = wasmEntry.val.contractCode().code();
+
+    // Parse the contract spec from WASM custom sections
+    return parseWasmSpec(wasmCode);
+  } catch (error) {
+    console.error('Error fetching contract spec:', error);
+    return null;
+  }
+}
+
+/**
+ * Parse the contract spec from WASM binary
+ */
+function parseWasmSpec(wasmCode: Buffer): {
+  functions: ContractFunction[];
+  types: Map<string, SorobanType>;
+} {
+  const functions: ContractFunction[] = [];
+  const types = new Map<string, SorobanType>();
+
+  try {
+    // Parse WASM to find custom sections
+    const wasmModule = new WebAssembly.Module(wasmCode);
+    const customSections = WebAssembly.Module.customSections(wasmModule, 'contractspecv0');
+
+    if (customSections.length === 0) {
+      console.warn('No contract spec found in WASM');
+      return { functions, types };
+    }
+
+    // Parse XDR-encoded spec entries from all sections
+    for (const section of customSections) {
+      const buffer = Buffer.from(section);
+      let offset = 0;
+
+      while (offset < buffer.length) {
+        try {
+          const entry = xdr.ScSpecEntry.fromXDR(buffer.subarray(offset));
+          processSpecEntry(entry, functions, types);
+          offset += entry.toXDR().length;
+        } catch {
+          break;
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error parsing WASM spec:', error);
+  }
+
+  return { functions, types };
+}
+
+/**
+ * Process a single spec entry
+ */
+function processSpecEntry(
+  entry: xdr.ScSpecEntry,
+  functions: ContractFunction[],
+  types: Map<string, SorobanType>
+): void {
+  const entryType = entry.switch();
+
+  switch (entryType.name) {
+    case 'scSpecEntryFunctionV0': {
+      const fn = entry.functionV0();
+      functions.push({
+        name: fn.name().toString(),
+        doc: fn.doc().toString(),
+        inputs: fn.inputs().map((input) => ({
+          name: input.name().toString(),
+          type: convertType(input.type()),
+          doc: input.doc?.().toString(),
+        })),
+        outputs: fn.outputs().map((output) => ({
+          type: convertType(output),
+        })),
+        isMutating: !fn.name().toString().startsWith('get_') &&
+                    !fn.name().toString().startsWith('is_') &&
+                    !fn.name().toString().startsWith('has_'),
+      });
+      break;
+    }
+    case 'scSpecEntryUdtStructV0': {
+      const struct = entry.udtStructV0();
+      types.set(struct.name().toString(), {
+        kind: 'struct',
+        name: struct.name().toString(),
+        fields: struct.fields().map((field) => ({
+          name: field.name().toString(),
+          type: convertType(field.type()),
+        })),
+      });
+      break;
+    }
+    case 'scSpecEntryUdtEnumV0': {
+      const enumDef = entry.udtEnumV0();
+      types.set(enumDef.name().toString(), {
+        kind: 'enum',
+        name: enumDef.name().toString(),
+        variants: enumDef.cases().map((c) => ({
+          name: c.name().toString(),
+        })),
+      });
+      break;
+    }
+  }
+}
+
+/**
+ * Convert XDR type definition to our SorobanType
+ */
+function convertType(typeDef: xdr.ScSpecTypeDef): SorobanType {
+  const typeSwitch = typeDef.switch();
+
+  switch (typeSwitch.name) {
+    case 'scSpecTypeVal':
+      return { kind: 'primitive', type: 'symbol' };
+    case 'scSpecTypeBool':
+      return { kind: 'primitive', type: 'bool' };
+    case 'scSpecTypeVoid':
+      return { kind: 'primitive', type: 'symbol' };
+    case 'scSpecTypeError':
+      return { kind: 'primitive', type: 'symbol' };
+    case 'scSpecTypeU32':
+      return { kind: 'primitive', type: 'u32' };
+    case 'scSpecTypeI32':
+      return { kind: 'primitive', type: 'i32' };
+    case 'scSpecTypeU64':
+      return { kind: 'primitive', type: 'u64' };
+    case 'scSpecTypeI64':
+      return { kind: 'primitive', type: 'i64' };
+    case 'scSpecTypeTimepoint':
+      return { kind: 'primitive', type: 'u64' };
+    case 'scSpecTypeDuration':
+      return { kind: 'primitive', type: 'u64' };
+    case 'scSpecTypeU128':
+      return { kind: 'primitive', type: 'u128' };
+    case 'scSpecTypeI128':
+      return { kind: 'primitive', type: 'i128' };
+    case 'scSpecTypeU256':
+      return { kind: 'primitive', type: 'u128' };
+    case 'scSpecTypeI256':
+      return { kind: 'primitive', type: 'i128' };
+    case 'scSpecTypeBytes':
+      return { kind: 'primitive', type: 'bytes' };
+    case 'scSpecTypeString':
+      return { kind: 'primitive', type: 'string' };
+    case 'scSpecTypeSymbol':
+      return { kind: 'primitive', type: 'symbol' };
+    case 'scSpecTypeAddress':
+      return { kind: 'primitive', type: 'address' };
+    case 'scSpecTypeOption':
+      return {
+        kind: 'option',
+        valueType: convertType(typeDef.option().valueType()),
+      };
+    case 'scSpecTypeResult':
+      return {
+        kind: 'result',
+        okType: convertType(typeDef.result().okType()),
+        errType: convertType(typeDef.result().errorType()),
+      };
+    case 'scSpecTypeVec':
+      return {
+        kind: 'vec',
+        elementType: convertType(typeDef.vec().elementType()),
+      };
+    case 'scSpecTypeMap':
+      return {
+        kind: 'map',
+        keyType: convertType(typeDef.map().keyType()),
+        valueType: convertType(typeDef.map().valueType()),
+      };
+    case 'scSpecTypeTuple':
+      return {
+        kind: 'tuple',
+        elements: typeDef.tuple().valueTypes().map(convertType),
+      };
+    case 'scSpecTypeBytesN':
+      return { kind: 'primitive', type: 'bytes' };
+    case 'scSpecTypeUdt':
+      return {
+        kind: 'struct',
+        name: typeDef.udt().name().toString(),
+        fields: [],
+      };
+    default:
+      return { kind: 'primitive', type: 'symbol' };
+  }
+}
+
+/**
+ * Convert a JavaScript value to ScVal based on type
+ */
+export function toScVal(value: any, type: SorobanType): xdr.ScVal {
+  switch (type.kind) {
+    case 'primitive':
+      return toPrimitiveScVal(value, type.type);
+    case 'vec':
+      return xdr.ScVal.scvVec(
+        (value as any[]).map((v) => toScVal(v, type.elementType))
+      );
+    case 'option':
+      if (value === null || value === undefined) {
+        return xdr.ScVal.scvVoid();
+      }
+      return toScVal(value, type.valueType);
+    default:
+      throw new Error(`Unsupported type conversion: ${type.kind}`);
+  }
+}
+
+/**
+ * Convert a primitive value to ScVal
+ */
+function toPrimitiveScVal(value: any, type: string): xdr.ScVal {
+  switch (type) {
+    case 'bool':
+      return xdr.ScVal.scvBool(Boolean(value));
+    case 'i32':
+      return xdr.ScVal.scvI32(parseInt(value, 10));
+    case 'u32':
+      return xdr.ScVal.scvU32(parseInt(value, 10));
+    case 'i64':
+      return xdr.ScVal.scvI64(xdr.Int64.fromString(String(value)));
+    case 'u64':
+      return xdr.ScVal.scvU64(xdr.Uint64.fromString(String(value)));
+    case 'i128':
+      return xdr.ScVal.scvI128(
+        new xdr.Int128Parts({
+          lo: xdr.Uint64.fromString('0'),
+          hi: xdr.Int64.fromString(String(value)),
+        })
+      );
+    case 'u128':
+      return xdr.ScVal.scvU128(
+        new xdr.UInt128Parts({
+          lo: xdr.Uint64.fromString(String(value)),
+          hi: xdr.Uint64.fromString('0'),
+        })
+      );
+    case 'string':
+      return xdr.ScVal.scvString(String(value));
+    case 'symbol':
+      return xdr.ScVal.scvSymbol(String(value));
+    case 'bytes':
+      return xdr.ScVal.scvBytes(Buffer.from(value, 'hex'));
+    case 'address':
+      if (value.startsWith('G')) {
+        return xdr.ScVal.scvAddress(
+          xdr.ScAddress.scAddressTypeAccount(
+            xdr.PublicKey.publicKeyTypeEd25519(
+              StrKey.decodeEd25519PublicKey(value)
+            )
+          )
+        );
+      } else if (value.startsWith('C')) {
+        return xdr.ScVal.scvAddress(
+          xdr.ScAddress.scAddressTypeContract(StrKey.decodeContract(value))
+        );
+      }
+      throw new Error('Invalid address format');
+    default:
+      throw new Error(`Unsupported primitive type: ${type}`);
+  }
+}
+
+/**
+ * Format an ScVal for display
+ */
+export function formatScVal(val: xdr.ScVal): string {
+  try {
+    const native = scValToNative(val);
+    if (typeof native === 'object') {
+      return JSON.stringify(native, null, 2);
+    }
+    return String(native);
+  } catch {
+    return val.switch().name;
+  }
+}

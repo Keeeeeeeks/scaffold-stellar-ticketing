@@ -1,0 +1,79 @@
+.wallet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wallet-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--sds-clr-gray-02);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wallet-list-item:hover {
+  background: var(--sds-clr-gray-03);
+}
+
+.wallet-list-item.active {
+  background: var(--sds-clr-gray-03);
+  border: 1px solid var(--sds-clr-lilac-09);
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wallet-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.wallet-name {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.wallet-balance {
+  font-size: 0.875rem;
+  color: var(--sds-clr-gray-09);
+}
+
+.wallet-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.active-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--sds-clr-lilac-09);
+  color: white;
+}
+
+.disconnect-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  color: var(--sds-clr-gray-09);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.disconnect-btn:hover {
+  background: var(--sds-clr-red-03);
+  color: var(--sds-clr-red-09);
+}

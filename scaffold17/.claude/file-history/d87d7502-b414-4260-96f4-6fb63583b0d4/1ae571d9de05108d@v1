@@ -1,0 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
+import { useMultiWallet } from "./useMultiWallet";
+import type { UserTicket } from "../types/tickets";
+
+export const useUserTickets = () => {
+  const { activeAddress } = useMultiWallet();
+
+  return useQuery({
+    queryKey: ["userTickets", activeAddress],
+    queryFn: async (): Promise<UserTicket[]> => {
+      if (!activeAddress) return [];
+
+      // For MVP, return empty array
+      // In production, this would fetch from the ticketing contract:
+      // 1. Get user's NFT balance
+      // 2. For each token, get ticket metadata
+      // 3. Merge with off-chain event data
+      return [];
+    },
+    enabled: !!activeAddress,
+    staleTime: 10_000,
+  });
+};

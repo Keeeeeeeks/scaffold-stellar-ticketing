@@ -1,0 +1,51 @@
+'use client';
+
+import {
+  Client,
+  cacheExchange,
+  fetchExchange,
+  subscriptionExchange,
+} from 'urql';
+import { createClient as createWSClient, Client as WSClient } from 'graphql-ws';
+
+let wsClient: WSClient | null = null;
+
+// Only create WebSocket client on the client side
+if (typeof window !== 'undefined') {
+  wsClient = createWSClient({
+    url:
+      process.env.NEXT_PUBLIC_GRAPHQL_WS_URL || 'ws://localhost:8002/graphql',
+    retryAttempts: 5,
+    connectionParams: () => ({
+      // Add any auth tokens here if needed
+    }),
+  });
+}
+
+export const graphqlClient = new Client({
+  url: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:8002/graphql',
+  exchanges: [
+    cacheExchange,
+    fetchExchange,
+    ...(wsClient
+      ? [
+          subscriptionExchange({
+            forwardSubscription: (request) => ({
+              subscribe: (sink) => ({
+                unsubscribe: wsClient!.subscribe(request, sink),
+              }),
+            }),
+          }),
+        ]
+      : []),
+  ],
+  requestPolicy: 'cache-and-network',
+});
+
+// Create a fresh client for SSR without subscriptions
+export const createSSRClient = () =>
+  new Client({
+    url: process.env.NEXT_PUBLIC_GRAPHQL_URL || 'http://localhost:8002/graphql',
+    exchanges: [cacheExchange, fetchExchange],
+    suspense: true,
+  });

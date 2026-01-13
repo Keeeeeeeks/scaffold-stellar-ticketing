@@ -1,0 +1,82 @@
+import { useQuery } from "@tanstack/react-query";
+import { useMultiWallet } from "./useMultiWallet";
+import { Client } from "ticketing";
+import { rpcUrl, networkPassphrase } from "../contracts/util";
+import { mockEvents } from "../data/mockEvents";
+import type { UserTicket } from "../types/tickets";
+
+const CONTRACT_ID = "CB36TK4MJUX5ALGEHYKHPWQ656SJXM47RSDZIP5X7NZ46KGRGCQC3H5R";
+
+export const useUserTickets = () => {
+  const { activeAddress } = useMultiWallet();
+
+  return useQuery({
+    queryKey: ["userTickets", activeAddress],
+    queryFn: async (): Promise<UserTicket[]> => {
+      if (!activeAddress) return [];
+
+      try {
+        // Create client for read-only operations
+        const client = new Client({
+          networkPassphrase,
+          contractId: CONTRACT_ID,
+          rpcUrl,
+          allowHttp: true,
+        });
+
+        // Get user's NFT balance
+        const balanceTx = await client.balance({ account: activeAddress });
+        const balance = balanceTx.result;
+
+        if (balance === 0) return [];
+
+        const tickets: UserTicket[] = [];
+
+        // For each token index, get the token ID and ticket data
+        for (let i = 0; i < balance; i++) {
+          try {
+            // Get token ID at index
+            const tokenIdTx = await client.get_owner_token_id({
+              owner: activeAddress,
+              index: i,
+            });
+            const tokenId = tokenIdTx.result;
+
+            // Get ticket data
+            const ticketTx = await client.get_ticket({ token_id: tokenId });
+            const ticketData = ticketTx.result;
+
+            // Find event data (from mock data for now)
+            const event = mockEvents.find(
+              (e) => e.id === BigInt(ticketData.event_id)
+            );
+
+            tickets.push({
+              tokenId,
+              eventId: BigInt(ticketData.event_id),
+              eventName: event?.name ?? `Event #${ticketData.event_id}`,
+              eventDate: event?.date ?? new Date(),
+              eventVenue: event?.venue ?? "Unknown Venue",
+              ticketNumber: ticketData.ticket_number,
+              purchaseTimestamp: new Date(
+                Number(ticketData.purchase_timestamp) * 1000
+              ),
+              imageUrl:
+                event?.imageUrl ??
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+            });
+          } catch (err) {
+            console.error(`Failed to fetch ticket at index ${i}:`, err);
+          }
+        }
+
+        return tickets;
+      } catch (err) {
+        console.error("Failed to fetch user tickets:", err);
+        return [];
+      }
+    },
+    enabled: !!activeAddress,
+    staleTime: 10_000,
+  });
+};

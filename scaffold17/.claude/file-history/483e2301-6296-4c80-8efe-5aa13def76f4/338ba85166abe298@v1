@@ -1,0 +1,83 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { SPRING } from '@/lib/utils/constants';
+
+interface ErrorStateProps {
+  title?: string;
+  message?: string;
+  onRetry?: () => void;
+  className?: string;
+}
+
+export function ErrorState({
+  title = 'Something went wrong',
+  message = 'An error occurred while loading this content.',
+  onRetry,
+  className,
+}: ErrorStateProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={SPRING.gentle}
+      className={cn(
+        'flex flex-col items-center justify-center py-12 px-4 text-center',
+        className
+      )}
+    >
+      <div className="h-16 w-16 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
+        <AlertTriangle className="h-8 w-8 text-red-500" />
+      </div>
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground max-w-md mb-6">{message}</p>
+      {onRetry && (
+        <Button onClick={onRetry} variant="outline" className="gap-2">
+          <RefreshCw className="h-4 w-4" />
+          Try Again
+        </Button>
+      )}
+    </motion.div>
+  );
+}
+
+export function NotFoundState({
+  type = 'item',
+  identifier,
+}: {
+  type?: string;
+  identifier?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={SPRING.gentle}
+      className="flex flex-col items-center justify-center py-12 px-4 text-center"
+    >
+      <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center mb-4">
+        <span className="text-2xl">🔍</span>
+      </div>
+      <h3 className="text-lg font-semibold mb-2">
+        {type.charAt(0).toUpperCase() + type.slice(1)} Not Found
+      </h3>
+      <p className="text-sm text-muted-foreground max-w-md">
+        {identifier ? (
+          <>
+            We couldn&apos;t find a {type} with the identifier{' '}
+            <code className="px-1.5 py-0.5 bg-muted rounded font-mono text-xs">
+              {identifier.length > 20
+                ? `${identifier.slice(0, 10)}...${identifier.slice(-10)}`
+                : identifier}
+            </code>
+          </>
+        ) : (
+          `The ${type} you're looking for doesn't exist or may have been removed.`
+        )}
+      </p>
+    </motion.div>
+  );
+}

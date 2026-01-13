@@ -1,0 +1,66 @@
+import { useState, useMemo } from "react";
+import { Input, Loader } from "@stellar/design-system";
+import { EventGrid } from "../components/events/EventGrid";
+import { useEvents } from "../hooks/useEvents";
+import "./EventsPage.css";
+
+const EventsPage = () => {
+  const { data: events, isLoading } = useEvents();
+  const [search, setSearch] = useState("");
+  const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+
+  const filteredEvents = useMemo(() => {
+    if (!events) return [];
+
+    return events.filter((event) => {
+      const matchesSearch =
+        event.name.toLowerCase().includes(search.toLowerCase()) ||
+        event.venue.toLowerCase().includes(search.toLowerCase());
+
+      const matchesAvailability = showAvailableOnly
+        ? event.sold < event.capacity
+        : true;
+
+      return matchesSearch && matchesAvailability;
+    });
+  }, [events, search, showAvailableOnly]);
+
+  if (isLoading) {
+    return (
+      <div className="events-page loading">
+        <Loader size="lg" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="events-page">
+      <div className="events-header">
+        <h1>Upcoming Events</h1>
+        <p>Browse and purchase tickets for events on Stellar</p>
+      </div>
+
+      <div className="events-filters">
+        <Input
+          id="search"
+          fieldSize="md"
+          placeholder="Search events..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <label className="filter-checkbox">
+          <input
+            type="checkbox"
+            checked={showAvailableOnly}
+            onChange={(e) => setShowAvailableOnly(e.target.checked)}
+          />
+          <span>Show available only</span>
+        </label>
+      </div>
+
+      <EventGrid events={filteredEvents} />
+    </div>
+  );
+};
+
+export default EventsPage;

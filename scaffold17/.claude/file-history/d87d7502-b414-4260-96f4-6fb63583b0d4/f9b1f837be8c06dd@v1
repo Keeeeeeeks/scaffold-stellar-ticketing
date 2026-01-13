@@ -1,0 +1,113 @@
+import { useState } from "react";
+import { Button, Modal, Select, Loader } from "@stellar/design-system";
+import { useMultiWallet } from "../../hooks/useMultiWallet";
+import type { Event } from "../../types/events";
+import type { PaymentToken } from "../../types/tickets";
+import "./PurchaseModal.css";
+
+interface PurchaseModalProps {
+  event: Event;
+  visible: boolean;
+  onClose: () => void;
+  onPurchase: (paymentToken: PaymentToken) => Promise<void>;
+  isPurchasing: boolean;
+}
+
+export const PurchaseModal = ({
+  event,
+  visible,
+  onClose,
+  onPurchase,
+  isPurchasing,
+}: PurchaseModalProps) => {
+  const [paymentToken, setPaymentToken] = useState<"xlm" | "usdc">("xlm");
+  const { activeWallet, connectWallet } = useMultiWallet();
+
+  const xlmPrice = Number(event.xlmPrice) / 10_000_000;
+  const usdcPrice = Number(event.usdcPrice) / 10_000_000;
+  const price = paymentToken === "xlm" ? `${xlmPrice} XLM` : `${usdcPrice} USDC`;
+
+  const handlePurchase = async () => {
+    const token: PaymentToken =
+      paymentToken === "xlm" ? { Xlm: null } : { Usdc: null };
+    await onPurchase(token);
+  };
+
+  return (
+    <Modal visible={visible} onClose={onClose}>
+      <Modal.Heading>Purchase Ticket</Modal.Heading>
+      <Modal.Body>
+        <div className="purchase-modal-content">
+          <div className="purchase-event-info">
+            <h3>{event.name}</h3>
+            <p className="purchase-venue">{event.venue}</p>
+            <p className="purchase-date">
+              {event.date.toLocaleDateString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+
+          <div className="purchase-payment">
+            <Select
+              id="paymentToken"
+              label="Payment Token"
+              value={paymentToken}
+              onChange={(e) =>
+                setPaymentToken(e.target.value as "xlm" | "usdc")
+              }
+            >
+              <option value="xlm">XLM ({xlmPrice} XLM)</option>
+              <option value="usdc">USDC ({usdcPrice} USDC)</option>
+            </Select>
+          </div>
+
+          {!activeWallet && (
+            <div className="purchase-warning">
+              <p>Please connect a wallet to purchase</p>
+              <Button
+                variant="secondary"
+                size="md"
+                onClick={() => void connectWallet()}
+              >
+                Connect Wallet
+              </Button>
+            </div>
+          )}
+
+          {activeWallet && (
+            <div className="purchase-wallet-info">
+              <span>Paying with:</span>
+              <span className="wallet-address">
+                {activeWallet.address.slice(0, 8)}...
+                {activeWallet.address.slice(-8)}
+              </span>
+            </div>
+          )}
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="tertiary" size="md" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button
+          variant="primary"
+          size="md"
+          onClick={() => void handlePurchase()}
+          disabled={!activeWallet || isPurchasing}
+        >
+          {isPurchasing ? (
+            <>
+              <Loader /> Processing...
+            </>
+          ) : (
+            `Pay ${price}`
+          )}
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};

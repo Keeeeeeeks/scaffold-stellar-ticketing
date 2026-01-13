@@ -1,0 +1,33 @@
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
+import { ContractDetail } from '@/components/contract/ContractDetail';
+import { AccountSkeleton } from '@/components/shared/LoadingState';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ContractPage({ params }: PageProps) {
+  const { id } = await params;
+
+  // Validate contract address format (starts with C, 56 chars)
+  if (!/^C[A-Z0-9]{55}$/.test(id)) {
+    notFound();
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Suspense fallback={<AccountSkeleton />}>
+        <ContractDetail contractId={id} />
+      </Suspense>
+    </div>
+  );
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { id } = await params;
+  return {
+    title: `Contract ${id.slice(0, 8)}...`,
+    description: `View and interact with Soroban smart contract ${id}`,
+  };
+}

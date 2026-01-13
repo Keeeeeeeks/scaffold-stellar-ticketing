@@ -1,0 +1,79 @@
+import type { Event } from "../types/events";
+
+export const mockEvents: Event[] = [
+  {
+    id: 1n,
+    name: "Stellar Summit 2026",
+    description:
+      "The premier blockchain conference for the Stellar ecosystem. Network with developers, founders, and enthusiasts from around the world.",
+    venue: "San Francisco Convention Center",
+    date: new Date("2026-03-15"),
+    imageUrl:
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+    capacity: 500,
+    sold: 127,
+    xlmPrice: 50_000_000n, // 5 XLM
+    usdcPrice: 10_000_000n, // 1 USDC
+    isActive: true,
+  },
+  {
+    id: 2n,
+    name: "DeFi Night: Liquidity Deep Dive",
+    description:
+      "An evening dedicated to exploring liquidity protocols on Stellar. Workshops, panels, and networking included.",
+    venue: "The Crypto Lounge, NYC",
+    date: new Date("2026-02-20"),
+    imageUrl:
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+    capacity: 100,
+    sold: 45,
+    xlmPrice: 50_000_000n,
+    usdcPrice: 10_000_000n,
+    isActive: true,
+  },
+  {
+    id: 3n,
+    name: "Soroban Smart Contract Workshop",
+    description:
+      "Hands-on workshop for building smart contracts on Soroban. Bring your laptop and get ready to code!",
+    venue: "TechHub Berlin",
+    date: new Date("2026-04-10"),
+    imageUrl:
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
+    capacity: 50,
+    sold: 12,
+    xlmPrice: 50_000_000n,
+    usdcPrice: 10_000_000n,
+    isActive: true,
+  },
+  {
+    id: 4n,
+    name: "Stellar Music Festival",
+    description:
+      "A unique music festival where all tickets are NFTs on Stellar. Experience the future of ticketing with live performances!",
+    venue: "Austin Amphitheater",
+    date: new Date("2026-05-25"),
+    imageUrl:
+      "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",
+    capacity: 1000,
+    sold: 234,
+    xlmPrice: 50_000_000n,
+    usdcPrice: 10_000_000n,
+    isActive: true,
+  },
+  {
+    id: 5n,
+    name: "Anchor Integration Hackathon",
+    description:
+      "24-hour hackathon focused on building anchor integrations. Prizes in XLM for the best projects!",
+    venue: "Online",
+    date: new Date("2026-06-15"),
+    imageUrl:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+    capacity: 200,
+    sold: 0,
+    xlmPrice: 50_000_000n,
+    usdcPrice: 10_000_000n,
+    isActive: true,
+  },
+];

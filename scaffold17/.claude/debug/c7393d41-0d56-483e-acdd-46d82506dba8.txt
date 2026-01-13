@@ -1,0 +1,1684 @@
+2026-01-05T17:55:26.402Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (39.9ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-01-05T17:55:26.451Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (48.4ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:26.506Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-05T17:55:26.506Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-05T17:55:26.506Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-05T17:55:26.509Z [DEBUG] LSP server manager initialized successfully
+2026-01-05T17:55:26.509Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-05T17:55:26.510Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-05T17:55:26.512Z [DEBUG] Stats cache stale (2026-01-01), processing 2026-01-02 to 2026-01-04 in background
+2026-01-05T17:55:26.514Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-05T17:55:26.514Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-05T17:55:26.531Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.4ms): cursor --version
+2026-01-05T17:55:26.531Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-05T17:55:26.563Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-01-05T17:55:26.563Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2026-01-05T17:55:26.563Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2026-01-05T17:55:26.563Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2026-01-05T17:55:26.563Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767635726563-ktjun3.sh
+2026-01-05T17:55:26.563Z [DEBUG] Shell binary exists: true
+2026-01-05T17:55:26.563Z [DEBUG] Execution timeout: 10000ms
+2026-01-05T17:55:26.564Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/c7393d41-0d56-483e-acdd-46d82506dba8-agent-c7393d41-0d56-483e-acdd-46d82506dba8.json.tmp.76839.1767635726564
+2026-01-05T17:55:26.568Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-05T17:55:26.568Z [DEBUG] Renaming /Users/george/.claude/todos/c7393d41-0d56-483e-acdd-46d82506dba8-agent-c7393d41-0d56-483e-acdd-46d82506dba8.json.tmp.76839.1767635726564 to /Users/george/.claude/todos/c7393d41-0d56-483e-acdd-46d82506dba8-agent-c7393d41-0d56-483e-acdd-46d82506dba8.json
+2026-01-05T17:55:26.568Z [DEBUG] File /Users/george/.claude/todos/c7393d41-0d56-483e-acdd-46d82506dba8-agent-c7393d41-0d56-483e-acdd-46d82506dba8.json written atomically
+2026-01-05T17:55:26.574Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-05T17:55:26.574Z [DEBUG] Total plugin skills loaded: 0
+2026-01-05T17:55:26.574Z [DEBUG] Total plugin commands loaded: 0
+2026-01-05T17:55:26.574Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-05T17:55:26.589Z [DEBUG] Total plugin agents loaded: 0
+2026-01-05T17:55:26.589Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-05T17:55:26.590Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-05T17:55:26.600Z [DEBUG] Git remote URL: null
+2026-01-05T17:55:26.600Z [DEBUG] No git remote URL found
+2026-01-05T17:55:26.600Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-01-05T17:55:26.651Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.1ms)
+2026-01-05T17:55:26.652Z [DEBUG] Stats cache saved successfully (lastComputedDate: 2026-01-04)
+2026-01-05T17:55:26.652Z [DEBUG] Stats cache lastComputedDate updated (no new data)
+2026-01-05T17:55:26.733Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635726733
+2026-01-05T17:55:26.734Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:26.738Z [DEBUG] Temp file written successfully, size: 59738 bytes
+2026-01-05T17:55:26.738Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:26.738Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635726733 to /Users/george/.claude.json
+2026-01-05T17:55:26.738Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:26.765Z [DEBUG] Failed to fetch and cache passes eligibility
+2026-01-05T17:55:26.765Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async L17 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9071)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9964
+2026-01-05T17:55:26.766Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-01-05T17:55:26.800Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async UT2 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1845:3609)
+2026-01-05T17:55:26.815Z [DEBUG] Failed to fetch Grove notice config: AxiosError: Request failed with status code 401
+2026-01-05T17:55:26.843Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (27.7ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:26.844Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-05T17:55:26.850Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-05T17:55:26.854Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635726854
+2026-01-05T17:55:26.854Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:26.858Z [DEBUG] Temp file written successfully, size: 59738 bytes
+2026-01-05T17:55:26.859Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:26.859Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635726854 to /Users/george/.claude.json
+2026-01-05T17:55:26.859Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:26.863Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-05T17:55:26.863Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:26.863Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-05T17:55:26.868Z [DEBUG] Skills and commands included in Skill tool:
+2026-01-05T17:55:26.894Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (23.3ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:26.941Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635726941
+2026-01-05T17:55:26.941Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:26.943Z [DEBUG] Temp file written successfully, size: 59665 bytes
+2026-01-05T17:55:26.943Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:26.944Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635726941 to /Users/george/.claude.json
+2026-01-05T17:55:26.944Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:26.948Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-01-05T17:55:26.948Z [DEBUG] performStartupChecks called
+2026-01-05T17:55:26.948Z [DEBUG] Trust not accepted for current directory - skipping plugin installations
+2026-01-05T17:55:26.965Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.8ms): ps -o command= -p 96283
+2026-01-05T17:55:26.975Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.8ms): ps -o ppid= -p 96283
+2026-01-05T17:55:26.983Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (7.7ms): ps -o command= -p 90983
+2026-01-05T17:55:26.992Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.3ms): ps -o ppid= -p 90983
+2026-01-05T17:55:27.000Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (8.3ms): ps -o command= -p 90584
+2026-01-05T17:55:27.010Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (9.6ms): ps -o ppid= -p 90584
+2026-01-05T17:55:27.016Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-05T17:55:27.018Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635727018
+2026-01-05T17:55:27.018Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:27.025Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.0ms)
+2026-01-05T17:55:27.025Z [DEBUG] Temp file written successfully, size: 59738 bytes
+2026-01-05T17:55:27.025Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:27.025Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635727018 to /Users/george/.claude.json
+2026-01-05T17:55:27.026Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:27.027Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-01-05T17:55:27.034Z [DEBUG] Failed to fetch and cache passes eligibility
+2026-01-05T17:55:27.034Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async L17 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9071)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9964
+2026-01-05T17:55:27.048Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.2ms): ps -o command= -p 96283
+2026-01-05T17:55:27.061Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.0ms): ps -o ppid= -p 96283
+2026-01-05T17:55:27.072Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.0ms): ps -o command= -p 90983
+2026-01-05T17:55:27.085Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.4ms): ps -o ppid= -p 90983
+2026-01-05T17:55:27.096Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (10.9ms): ps -o command= -p 90584
+2026-01-05T17:55:27.110Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.4ms): ps -o ppid= -p 90584
+2026-01-05T17:55:27.116Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-05T17:55:27.116Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-05T17:55:27.121Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-01-05T17:55:27.121Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:27.121Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-01-05T17:55:27.125Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-01-05T17:55:27.126Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:27.126Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-01-05T17:55:27.161Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (22.3ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.165Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635727165
+2026-01-05T17:55:27.165Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:27.168Z [DEBUG] Temp file written successfully, size: 60339 bytes
+2026-01-05T17:55:27.168Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:27.168Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635727165 to /Users/george/.claude.json
+2026-01-05T17:55:27.169Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:27.215Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (22.8ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.243Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (26.6ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.275Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (21.9ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.323Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635727323
+2026-01-05T17:55:27.323Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:27.326Z [DEBUG] Temp file written successfully, size: 60339 bytes
+2026-01-05T17:55:27.327Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:27.327Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635727323 to /Users/george/.claude.json
+2026-01-05T17:55:27.327Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:27.638Z [ERROR] Error: Error: 1: 1 
+    at Is3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1086:3956)
+    at async Js3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1086:1579)
+2026-01-05T17:55:27.668Z [DEBUG] Shell snapshot created successfully (848 bytes)
+2026-01-05T17:55:27.737Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635727737
+2026-01-05T17:55:27.737Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:27.742Z [DEBUG] Temp file written successfully, size: 60339 bytes
+2026-01-05T17:55:27.742Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:27.742Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635727737 to /Users/george/.claude.json
+2026-01-05T17:55:27.742Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:27.774Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (32.0ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.811Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (36.0ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:27.871Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (32.9ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-05T17:55:29.783Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:29.944Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:30.144Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767635730144
+2026-01-05T17:55:30.144Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T17:55:30.148Z [DEBUG] Temp file written successfully, size: 60511 bytes
+2026-01-05T17:55:30.149Z [DEBUG] Applied original permissions to temp file
+2026-01-05T17:55:30.149Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767635730144 to /Users/george/.claude.json
+2026-01-05T17:55:30.149Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T17:55:32.098Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:32.295Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-05T17:55:32.295Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:32.295Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-05T17:55:32.738Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-05T17:55:32.738Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:32.738Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-05T17:55:50.180Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T17:55:50.180Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T17:55:50.180Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T17:55:50.180Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T17:55:50.224Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-05T17:55:50.224Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:50.224Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-05T17:55:50.234Z [DEBUG] FileHistory: Added snapshot for 890c2e06-c08a-4614-a4e4-10b42e0dd58e, tracking 0 files
+2026-01-05T17:55:50.252Z [DEBUG] Total plugin output styles loaded: 0
+2026-01-05T17:55:50.734Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:52.412Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:54.622Z [DEBUG] executePreToolHooks called for tool: Glob
+2026-01-05T17:55:54.623Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-05T17:55:54.629Z [DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+2026-01-05T17:55:54.629Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:54.629Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-01-05T17:55:54.629Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-05T17:55:54.629Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:54.629Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T17:55:54.639Z [DEBUG] tree-sitter: WASM files not found
+2026-01-05T17:55:54.656Z [DEBUG] No session environment scripts found
+2026-01-05T17:55:54.872Z [DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+2026-01-05T17:55:54.872Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:54.872Z [DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+2026-01-05T17:55:55.464Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-05T17:55:55.464Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:55:55.464Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T17:55:55.470Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T17:55:55.470Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T17:55:55.470Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T17:55:55.470Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T17:55:56.262Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:55:57.508Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:00.944Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:00.945Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:00.945Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:00.949Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:00.949Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.949Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.949Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:00.949Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.949Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.949Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:00.949Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.949Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.972Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:00.972Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.972Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.972Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:00.972Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.972Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.972Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:00.972Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:00.972Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:00.981Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T17:56:00.981Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T17:56:00.981Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T17:56:00.981Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T17:56:03.307Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:06.043Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:06.043Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:06.046Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:06.046Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:06.046Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:06.046Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:06.046Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:06.046Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:06.091Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:06.091Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:06.091Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:06.091Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:06.091Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:06.091Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:06.096Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T17:56:06.096Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T17:56:06.096Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T17:56:06.096Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T17:56:08.266Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:10.705Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T17:56:10.709Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T17:56:10.709Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:10.709Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:10.727Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T17:56:10.727Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:10.727Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T17:56:10.731Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-05T17:56:10.736Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-05T17:56:10.736Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:10.736Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T17:56:11.175Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:11.233Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:11.988Z [DEBUG] Stream started - received first chunk
+2026-01-05T17:56:12.450Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "go build:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-05T17:56:12.466Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-05T17:56:12.473Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-05T17:56:12.473Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:12.473Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T17:56:18.473Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-05T17:56:18.473Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T17:56:18.473Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-05T18:02:37.669Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-01-05T18:02:37.669Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2026-01-05T18:02:37.672Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767636157672
+2026-01-05T18:02:37.677Z [DEBUG] Temp file written successfully, size: 73 bytes
+2026-01-05T18:02:37.677Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767636157672 to /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json
+2026-01-05T18:02:37.677Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json written atomically
+2026-01-05T18:02:37.686Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(go build:*)"]
+2026-01-05T18:02:37.717Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-05T18:02:38.925Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-05T18:02:38.925Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T18:02:38.925Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T18:02:38.932Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T18:02:38.932Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T18:02:38.932Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T18:02:38.932Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T18:02:41.490Z [DEBUG] Stream started - received first chunk
+2026-01-05T18:02:44.739Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-05T18:02:44.754Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-05T18:02:44.754Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T18:02:44.754Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T18:02:45.908Z [DEBUG] Stream started - received first chunk
+2026-01-05T18:02:46.044Z [DEBUG] Stream started - received first chunk
+2026-01-05T18:02:46.106Z [DEBUG] Stream started - received first chunk
+2026-01-05T18:02:46.434Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "docker:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-05T18:02:46.458Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-05T18:02:46.466Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-05T18:02:46.466Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T18:02:46.466Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T18:02:52.463Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-05T18:02:52.464Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T18:02:52.464Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-05T23:01:06.202Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-01-05T23:01:06.202Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2026-01-05T23:01:06.222Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767654066222
+2026-01-05T23:01:06.222Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T23:01:06.227Z [DEBUG] Temp file written successfully, size: 97 bytes
+2026-01-05T23:01:06.227Z [DEBUG] Applied original permissions to temp file
+2026-01-05T23:01:06.227Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767654066222 to /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json
+2026-01-05T23:01:06.230Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json written atomically
+2026-01-05T23:01:06.239Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(docker:*)"]
+2026-01-05T23:01:06.319Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-05T23:01:08.028Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-05T23:01:08.028Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:08.028Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T23:01:08.037Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-05T23:01:08.042Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-05T23:01:08.042Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:08.042Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T23:01:08.065Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-05T23:01:08.065Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:08.065Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-05T23:01:08.070Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T23:01:08.071Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T23:01:08.071Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T23:01:08.071Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T23:01:08.482Z [DEBUG] Stream started - received first chunk
+2026-01-05T23:01:10.932Z [DEBUG] Stream started - received first chunk
+2026-01-05T23:01:14.223Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-05T23:01:14.225Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-05T23:01:14.225Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:14.225Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T23:01:15.222Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-05T23:01:15.222Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:15.222Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T23:01:15.227Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-05T23:01:15.232Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-05T23:01:15.232Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:15.232Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T23:01:15.681Z [DEBUG] Stream started - received first chunk
+2026-01-05T23:01:16.924Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-05T23:01:16.924Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:16.924Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-05T23:01:16.941Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-05T23:01:16.941Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-05T23:01:16.941Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-05T23:01:16.941Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-05T23:01:19.140Z [DEBUG] Stream started - received first chunk
+2026-01-05T23:01:25.279Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-05T23:01:25.293Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-05T23:01:25.324Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-05T23:01:25.324Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:25.324Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-05T23:01:25.348Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767654085348
+2026-01-05T23:01:25.348Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T23:01:25.353Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-05T23:01:25.353Z [DEBUG] Applied original permissions to temp file
+2026-01-05T23:01:25.353Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767654085348 to /Users/george/.claude.json
+2026-01-05T23:01:25.353Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T23:01:25.359Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767654085359
+2026-01-05T23:01:25.359Z [DEBUG] Preserving file permissions: 100600
+2026-01-05T23:01:25.365Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.5ms)
+2026-01-05T23:01:25.365Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-05T23:01:25.365Z [DEBUG] Applied original permissions to temp file
+2026-01-05T23:01:25.365Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767654085359 to /Users/george/.claude.json
+2026-01-05T23:01:25.365Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-05T23:01:27.786Z [DEBUG] Stream started - received first chunk
+2026-01-05T23:01:30.720Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-05T23:01:30.720Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:01:30.720Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-05T23:02:25.355Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-01-05T23:02:25.355Z [DEBUG] Found 0 hook matchers in settings
+2026-01-05T23:02:25.355Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-01-06T14:55:06.051Z [DEBUG] npm view failed with code 1
+2026-01-06T14:55:06.051Z [DEBUG] npm stderr: (empty)
+2026-01-06T16:28:08.083Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:28:08.083Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:28:08.084Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:28:08.084Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:28:08.109Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-06T16:28:08.109Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:08.109Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:28:08.112Z [DEBUG] FileHistory: Making snapshot for message 00840d10-7e0d-4780-8d38-6d1682c43cc9
+2026-01-06T16:28:08.112Z [DEBUG] FileHistory: Added snapshot for 00840d10-7e0d-4780-8d38-6d1682c43cc9, tracking 0 files
+2026-01-06T16:28:08.168Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (44.6ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:08.224Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (36.1ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:08.283Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (39.3ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:08.709Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767716888709
+2026-01-06T16:28:08.709Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:28:08.713Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:28:08.713Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:28:08.713Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767716888709 to /Users/george/.claude.json
+2026-01-06T16:28:08.714Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:28:08.761Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (46.8ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:08.807Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (45.1ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:08.900Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (60.6ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-06T16:28:09.791Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:14.311Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:25.735Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:28:25.740Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:28:25.740Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:25.740Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:28.967Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:28:28.967Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:28.967Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:28.973Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:28:28.978Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:28:28.978Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:28.978Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:30.345Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:30.558Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:28:30.558Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:30.558Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:30.569Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:28:30.569Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:28:30.569Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:28:30.569Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:28:30.582Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-06T16:28:30.582Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-06T16:28:30.586Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-06T16:28:30.586Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-06T16:28:30.595Z [DEBUG] Skills and commands included in Skill tool:
+2026-01-06T16:28:30.814Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767716910814
+2026-01-06T16:28:30.814Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:28:30.820Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.1ms)
+2026-01-06T16:28:30.820Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:28:30.820Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:28:30.820Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767716910814 to /Users/george/.claude.json
+2026-01-06T16:28:30.821Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:28:30.821Z [DEBUG] Passes eligibility cached for org 7a959856-bd04-4381-8348-1522884d02db: true
+2026-01-06T16:28:31.102Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:35.279Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:43.523Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-06T16:28:46.354Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:28:46.358Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:28:46.358Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:46.358Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:46.358Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:28:46.360Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:28:46.360Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:46.360Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:28:46.383Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:28:46.383Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:46.383Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:28:47.250Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:28:47.250Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:47.250Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:28:47.255Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:28:47.255Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:28:47.255Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:28:47.255Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:28:47.958Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:52.582Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:28:54.767Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:28:54.771Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:28:54.771Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:54.771Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:28:54.790Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:28:54.790Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:28:54.790Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:28:54.794Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:28:54.794Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:28:54.794Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:28:54.794Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:28:58.127Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:29:10.279Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:29:10.283Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:29:10.283Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:29:10.283Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:29:10.290Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-01-06T16:29:10.301Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-01-06T16:29:10.311Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-01-06T16:29:10.311Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:29:10.311Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:29:16.308Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-06T16:29:16.308Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:29:16.308Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-06T16:30:35.113Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-01-06T16:30:35.123Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717035123
+2026-01-06T16:30:35.123Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:30:35.131Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (8.4ms)
+2026-01-06T16:30:35.131Z [DEBUG] Temp file written successfully, size: 11248 bytes
+2026-01-06T16:30:35.131Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:30:35.131Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717035123 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:30:35.132Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:30:35.150Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.2ms)
+2026-01-06T16:30:35.152Z [DEBUG] FileHistory: Tracked file modification for /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:30:35.163Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .yaml
+2026-01-06T16:30:35.166Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-06T16:30:35.178Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:30:35.178Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:30:35.178Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:30:35.191Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:30:35.192Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:30:35.192Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:30:35.192Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:30:37.808Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:30:40.864Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:30:40.869Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:30:40.869Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:30:40.869Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:30:40.886Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717040886
+2026-01-06T16:30:40.886Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:30:40.890Z [DEBUG] Temp file written successfully, size: 11274 bytes
+2026-01-06T16:30:40.890Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:30:40.890Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717040886 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:30:40.890Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:30:40.899Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:30:40.899Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:30:40.899Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:30:40.905Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:30:40.905Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:30:40.905Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:30:40.905Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:30:45.835Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:30:50.888Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767717050888
+2026-01-06T16:30:50.888Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:30:50.893Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:30:50.893Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:30:50.893Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767717050888 to /Users/george/.claude.json
+2026-01-06T16:30:50.896Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:30:50.896Z [DEBUG] Applying permission update: Setting mode to 'plan'
+2026-01-06T16:30:51.072Z [DEBUG] Applying permission update: Setting mode to 'default'
+2026-01-06T16:30:51.950Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-01-06T16:30:52.326Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:30:52.329Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:30:52.329Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:30:52.329Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:30:52.336Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717052336
+2026-01-06T16:30:52.336Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:30:52.341Z [DEBUG] Temp file written successfully, size: 11305 bytes
+2026-01-06T16:30:52.341Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:30:52.341Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717052336 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:30:52.341Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:30:52.350Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:30:52.350Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:30:52.350Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:30:52.356Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:30:52.356Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:30:52.356Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:30:52.356Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:30:54.545Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767717054545
+2026-01-06T16:30:54.545Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:30:54.550Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.0ms)
+2026-01-06T16:30:54.550Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:30:54.550Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:30:54.550Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767717054545 to /Users/george/.claude.json
+2026-01-06T16:30:54.551Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:30:54.551Z [DEBUG] Applying permission update: Setting mode to 'plan'
+2026-01-06T16:30:55.299Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:31:00.325Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:31:00.333Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:31:00.333Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:00.333Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:00.352Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-01-06T16:31:00.371Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-01-06T16:31:00.377Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-01-06T16:31:00.377Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:00.377Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:03.762Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-01-06T16:31:03.765Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717063765
+2026-01-06T16:31:03.765Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:31:03.770Z [DEBUG] Temp file written successfully, size: 11336 bytes
+2026-01-06T16:31:03.770Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:31:03.770Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717063765 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:31:03.770Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:31:03.797Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-06T16:31:03.800Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:31:03.800Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:03.800Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:03.813Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:31:03.813Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:31:03.813Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:31:03.813Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:31:09.016Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:31:10.464Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767717070464
+2026-01-06T16:31:10.464Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:31:10.470Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.7ms)
+2026-01-06T16:31:10.470Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:31:10.470Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:31:10.470Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767717070464 to /Users/george/.claude.json
+2026-01-06T16:31:10.470Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:31:10.470Z [DEBUG] Applying permission update: Setting mode to 'plan'
+2026-01-06T16:31:11.797Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:31:11.800Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:31:11.800Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:11.800Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:11.809Z [DEBUG] Permission suggestions for Edit: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-01-06T16:31:11.818Z [DEBUG] executePermissionRequestHooks called for tool: Edit
+2026-01-06T16:31:11.824Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Edit
+2026-01-06T16:31:11.824Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:11.824Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:14.893Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-01-06T16:31:14.894Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-06T16:31:14.895Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/.env.tmp.76839.1767717074895
+2026-01-06T16:31:14.895Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:31:14.900Z [DEBUG] Temp file written successfully, size: 1156 bytes
+2026-01-06T16:31:14.900Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:31:14.900Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/.env.tmp.76839.1767717074895 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/.env
+2026-01-06T16:31:14.901Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/.env written atomically
+2026-01-06T16:31:14.918Z [DEBUG] FileHistory: Tracked file modification for /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/.env
+2026-01-06T16:31:14.926Z [DEBUG] [lspRecommendation] No file extension found
+2026-01-06T16:31:14.929Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:31:14.929Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:14.929Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:31:14.936Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:31:14.936Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:31:14.936Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:31:14.936Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:31:21.197Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:31:26.491Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-06T16:31:26.491Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:26.491Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:31:26.518Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767717086518
+2026-01-06T16:31:26.518Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:31:26.521Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:31:26.522Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:31:26.522Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767717086518 to /Users/george/.claude.json
+2026-01-06T16:31:26.522Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:31:30.279Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:31:35.881Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-06T16:31:35.881Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:31:35.881Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:42:26.209Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:42:26.209Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:42:26.209Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:42:26.209Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:42:26.243Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-06T16:42:26.243Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:26.243Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:42:26.244Z [DEBUG] FileHistory: Making snapshot for message 4252bd8a-0d0e-4548-901d-659ace50e4a0
+2026-01-06T16:42:26.249Z [DEBUG] FileHistory: Added snapshot for 4252bd8a-0d0e-4548-901d-659ace50e4a0, tracking 2 files
+2026-01-06T16:42:27.486Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:30.453Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:35.385Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:42:35.389Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:42:35.389Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:35.389Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:42:37.115Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:42:37.115Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:37.115Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:42:37.127Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:42:37.131Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:42:37.131Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:37.131Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:42:38.333Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:42:38.333Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:38.333Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:42:38.350Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:42:38.350Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:42:38.350Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:42:38.350Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:42:38.480Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:38.819Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:41.007Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:48.855Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:42:48.858Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:42:48.858Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:48.858Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:42:48.875Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:42:48.875Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:48.876Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:42:48.881Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:42:48.881Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:42:48.881Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:42:48.881Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:42:51.380Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:42:57.205Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:42:57.208Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:42:57.208Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:57.208Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:42:57.217Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717777217
+2026-01-06T16:42:57.217Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:42:57.222Z [DEBUG] Temp file written successfully, size: 11546 bytes
+2026-01-06T16:42:57.222Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:42:57.222Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717777217 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:42:57.222Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:42:57.232Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:42:57.232Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:42:57.232Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:42:57.241Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:42:57.241Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:42:57.241Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:42:57.241Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:43:01.115Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:43:06.591Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:43:06.593Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:43:06.593Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:06.593Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:06.603Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717786603
+2026-01-06T16:43:06.603Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:43:06.607Z [DEBUG] Temp file written successfully, size: 11570 bytes
+2026-01-06T16:43:06.607Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:43:06.607Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717786603 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:43:06.607Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:43:06.615Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:43:06.615Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:06.615Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:06.625Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:43:06.625Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:43:06.625Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:43:06.625Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:43:08.712Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:43:10.692Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:43:10.695Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:43:10.695Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:10.695Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:43:10.708Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:43:10.708Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:10.708Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:43:10.711Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:43:10.712Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:43:10.712Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:43:10.712Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:43:12.935Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:43:15.702Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:43:15.705Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:43:15.705Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:15.705Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:15.715Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717795715
+2026-01-06T16:43:15.715Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:43:15.719Z [DEBUG] Temp file written successfully, size: 11508 bytes
+2026-01-06T16:43:15.719Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:43:15.719Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717795715 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:43:15.719Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:43:15.729Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:43:15.729Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:15.729Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:15.736Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:43:15.736Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:43:15.736Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:43:15.736Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:43:17.737Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:43:20.115Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:43:20.118Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:43:20.118Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:20.118Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:20.127Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717800127
+2026-01-06T16:43:20.127Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:43:20.132Z [DEBUG] Temp file written successfully, size: 11446 bytes
+2026-01-06T16:43:20.132Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:43:20.132Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717800127 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:43:20.132Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:43:20.142Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:43:20.142Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:20.142Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:43:20.148Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:43:20.148Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:43:20.148Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:43:20.148Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:43:22.075Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:43:23.830Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:43:23.834Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:43:23.834Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:43:23.834Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:02.462Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-06T16:44:02.462Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:02.462Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:02.474Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:02.475Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:02.475Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:02.475Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:05.558Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:07.707Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:44:07.711Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:44:07.711Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:07.711Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:09.063Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:44:09.063Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:09.063Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:09.090Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:44:09.099Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:44:09.099Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:09.099Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:10.236Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:10.985Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:44:10.985Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:10.985Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:44:11.013Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:11.013Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:11.013Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:11.013Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:11.866Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:14.971Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:18.208Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:44:18.212Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:44:18.212Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:18.212Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:18.232Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:44:18.232Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:18.232Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:18.238Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:18.238Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:18.238Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:18.238Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:20.971Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:22.988Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:44:22.989Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:44:22.994Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:44:22.994Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:22.994Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:22.994Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:44:22.994Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:22.994Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:23.018Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:44:23.018Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:23.018Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:23.018Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:44:23.018Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:23.018Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:23.024Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:23.024Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:23.024Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:23.024Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:25.834Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:31.014Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:44:31.017Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:44:31.017Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:31.017Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:31.035Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:44:31.035Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:31.036Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:44:31.041Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:31.041Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:31.041Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:31.041Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:33.368Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:38.760Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:44:38.766Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:44:38.766Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:38.766Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:38.778Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717878778
+2026-01-06T16:44:38.778Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:44:38.782Z [DEBUG] Temp file written successfully, size: 11450 bytes
+2026-01-06T16:44:38.782Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:44:38.782Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717878778 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:44:38.783Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:44:38.795Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:44:38.795Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:38.795Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:38.806Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:38.806Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:38.806Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:38.806Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:43.386Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:49.423Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:44:49.426Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:44:49.426Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:49.426Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:49.434Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717889434
+2026-01-06T16:44:49.434Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:44:49.438Z [DEBUG] Temp file written successfully, size: 11454 bytes
+2026-01-06T16:44:49.439Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:44:49.439Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717889434 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:44:49.439Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:44:49.449Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:44:49.449Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:49.449Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:49.456Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:49.456Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:49.456Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:49.456Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:53.013Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:44:56.669Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:44:56.673Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:44:56.673Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:56.673Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:56.683Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/config/stellar_rpc_startup.sh.tmp.76839.1767717896683
+2026-01-06T16:44:56.683Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:44:56.687Z [DEBUG] Temp file written successfully, size: 482 bytes
+2026-01-06T16:44:56.687Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:44:56.687Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/config/stellar_rpc_startup.sh.tmp.76839.1767717896683 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/config/stellar_rpc_startup.sh
+2026-01-06T16:44:56.687Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/config/stellar_rpc_startup.sh written atomically
+2026-01-06T16:44:56.697Z [DEBUG] FileHistory: Tracked file modification for /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/config/stellar_rpc_startup.sh
+2026-01-06T16:44:56.704Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .sh
+2026-01-06T16:44:56.707Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:44:56.707Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:44:56.707Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:44:56.722Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:44:56.722Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:44:56.722Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:44:56.722Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:44:59.244Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:45:01.297Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:45:01.301Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:45:01.301Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:01.301Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:42.568Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-06T16:45:42.568Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:42.568Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:42.589Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:45:42.589Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:45:42.589Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:45:42.589Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:45:46.722Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:45:49.130Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:45:49.142Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:45:49.142Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:49.142Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:52.767Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:45:52.767Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:52.767Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:52.779Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:45:52.789Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:45:52.789Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:52.789Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:55.054Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:45:55.966Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:45:55.966Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:45:55.966Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:45:55.987Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:45:55.987Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:45:55.987Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:45:55.987Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:45:59.402Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:02.241Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:07.362Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:46:07.378Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:46:07.378Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:07.378Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:46:08.982Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:46:08.982Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:08.982Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:46:08.991Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:46:08.991Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:46:08.991Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:46:08.991Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:46:10.790Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:14.125Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:17.558Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:46:17.562Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:46:17.562Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:17.562Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:46:17.578Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:46:17.578Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:17.578Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:46:17.582Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:46:17.582Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:46:17.582Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:46:17.582Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:46:23.166Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:26.105Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:46:26.112Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:46:26.112Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:26.112Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:46:26.130Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717986130
+2026-01-06T16:46:26.130Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:46:26.135Z [DEBUG] Temp file written successfully, size: 11516 bytes
+2026-01-06T16:46:26.135Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:46:26.135Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717986130 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:46:26.135Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:46:26.152Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:46:26.152Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:26.152Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:46:26.166Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:46:26.166Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:46:26.166Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:46:26.166Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:46:29.566Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:31.395Z [DEBUG] [SLOW OPERATION DETECTED] fs.appendFileSync (245.5ms)
+2026-01-06T16:46:31.904Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:46:31.913Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:46:31.913Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:31.913Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:46:32.433Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:46:32.433Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:32.433Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:46:32.440Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:46:32.440Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:46:32.440Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:46:32.440Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:46:35.950Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:38.461Z [DEBUG] executePreToolHooks called for tool: Edit
+2026-01-06T16:46:38.465Z [DEBUG] Getting matching hook commands for PreToolUse with query: Edit
+2026-01-06T16:46:38.465Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:38.465Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:46:38.476Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717998476
+2026-01-06T16:46:38.476Z [DEBUG] Preserving file permissions: 100644
+2026-01-06T16:46:38.481Z [DEBUG] Temp file written successfully, size: 11578 bytes
+2026-01-06T16:46:38.481Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:46:38.481Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml.tmp.76839.1767717998476 to /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml
+2026-01-06T16:46:38.481Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/wallet-backend/docker-compose.yaml written atomically
+2026-01-06T16:46:38.497Z [DEBUG] Getting matching hook commands for PostToolUse with query: Edit
+2026-01-06T16:46:38.497Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:38.497Z [DEBUG] Matched 0 unique hooks for query "Edit" (0 before deduplication)
+2026-01-06T16:46:38.534Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:46:38.534Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:46:38.534Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:46:38.534Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:46:42.053Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:46:45.226Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:46:45.230Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:46:45.230Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:46:45.230Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:48:45.420Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:48:45.420Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:48:45.420Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:48:45.430Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:48:45.430Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:48:45.430Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:48:45.430Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:48:47.753Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:48:48.892Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:48:49.309Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T16:48:49.313Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T16:48:49.313Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:48:49.313Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:48:49.327Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T16:48:49.327Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:48:49.327Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T16:48:49.331Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:48:49.331Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:48:49.331Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:48:49.331Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:48:52.464Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:48:54.737Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:48:54.743Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:48:54.743Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:48:54.743Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:50:12.439Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.1ms)
+2026-01-06T16:50:43.114Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (7.3ms)
+2026-01-06T16:50:55.082Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:50:55.082Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:50:55.082Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:50:55.091Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:50:55.091Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:50:55.091Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:50:55.091Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:50:56.027Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:50:58.023Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:50:59.151Z [DEBUG] executePreToolHooks called for tool: TaskOutput
+2026-01-06T16:50:59.155Z [DEBUG] Getting matching hook commands for PreToolUse with query: TaskOutput
+2026-01-06T16:50:59.155Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:50:59.155Z [DEBUG] Matched 0 unique hooks for query "TaskOutput" (0 before deduplication)
+2026-01-06T16:51:17.323Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (16.5ms)
+2026-01-06T16:53:38.536Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767718418536
+2026-01-06T16:53:38.536Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:53:38.541Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.6ms)
+2026-01-06T16:53:38.541Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:53:38.542Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:53:38.542Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767718418536 to /Users/george/.claude.json
+2026-01-06T16:53:38.543Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:53:38.613Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767718418613
+2026-01-06T16:53:38.613Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:53:38.619Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.6ms)
+2026-01-06T16:53:38.619Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T16:53:38.619Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:53:38.619Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767718418613 to /Users/george/.claude.json
+2026-01-06T16:53:38.619Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T16:53:38.635Z [DEBUG] Getting matching hook commands for PostToolUse with query: TaskOutput
+2026-01-06T16:53:38.635Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:53:38.635Z [DEBUG] Matched 0 unique hooks for query "TaskOutput" (0 before deduplication)
+2026-01-06T16:53:38.647Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:53:38.647Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:53:38.647Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:53:38.647Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:53:41.250Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:53:43.536Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:53:43.541Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:53:43.541Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:53:43.541Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:53:46.572Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:53:46.572Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:53:46.572Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:53:46.588Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:53:46.588Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:53:46.588Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:53:46.588Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:53:48.444Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:53:49.276Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:53:53.465Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T16:53:53.471Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T16:53:53.471Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:53:53.471Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:53:54.144Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:53:54.317Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "curl:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-06T16:53:54.325Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-06T16:53:54.331Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-06T16:53:54.331Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:53:54.331Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:54:00.332Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-06T16:54:00.332Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:54:00.332Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-06T16:56:44.405Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-01-06T16:56:44.407Z [DEBUG] Persisting 1 allow rule(s) to localSettings
+2026-01-06T16:56:44.416Z [DEBUG] Writing to temp file: /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767718604416
+2026-01-06T16:56:44.416Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T16:56:44.422Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.2ms)
+2026-01-06T16:56:44.422Z [DEBUG] Temp file written successfully, size: 119 bytes
+2026-01-06T16:56:44.422Z [DEBUG] Applied original permissions to temp file
+2026-01-06T16:56:44.422Z [DEBUG] Renaming /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json.tmp.76839.1767718604416 to /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json
+2026-01-06T16:56:44.425Z [DEBUG] File /Users/george/soroscan-mvp/stellar-explorer/.claude/settings.local.json written atomically
+2026-01-06T16:56:44.441Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(curl:*)"]
+2026-01-06T16:56:44.532Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-06T16:56:46.889Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T16:56:46.889Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:56:46.889Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T16:56:46.907Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T16:56:46.907Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T16:56:46.907Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T16:56:46.907Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T16:56:47.439Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:56:49.498Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:56:56.689Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-06T16:56:56.689Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:56:56.689Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:56:59.344Z [DEBUG] Stream started - received first chunk
+2026-01-06T16:57:03.119Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-06T16:57:03.119Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:57:03.119Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T16:57:56.724Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (6.2ms)
+2026-01-06T16:57:56.727Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-01-06T16:57:56.727Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T16:57:56.727Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-01-06T17:05:57.388Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767719157387
+2026-01-06T17:05:57.388Z [DEBUG] Preserving file permissions: 100600
+2026-01-06T17:05:57.393Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.7ms)
+2026-01-06T17:05:57.393Z [DEBUG] Temp file written successfully, size: 60535 bytes
+2026-01-06T17:05:57.393Z [DEBUG] Applied original permissions to temp file
+2026-01-06T17:05:57.393Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767719157387 to /Users/george/.claude.json
+2026-01-06T17:05:57.395Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-06T17:05:57.395Z [DEBUG] Applying permission update: Setting mode to 'plan'
+2026-01-06T17:06:12.794Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T17:06:12.794Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T17:06:12.794Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T17:06:12.794Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T17:06:12.806Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-06T17:06:12.806Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:12.806Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T17:06:12.807Z [DEBUG] FileHistory: Making snapshot for message 2cd2d05e-4a45-434c-bfd4-471090640a00
+2026-01-06T17:06:12.814Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.0ms)
+2026-01-06T17:06:12.814Z [DEBUG] FileHistory: Added snapshot for 2cd2d05e-4a45-434c-bfd4-471090640a00, tracking 3 files
+2026-01-06T17:06:14.262Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:06:18.685Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:06:21.691Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-06T17:06:21.699Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-06T17:06:21.699Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:21.699Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T17:06:22.630Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-06T17:06:22.630Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:22.630Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-06T17:06:22.636Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T17:06:22.636Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T17:06:22.636Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T17:06:22.636Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T17:06:26.389Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:06:26.392Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:06:29.581Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T17:06:29.581Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T17:06:29.586Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T17:06:29.586Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:29.586Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T17:06:29.586Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T17:06:29.586Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:29.586Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T17:06:29.608Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T17:06:29.608Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:29.608Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T17:06:29.608Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T17:06:29.608Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:29.608Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T17:06:29.613Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T17:06:29.613Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T17:06:29.613Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T17:06:29.613Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T17:06:34.576Z [ERROR] AxiosError: AxiosError: timeout of 5000ms exceeded
+    at VU.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:10436)
+    at VU.emit (node:events:519:28)
+    at VU.emit (node:domain:489:12)
+    at Timeout.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:5600)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at async zR0 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4868:4053)
+2026-01-06T17:06:37.726Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:06:47.366Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-06T17:06:47.366Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:06:47.366Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T17:11:15.069Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T17:11:15.069Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T17:11:15.069Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T17:11:15.069Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T17:11:15.096Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-06T17:11:15.096Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:11:15.096Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T17:11:15.098Z [DEBUG] FileHistory: Making snapshot for message 710b508f-7d10-452b-acf2-cb7adbcdd801
+2026-01-06T17:11:15.098Z [DEBUG] FileHistory: Added snapshot for 710b508f-7d10-452b-acf2-cb7adbcdd801, tracking 3 files
+2026-01-06T17:11:15.158Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (15.3ms)
+2026-01-06T17:11:15.762Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:11:20.723Z [DEBUG] Stream started - received first chunk
+2026-01-06T17:11:26.713Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-06T17:11:26.713Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T17:11:26.713Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T17:30:37.442Z [DEBUG] npm view failed with code 1
+2026-01-06T17:30:37.442Z [DEBUG] npm stderr: (empty)
+2026-01-06T22:14:22.512Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T22:14:22.513Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T22:14:22.513Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T22:14:22.513Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T22:14:22.532Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-06T22:14:22.532Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T22:14:22.532Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T22:14:22.536Z [DEBUG] FileHistory: Making snapshot for message f6bb9d0f-4c7f-44c1-b742-ac5ad738db08
+2026-01-06T22:14:22.537Z [DEBUG] FileHistory: Added snapshot for f6bb9d0f-4c7f-44c1-b742-ac5ad738db08, tracking 3 files
+2026-01-06T22:14:23.354Z [DEBUG] Stream started - received first chunk
+2026-01-06T22:14:26.668Z [DEBUG] Stream started - received first chunk
+2026-01-06T22:14:35.974Z [DEBUG] executePreToolHooks called for tool: Read
+2026-01-06T22:14:35.978Z [DEBUG] Getting matching hook commands for PreToolUse with query: Read
+2026-01-06T22:14:35.978Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T22:14:35.978Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T22:14:36.005Z [DEBUG] Getting matching hook commands for PostToolUse with query: Read
+2026-01-06T22:14:36.005Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T22:14:36.005Z [DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+2026-01-06T22:14:36.010Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-06T22:14:36.010Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-06T22:14:36.010Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-06T22:14:36.010Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-06T22:14:40.045Z [DEBUG] Stream started - received first chunk
+2026-01-06T22:14:49.419Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-06T22:14:49.427Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-06T22:14:49.427Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-06T22:14:49.627Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-06T22:14:49.627Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T22:14:49.627Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-06T22:15:49.666Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-01-06T22:15:49.666Z [DEBUG] Found 0 hook matchers in settings
+2026-01-06T22:15:49.666Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-01-07T00:28:56.317Z [DEBUG] npm view failed with code 1
+2026-01-07T00:28:56.317Z [DEBUG] npm stderr: (empty)
+2026-01-07T00:45:32.338Z [DEBUG] npm view failed with code 1
+2026-01-07T00:45:32.338Z [DEBUG] npm stderr: (empty)
+2026-01-07T01:17:38.257Z [DEBUG] npm view failed with code 1
+2026-01-07T01:17:38.257Z [DEBUG] npm stderr: (empty)
+2026-01-07T01:50:41.266Z [DEBUG] npm view failed with code 1
+2026-01-07T01:50:41.266Z [DEBUG] npm stderr: (empty)
+2026-01-07T02:24:54.262Z [DEBUG] npm view failed with code 1
+2026-01-07T02:24:54.262Z [DEBUG] npm stderr: (empty)
+2026-01-07T03:09:13.261Z [DEBUG] npm view failed with code 1
+2026-01-07T03:09:13.261Z [DEBUG] npm stderr: (empty)
+2026-01-07T04:25:20.290Z [DEBUG] npm view failed with code 1
+2026-01-07T04:25:20.290Z [DEBUG] npm stderr: (empty)
+2026-01-07T16:36:00.415Z [DEBUG] npm view failed with code 1
+2026-01-07T16:36:00.416Z [DEBUG] npm stderr: (empty)
+2026-01-07T19:05:56.382Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (5.6ms)
+2026-01-07T20:05:56.501Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:05:56.501Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:05:57.533Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767816357533
+2026-01-07T20:05:57.533Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:05:57.544Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.5ms)
+2026-01-07T20:05:57.545Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:05:57.545Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:05:57.545Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767816357533 to /Users/george/.claude.json
+2026-01-07T20:05:57.545Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T21:35:56.070Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T21:35:56.071Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T21:35:57.210Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767821757210
+2026-01-07T21:35:57.210Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T21:35:57.215Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.0ms)
+2026-01-07T21:35:57.215Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-07T21:35:57.215Z [DEBUG] Applied original permissions to temp file
+2026-01-07T21:35:57.215Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767821757210 to /Users/george/.claude.json
+2026-01-07T21:35:57.216Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T22:05:55.850Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T22:05:55.850Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T22:05:56.627Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767823556627
+2026-01-07T22:05:56.627Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T22:05:56.707Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (80.1ms)
+2026-01-07T22:05:56.707Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-07T22:05:56.707Z [DEBUG] Applied original permissions to temp file
+2026-01-07T22:05:56.707Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767823556627 to /Users/george/.claude.json
+2026-01-07T22:05:56.707Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T22:36:00.367Z [DEBUG] npm view failed with code 1
+2026-01-07T22:36:00.367Z [DEBUG] npm stderr: (empty)
+2026-01-07T23:07:07.696Z [DEBUG] npm view failed with code 1
+2026-01-07T23:07:07.696Z [DEBUG] npm stderr: (empty)
+2026-01-07T23:41:42.809Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T23:41:42.810Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T23:44:09.610Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767829449610
+2026-01-07T23:44:09.610Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T23:44:09.621Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.8ms)
+2026-01-07T23:44:09.622Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-07T23:44:09.622Z [DEBUG] Applied original permissions to temp file
+2026-01-07T23:44:09.622Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767829449610 to /Users/george/.claude.json
+2026-01-07T23:44:09.623Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T00:17:19.445Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T00:17:19.445Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T00:17:20.853Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767831440853
+2026-01-08T00:17:20.853Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T00:17:20.860Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.0ms)
+2026-01-08T00:17:20.860Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T00:17:20.860Z [DEBUG] Applied original permissions to temp file
+2026-01-08T00:17:20.860Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767831440853 to /Users/george/.claude.json
+2026-01-08T00:17:20.860Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T00:49:51.464Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T00:49:51.465Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T00:49:52.842Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767833392842
+2026-01-08T00:49:52.842Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T00:49:52.854Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (12.6ms)
+2026-01-08T00:49:52.854Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T00:49:52.854Z [DEBUG] Applied original permissions to temp file
+2026-01-08T00:49:52.854Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767833392842 to /Users/george/.claude.json
+2026-01-08T00:49:52.855Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T01:28:13.059Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T01:28:13.059Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T01:28:14.559Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767835694559
+2026-01-08T01:28:14.559Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T01:28:14.566Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.3ms)
+2026-01-08T01:28:14.566Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T01:28:14.566Z [DEBUG] Applied original permissions to temp file
+2026-01-08T01:28:14.566Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767835694559 to /Users/george/.claude.json
+2026-01-08T01:28:14.569Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T02:08:42.391Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T02:08:42.391Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T02:08:43.493Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767838123493
+2026-01-08T02:08:43.493Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T02:08:43.502Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (8.5ms)
+2026-01-08T02:08:43.502Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T02:08:43.502Z [DEBUG] Applied original permissions to temp file
+2026-01-08T02:08:43.502Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767838123493 to /Users/george/.claude.json
+2026-01-08T02:08:43.502Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T02:51:34.319Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T02:51:34.319Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T02:51:35.833Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767840695833
+2026-01-08T02:51:35.833Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T02:51:35.844Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.7ms)
+2026-01-08T02:51:35.844Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T02:51:35.844Z [DEBUG] Applied original permissions to temp file
+2026-01-08T02:51:35.844Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767840695833 to /Users/george/.claude.json
+2026-01-08T02:51:35.845Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T03:35:23.439Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T03:35:23.439Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T03:35:24.952Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767843324952
+2026-01-08T03:35:24.952Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T03:35:25.036Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (84.1ms)
+2026-01-08T03:35:25.036Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T03:35:25.036Z [DEBUG] Applied original permissions to temp file
+2026-01-08T03:35:25.036Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767843324952 to /Users/george/.claude.json
+2026-01-08T03:35:25.038Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T04:17:46.309Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T04:17:46.309Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T04:17:47.500Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767845867500
+2026-01-08T04:17:47.500Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T04:17:47.567Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (66.5ms)
+2026-01-08T04:17:47.567Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T04:17:47.567Z [DEBUG] Applied original permissions to temp file
+2026-01-08T04:17:47.567Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767845867500 to /Users/george/.claude.json
+2026-01-08T04:17:47.567Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T04:25:31.085Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (46.9ms)
+2026-01-08T04:25:31.114Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (11.7ms)
+2026-01-08T04:54:53.858Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T04:54:53.858Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T04:54:56.345Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767848096345
+2026-01-08T04:54:56.345Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T04:54:56.352Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.8ms)
+2026-01-08T04:54:56.352Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T04:54:56.352Z [DEBUG] Applied original permissions to temp file
+2026-01-08T04:54:56.352Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767848096345 to /Users/george/.claude.json
+2026-01-08T04:54:56.353Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T05:25:37.493Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T05:25:37.493Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T05:25:38.789Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767849938789
+2026-01-08T05:25:38.789Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T05:25:38.795Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.7ms)
+2026-01-08T05:25:38.795Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T05:25:38.795Z [DEBUG] Applied original permissions to temp file
+2026-01-08T05:25:38.795Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767849938789 to /Users/george/.claude.json
+2026-01-08T05:25:38.796Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T05:57:54.267Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T05:57:54.267Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T05:57:55.528Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767851875528
+2026-01-08T05:57:55.528Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T05:57:55.538Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.0ms)
+2026-01-08T05:57:55.538Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T05:57:55.538Z [DEBUG] Applied original permissions to temp file
+2026-01-08T05:57:55.538Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767851875528 to /Users/george/.claude.json
+2026-01-08T05:57:55.538Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T06:32:56.125Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T06:32:56.125Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T06:32:58.120Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767853978120
+2026-01-08T06:32:58.120Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T06:32:58.126Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.2ms)
+2026-01-08T06:32:58.126Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T06:32:58.126Z [DEBUG] Applied original permissions to temp file
+2026-01-08T06:32:58.126Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767853978120 to /Users/george/.claude.json
+2026-01-08T06:32:58.129Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T07:05:02.127Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T07:05:02.127Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T07:05:03.190Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767855903190
+2026-01-08T07:05:03.190Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T07:05:03.196Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.0ms)
+2026-01-08T07:05:03.196Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T07:05:03.196Z [DEBUG] Applied original permissions to temp file
+2026-01-08T07:05:03.196Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767855903190 to /Users/george/.claude.json
+2026-01-08T07:05:03.197Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T07:41:05.109Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T07:41:05.109Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T07:41:05.114Z [ERROR] ED1: ED1: Another process is currently installing an update
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4715:2052)
+    at Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11014)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-01-08T08:16:24.223Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T08:16:24.223Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T08:16:24.226Z [ERROR] ED1: ED1: Another process is currently installing an update
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4715:2052)
+    at Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11014)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-01-08T08:48:52.248Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T08:48:52.248Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T08:48:52.248Z [ERROR] ED1: ED1: Another process is currently installing an update
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4715:2052)
+    at Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11014)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-01-08T09:04:06.590Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (6.3ms)
+2026-01-08T09:21:54.794Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T09:21:54.794Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T09:21:57.608Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767864117608
+2026-01-08T09:21:57.608Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T09:21:57.613Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.1ms)
+2026-01-08T09:21:57.613Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T09:21:57.613Z [DEBUG] Applied original permissions to temp file
+2026-01-08T09:21:57.613Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767864117608 to /Users/george/.claude.json
+2026-01-08T09:21:57.614Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T09:56:51.354Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T09:56:51.354Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T09:56:54.095Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767866214095
+2026-01-08T09:56:54.095Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T09:56:54.108Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (12.3ms)
+2026-01-08T09:56:54.108Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T09:56:54.108Z [DEBUG] Applied original permissions to temp file
+2026-01-08T09:56:54.108Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767866214095 to /Users/george/.claude.json
+2026-01-08T09:56:54.109Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T10:29:43.724Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T10:29:43.724Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T10:29:46.451Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767868186450
+2026-01-08T10:29:46.451Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T10:29:46.458Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.8ms)
+2026-01-08T10:29:46.458Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T10:29:46.458Z [DEBUG] Applied original permissions to temp file
+2026-01-08T10:29:46.458Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767868186450 to /Users/george/.claude.json
+2026-01-08T10:29:46.459Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T11:01:02.986Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T11:01:02.986Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T11:01:05.656Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767870065656
+2026-01-08T11:01:05.656Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T11:01:05.668Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (12.2ms)
+2026-01-08T11:01:05.668Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T11:01:05.669Z [DEBUG] Applied original permissions to temp file
+2026-01-08T11:01:05.669Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767870065656 to /Users/george/.claude.json
+2026-01-08T11:01:05.669Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T11:34:14.872Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T11:34:14.872Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T11:34:18.074Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.76839.1767872058073
+2026-01-08T11:34:18.074Z [DEBUG] Preserving file permissions: 100600
+2026-01-08T11:34:18.085Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (11.6ms)
+2026-01-08T11:34:18.085Z [DEBUG] Temp file written successfully, size: 11821 bytes
+2026-01-08T11:34:18.085Z [DEBUG] Applied original permissions to temp file
+2026-01-08T11:34:18.085Z [DEBUG] Renaming /Users/george/.claude.json.tmp.76839.1767872058073 to /Users/george/.claude.json
+2026-01-08T11:34:18.087Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-08T11:52:08.486Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (19.8ms)
+2026-01-08T12:09:10.374Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T12:09:10.374Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T12:27:00.506Z [ERROR] ED1: ED1: Failed to install new version of claude:  
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T12:44:34.653Z [ERROR] Error: Error: 1P event logging: 1 events failed to export
+    at yp1.queueFailedEvents (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:240:39698)
+    at yp1.doExport (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:240:38794)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at process.processTimers (node:internal/timers:523:7)
+2026-01-08T12:44:34.658Z [ERROR] Error: Error: {"stack":"Error: Failed to export 1 events\n    at yp1.doExport (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:240:38885)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at listOnTimeout (node:internal/timers:549:9)\n    at process.processTimers (node:internal/timers:523:7)","message":"Failed to export 1 events","name":"Error"}
+    at rK0.error (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1683:34862)
+    at sm1.error (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:239:33126)
+    at file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:239:64151
+    at ty8 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:239:64697)
+    at file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:240:20245
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at process.processTimers (node:internal/timers:523:7)
+2026-01-08T12:44:36.863Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T12:44:36.863Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T12:44:36.864Z [ERROR] ED1: ED1: Another process is currently installing an update
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4715:2052)
+    at Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11014)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-01-08T13:17:25.265Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T13:17:25.265Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T13:17:25.265Z [ERROR] ED1: ED1: Another process is currently installing an update
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4715:2052)
+    at Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11014)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2026-01-08T13:50:29.137Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T13:50:29.137Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T13:50:31.341Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T13_50_29_975Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T14:26:42.062Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T14:26:42.062Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T14:26:43.392Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T14_26_42_682Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T14:29:45.271Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (9.7ms)
+2026-01-08T15:03:04.243Z [DEBUG] npm view failed with code 1
+2026-01-08T15:03:04.243Z [DEBUG] npm stderr: (empty)
+2026-01-08T15:33:56.974Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T15:33:56.974Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T15:34:00.097Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T15_33_59_648Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T16:03:59.950Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T16:03:59.950Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T16:04:03.816Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T16_04_02_948Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T16:34:00.186Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T16:34:00.186Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T16:34:01.005Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T16_34_00_626Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T17:04:00.226Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T17:04:00.227Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T17:04:00.740Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T17_04_00_573Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T17:41:04.627Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T17:41:04.629Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T17:41:05.503Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T17_41_04_980Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T18:12:31.507Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T18:12:31.507Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T18:12:32.528Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T18_12_31_973Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T18:47:19.790Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T18:47:19.790Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T18:47:20.874Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T18_47_20_299Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T19:17:17.327Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T19:17:17.329Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T19:17:18.216Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T19_17_17_751Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)
+2026-01-08T19:47:16.728Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-08T19:47:16.729Z [DEBUG] AutoUpdater: Using global update method
+2026-01-08T19:47:17.291Z [ERROR] ED1: ED1: Failed to install new version of claude:  npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code
+npm error dest /Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U
+npm error errno -66
+npm error ENOTEMPTY: directory not empty, rename '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code' -> '/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/.claude-code-as3XSV6U'
+npm error A complete log of this run can be found in: /Users/george/.npm/_logs/2026-01-08T19_47_17_117Z-debug-0.log
+    at IDA (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:4725:824)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.current (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2495:11008)

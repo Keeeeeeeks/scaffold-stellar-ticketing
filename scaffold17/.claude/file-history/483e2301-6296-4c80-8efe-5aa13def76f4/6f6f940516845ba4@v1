@@ -1,0 +1,96 @@
+// Application-wide constants
+
+export const STROOPS_PER_XLM = 10_000_000;
+
+export const NETWORK_CONFIG = {
+  mainnet: {
+    name: 'Mainnet',
+    passphrase: 'Public Global Stellar Network ; September 2015',
+    horizonUrl: 'https://horizon.stellar.org',
+    rpcUrl: 'https://soroban.stellar.org',
+  },
+  testnet: {
+    name: 'Testnet',
+    passphrase: 'Test SDF Network ; September 2015',
+    horizonUrl: 'https://horizon-testnet.stellar.org',
+    rpcUrl: 'https://soroban-testnet.stellar.org',
+  },
+  futurenet: {
+    name: 'Futurenet',
+    passphrase: 'Test SDF Future Network ; October 2022',
+    horizonUrl: 'https://horizon-futurenet.stellar.org',
+    rpcUrl: 'https://rpc-futurenet.stellar.org',
+  },
+} as const;
+
+export const OPERATION_TYPES: Record<string, string> = {
+  create_account: 'Create Account',
+  payment: 'Payment',
+  path_payment_strict_receive: 'Path Payment (Strict Receive)',
+  path_payment_strict_send: 'Path Payment (Strict Send)',
+  manage_sell_offer: 'Manage Sell Offer',
+  manage_buy_offer: 'Manage Buy Offer',
+  create_passive_sell_offer: 'Create Passive Sell Offer',
+  set_options: 'Set Options',
+  change_trust: 'Change Trust',
+  allow_trust: 'Allow Trust',
+  account_merge: 'Account Merge',
+  manage_data: 'Manage Data',
+  bump_sequence: 'Bump Sequence',
+  create_claimable_balance: 'Create Claimable Balance',
+  claim_claimable_balance: 'Claim Claimable Balance',
+  begin_sponsoring_future_reserves: 'Begin Sponsoring Future Reserves',
+  end_sponsoring_future_reserves: 'End Sponsoring Future Reserves',
+  revoke_sponsorship: 'Revoke Sponsorship',
+  clawback: 'Clawback',
+  clawback_claimable_balance: 'Clawback Claimable Balance',
+  set_trust_line_flags: 'Set Trust Line Flags',
+  liquidity_pool_deposit: 'Liquidity Pool Deposit',
+  liquidity_pool_withdraw: 'Liquidity Pool Withdraw',
+  invoke_host_function: 'Invoke Contract',
+  extend_footprint_ttl: 'Extend Footprint TTL',
+  restore_footprint: 'Restore Footprint',
+};
+
+export const STATE_CHANGE_REASONS: Record<string, string> = {
+  PAYMENT: 'Payment',
+  FEE: 'Transaction Fee',
+  CREATE_ACCOUNT: 'Account Creation',
+  MERGE: 'Account Merge',
+  TRADE: 'Trade',
+  SPONSORSHIP: 'Sponsorship',
+  CONTRACT_INVOCATION: 'Contract Invocation',
+  CONTRACT_DEPLOYMENT: 'Contract Deployment',
+};
+
+// Custom easing functions from CLAUDE.md
+export const EASING = {
+  outQuad: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  outCubic: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+  outQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+  outQuint: 'cubic-bezier(0.23, 1, 0.32, 1)',
+  outExpo: 'cubic-bezier(0.19, 1, 0.22, 1)',
+  outCirc: 'cubic-bezier(0.075, 0.82, 0.165, 1)',
+  inOutQuad: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+  inOutCubic: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+  inOutQuart: 'cubic-bezier(0.77, 0, 0.175, 1)',
+  inOutQuint: 'cubic-bezier(0.86, 0, 0.07, 1)',
+  inOutExpo: 'cubic-bezier(1, 0, 0, 1)',
+  inOutCirc: 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+} as const;
+
+// Spring animation presets for framer-motion
+export const SPRING = {
+  snappy: { type: 'spring', stiffness: 400, damping: 30 },
+  gentle: { type: 'spring', stiffness: 200, damping: 20 },
+  bouncy: { type: 'spring', stiffness: 300, damping: 15 },
+  stiff: { type: 'spring', stiffness: 500, damping: 35 },
+} as const;
+
+// Animation durations (in seconds)
+export const DURATION = {
+  instant: 0.1,
+  fast: 0.2,
+  normal: 0.3,
+  slow: 0.5,
+} as const;

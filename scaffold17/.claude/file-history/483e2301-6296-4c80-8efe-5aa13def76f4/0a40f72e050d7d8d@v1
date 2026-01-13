@@ -1,0 +1,69 @@
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Copy, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+
+interface CopyButtonProps {
+  value: string;
+  className?: string;
+  variant?: 'icon' | 'default';
+}
+
+export function CopyButton({
+  value,
+  className,
+  variant = 'icon',
+}: CopyButtonProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={SPRING.snappy}
+          >
+            <Button
+              variant="ghost"
+              size={variant === 'icon' ? 'icon' : 'sm'}
+              onClick={handleCopy}
+              className={cn(
+                'h-8 w-8',
+                variant === 'default' && 'w-auto px-3',
+                className
+              )}
+            >
+              {copied ? (
+                <Check className="h-4 w-4 text-emerald-500" />
+              ) : (
+                <Copy className="h-4 w-4 text-muted-foreground" />
+              )}
+              {variant === 'default' && (
+                <span className="ml-2">{copied ? 'Copied!' : 'Copy'}</span>
+              )}
+            </Button>
+          </motion.div>
+        </TooltipTrigger>
+        <TooltipContent>{copied ? 'Copied!' : 'Copy to clipboard'}</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}

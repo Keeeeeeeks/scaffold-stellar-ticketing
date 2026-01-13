@@ -1,0 +1,109 @@
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Copy, Check, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { truncateAddress } from '@/lib/utils/format';
+import { cn } from '@/lib/utils';
+import { SPRING } from '@/lib/utils/constants';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
+interface AddressDisplayProps {
+  address: string;
+  truncate?: boolean;
+  link?: boolean;
+  showCopy?: boolean;
+  showExternal?: boolean;
+  className?: string;
+}
+
+export function AddressDisplay({
+  address,
+  truncate = true,
+  link = true,
+  showCopy = true,
+  showExternal = false,
+  className,
+}: AddressDisplayProps) {
+  const [copied, setCopied] = useState(false);
+
+  const isContract = address.startsWith('C');
+  const displayAddress = truncate ? truncateAddress(address) : address;
+  const href = isContract ? `/contract/${address}` : `/account/${address}`;
+
+  const handleCopy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    await navigator.clipboard.writeText(address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const content = (
+    <span
+      className={cn(
+        'inline-flex items-center gap-1.5 font-mono text-sm',
+        className
+      )}
+    >
+      <span
+        className={cn(
+          'inline-flex items-center gap-1',
+          link && 'hover:text-primary transition-colors'
+        )}
+      >
+        {/* Address type indicator */}
+        <span
+          className={cn(
+            'h-2 w-2 rounded-full shrink-0',
+            isContract ? 'bg-purple-500' : 'bg-emerald-500'
+          )}
+        />
+        {displayAddress}
+      </span>
+
+      {showCopy && (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <motion.button
+                onClick={handleCopy}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={SPRING.snappy}
+                className="p-1 rounded hover:bg-muted transition-colors"
+              >
+                {copied ? (
+                  <Check className="h-3 w-3 text-emerald-500" />
+                ) : (
+                  <Copy className="h-3 w-3 text-muted-foreground" />
+                )}
+              </motion.button>
+            </TooltipTrigger>
+            <TooltipContent>{copied ? 'Copied!' : 'Copy address'}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      )}
+
+      {showExternal && (
+        <ExternalLink className="h-3 w-3 text-muted-foreground" />
+      )}
+    </span>
+  );
+
+  if (link) {
+    return (
+      <Link href={href} className="inline-flex">
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
+}

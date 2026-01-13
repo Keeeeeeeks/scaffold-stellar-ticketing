@@ -1,0 +1,184 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
+import { AddressDisplay } from '@/components/shared/AddressDisplay';
+import { formatTokenAmount } from '@/lib/utils/format';
+import { SPRING } from '@/lib/utils/constants';
+import { cn } from '@/lib/utils';
+import type { Balance } from '@/types/stellar';
+
+interface BalanceListProps {
+  balances: Balance[];
+  loading?: boolean;
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: SPRING.snappy,
+  },
+};
+
+export function BalanceList({ balances, loading }: BalanceListProps) {
+  if (loading) {
+    return <BalanceListSkeleton />;
+  }
+
+  if (balances.length === 0) {
+    return (
+      <Card>
+        <CardContent className="py-8 text-center text-muted-foreground">
+          No balances found for this account.
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Sort balances: Native first, then by balance amount
+  const sortedBalances = [...balances].sort((a, b) => {
+    if (a.tokenType === 'NATIVE') return -1;
+    if (b.tokenType === 'NATIVE') return 1;
+    return parseInt(b.balance, 10) - parseInt(a.balance, 10);
+  });
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="space-y-2"
+    >
+      {sortedBalances.map((balance, index) => (
+        <motion.div key={`${balance.tokenId}-${index}`} variants={itemVariants}>
+          <BalanceCard balance={balance} />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+function BalanceCard({ balance }: { balance: Balance }) {
+  const { tokenType, code, symbol, name, issuer, decimals = 7 } = balance;
+
+  const displayName = getDisplayName(balance);
+  const displaySymbol = getDisplaySymbol(balance);
+  const formattedBalance = formatTokenAmount(balance.balance, decimals);
+
+  const typeColors: Record<string, string> = {
+    NATIVE: 'bg-blue-500/10 border-blue-500/20',
+    SAC: 'bg-purple-500/10 border-purple-500/20',
+    SEP41: 'bg-emerald-500/10 border-emerald-500/20',
+    TRUSTLINE: 'bg-orange-500/10 border-orange-500/20',
+  };
+
+  return (
+    <Card
+      className={cn(
+        'overflow-hidden hover:border-primary/50 transition-colors',
+        typeColors[tokenType] || 'bg-zinc-500/10'
+      )}
+    >
+      <CardContent className="p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            {/* Token Icon */}
+            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 flex items-center justify-center font-bold text-sm shrink-0">
+              {displaySymbol.charAt(0)}
+            </div>
+
+            {/* Token Info */}
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-medium truncate">{displayName}</span>
+                <Badge
+                  variant="outline"
+                  className={cn(
+                    'text-xs',
+                    tokenType === 'NATIVE' && 'border-blue-500/30 text-blue-500',
+                    tokenType === 'SAC' && 'border-purple-500/30 text-purple-500',
+                    tokenType === 'SEP41' &&
+                      'border-emerald-500/30 text-emerald-500',
+                    tokenType === 'TRUSTLINE' &&
+                      'border-orange-500/30 text-orange-500'
+                  )}
+                >
+                  {tokenType}
+                </Badge>
+              </div>
+              {issuer && (
+                <div className="text-xs text-muted-foreground mt-0.5">
+                  Issuer: <AddressDisplay address={issuer} truncate />
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Balance */}
+          <div className="text-right shrink-0">
+            <div className="font-bold font-mono tabular-nums">
+              {formattedBalance}
+            </div>
+            <div className="text-xs text-muted-foreground">{displaySymbol}</div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function getDisplayName(balance: Balance): string {
+  if (balance.tokenType === 'NATIVE') return 'Stellar Lumens';
+  if (balance.name) return balance.name;
+  if (balance.code) return balance.code;
+  if (balance.symbol) return balance.symbol;
+  return 'Unknown Token';
+}
+
+function getDisplaySymbol(balance: Balance): string {
+  if (balance.tokenType === 'NATIVE') return 'XLM';
+  if (balance.symbol) return balance.symbol;
+  if (balance.code) return balance.code;
+  return '???';
+}
+
+function BalanceListSkeleton() {
+  return (
+    <div className="space-y-2">
+      {[...Array(3)].map((_, i) => (
+        <Card key={i}>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-10 w-10 rounded-full" />
+                <div className="space-y-2">
+                  <Skeleton className="h-5 w-24" />
+                  <Skeleton className="h-3 w-32" />
+                </div>
+              </div>
+              <div className="text-right space-y-2">
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-3 w-10 ml-auto" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}

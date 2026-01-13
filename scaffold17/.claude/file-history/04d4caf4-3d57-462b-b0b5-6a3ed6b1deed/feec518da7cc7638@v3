@@ -1,0 +1,160 @@
+import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { Button, Loader, Icon } from "@stellar/design-system";
+import { useEvent } from "../hooks/useEvents";
+import { useTicketContract } from "../hooks/useTicketContract";
+import { useMultiWallet } from "../hooks/useMultiWallet";
+import { PurchaseModal } from "../components/tickets/PurchaseModal";
+import type { PaymentToken } from "../types/tickets";
+import "./EventDetailPage.css";
+
+const EventDetailPage = () => {
+  const { eventId } = useParams();
+  const { data: event, isLoading } = useEvent(eventId);
+  const { activeAddress } = useMultiWallet();
+  const { purchaseTicket, isPurchasing, txHash, error } = useTicketContract();
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [purchaseSuccess, setPurchaseSuccess] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="event-detail-page loading">
+        <Loader size="lg" />
+      </div>
+    );
+  }
+
+  if (!event) {
+    return (
+      <div className="event-detail-page not-found">
+        <h2>Event not found</h2>
+        <Link to="/events">
+          <Button variant="secondary" size="md">
+            Back to Events
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
+  const ticketsRemaining = event.capacity - event.sold;
+  const isSoldOut = ticketsRemaining === 0;
+  const xlmPrice = Number(event.xlmPrice) / 10_000_000;
+  const usdcPrice = Number(event.usdcPrice) / 10_000_000;
+
+  const handlePurchase = async (paymentToken: PaymentToken) => {
+    const tokenId = await purchaseTicket(event.id, paymentToken);
+    if (tokenId !== null) {
+      setPurchaseSuccess(true);
+      setShowPurchaseModal(false);
+    }
+  };
+
+  return (
+    <div className="event-detail-page">
+      <Link to="/events" className="back-link">
+        <Icon.ArrowLeft /> Back to Events
+      </Link>
+
+      <div className="event-detail-content">
+        <div className="event-detail-image">
+          <img src={event.imageUrl} alt={event.name} />
+        </div>
+
+        <div className="event-detail-info">
+          <h1>{event.name}</h1>
+
+          <div className="event-meta">
+            <div className="meta-item">
+              <Icon.Calendar />
+              <span>
+                {event.date.toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+            </div>
+            <div className="meta-item">
+              <Icon.MarkerPin01 />
+              <span>{event.venue}</span>
+            </div>
+          </div>
+
+          <p className="event-description">{event.description}</p>
+
+          <div className="event-pricing">
+            <h3>Ticket Price</h3>
+            <div className="price-options">
+              <div className="price-option">
+                <span className="price-value">{xlmPrice} XLM</span>
+              </div>
+              <span className="price-or">or</span>
+              <div className="price-option">
+                <span className="price-value">{usdcPrice} USDC</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="event-availability">
+            {isSoldOut ? (
+              <span className="sold-out">Sold Out</span>
+            ) : (
+              <span className="tickets-remaining">
+                {ticketsRemaining} of {event.capacity} tickets remaining
+              </span>
+            )}
+          </div>
+
+          {error && (
+            <div className="purchase-error">
+              <p>Error: {error.message}</p>
+            </div>
+          )}
+
+          {purchaseSuccess ? (
+            <div className="purchase-success">
+              <Icon.CheckCircle />
+              <span>Ticket purchased successfully!</span>
+              {txHash && (
+                <div className="tx-hash">
+                  <span>Transaction: </span>
+                  <code>{txHash.slice(0, 8)}...{txHash.slice(-8)}</code>
+                </div>
+              )}
+              <Link to="/my-tickets">
+                <Button variant="secondary" size="md">
+                  View My Tickets
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => setShowPurchaseModal(true)}
+              disabled={isSoldOut || !event.isActive}
+            >
+              {isSoldOut ? "Sold Out" : "Buy Ticket"}
+            </Button>
+          )}
+
+          {!activeAddress && !isSoldOut && (
+            <p className="connect-hint">Connect your wallet to purchase</p>
+          )}
+        </div>
+      </div>
+
+      <PurchaseModal
+        event={event}
+        visible={showPurchaseModal}
+        onClose={() => setShowPurchaseModal(false)}
+        onPurchase={handlePurchase}
+        isPurchasing={isPurchasing}
+      />
+    </div>
+  );
+};
+
+export default EventDetailPage;

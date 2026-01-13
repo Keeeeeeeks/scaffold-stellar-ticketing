@@ -1,0 +1,10 @@
+import * as Client from 'ticketing';
+import { rpcUrl } from './util';
+
+export default new Client.Client({
+  networkPassphrase: 'Standalone Network ; February 2017',
+  contractId: 'CDRJKUDLICSBKEHN6NMYFKRMPSLOYB635H7ITVAQAGGXKRYFJKVLZCJS',
+  rpcUrl,
+  allowHttp: true,
+  publicKey: undefined,
+});

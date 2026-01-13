@@ -1,0 +1,13 @@
+export interface UserTicket {
+  tokenId: number;
+  eventId: bigint;
+  eventName: string;
+  eventDate: Date;
+  eventVenue: string;
+  ticketNumber: number;
+  purchaseTimestamp: Date;
+  imageUrl: string;
+}
+
+// Re-export from contract client
+export type { PaymentToken } from "ticketing";

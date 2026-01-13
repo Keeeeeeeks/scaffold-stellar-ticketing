@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""Stellar Transaction Status Checker
+
+Queries Stellar mainnet Horizon API for transaction details.
+"""
+
+import argparse
+import re
+import sys
+from decimal import Decimal
+
+import requests
+
+HORIZON_URL = "https://horizon.stellar.org"
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Check the status of a Stellar mainnet transaction."
+    )
+    parser.add_argument(
+        "transaction_hash",
+        help="The 64-character hex transaction hash",
+    )
+    return parser.parse_args()
+
+
+def validate_hash(tx_hash: str) -> bool:
+    """Validate that the hash is 64 hexadecimal characters."""
+    return bool(re.match(r"^[a-fA-F0-9]{64}$", tx_hash))
+
+
+def fetch_transaction(tx_hash: str) -> tuple[dict | None, int]:
+    """Fetch transaction from Horizon API."""
+    url = f"{HORIZON_URL}/transactions/{tx_hash}"
+    response = requests.get(url, timeout=30)
+    if response.status_code == 200:
+        return response.json(), response.status_code
+    elif response.status_code == 404:
+        return None, 404
+    else:
+        try:
+            return response.json(), response.status_code
+        except requests.JSONDecodeError:
+            return None, response.status_code
+
+
+def fetch_operations(tx_hash: str) -> list:
+    """Fetch operations for a transaction."""
+    url = f"{HORIZON_URL}/transactions/{tx_hash}/operations"
+    response = requests.get(url, timeout=30)
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("_embedded", {}).get("records", [])
+    return []
+
+
+def format_fee(fee_stroops: str) -> str:
+    """Format fee from stroops to XLM."""
+    stroops = int(fee_stroops)
+    xlm = Decimal(stroops) / Decimal(10_000_000)
+    return f"{stroops} stroops ({xlm:.7f} XLM)"
+
+
+def main():
+    args = parse_args()
+    tx_hash = args.transaction_hash
+
+    if not validate_hash(tx_hash):
+        print("Error: Invalid transaction hash format.")
+        print("Transaction hash should be 64 hexadecimal characters.")
+        sys.exit(1)
+
+    print(f"Querying Stellar mainnet for transaction: {tx_hash}")
+    print("---")
+
+    body, status_code = fetch_transaction(tx_hash)
+
+    if status_code == 404:
+        print("Status: NOT FOUND")
+        print()
+        print("Transaction not found on Stellar mainnet.")
+        print("Possible reasons:")
+        print("  - Transaction hash is incorrect")
+        print("  - Transaction was never submitted")
+        print("  - Transaction failed during submission and was not recorded")
+        sys.exit(1)
+
+    if status_code != 200:
+        print(f"Error: Failed to fetch transaction (HTTP {status_code})")
+        if body:
+            error_msg = body.get("detail") or body.get("title") or "Unknown error"
+            print(error_msg)
+        sys.exit(1)
+
+    print("Status: FOUND ON LEDGER")
+    print()
+
+    successful = body.get("successful", False)
+    if successful:
+        print("Result: SUCCESS")
+    else:
+        print("Result: FAILED")
+
+    print()
+    print("=== Transaction Details ===")
+
+    ledger = body.get("ledger")
+    created_at = body.get("created_at")
+    source_account = body.get("source_account")
+    fee_charged = body.get("fee_charged", "0")
+    operation_count = body.get("operation_count")
+    memo_type = body.get("memo_type", "none")
+    memo = body.get("memo")
+
+    print(f"Ledger:           {ledger}")
+    print(f"Created At:       {created_at}")
+    print(f"Source Account:   {source_account}")
+    print(f"Fee Charged:      {format_fee(fee_charged)}")
+    print(f"Operation Count:  {operation_count}")
+    print(f"Memo Type:        {memo_type}")
+    if memo_type != "none" and memo:
+        print(f"Memo:             {memo}")
+
+    if not successful:
+        print()
+        print("=== Failure Details ===")
+        result_codes = body.get("result_codes", {})
+        if result_codes:
+            tx_code = result_codes.get("transaction", "unknown")
+            print(f"Transaction Code: {tx_code}")
+
+            op_codes = result_codes.get("operations")
+            if op_codes:
+                print(f"Operation Codes:  {op_codes}")
+
+    print()
+    print("=== Links ===")
+    print(f"Horizon:          {HORIZON_URL}/transactions/{tx_hash}")
+    print(f"StellarExpert:    https://stellar.expert/explorer/public/tx/{tx_hash}")
+
+    print()
+    print("=== Operations ===")
+    operations = fetch_operations(tx_hash)
+    for op in operations:
+        op_type = op.get("type", "unknown")
+        op_id = op.get("id", "unknown")
+        print(f"  [{op_type}] {op_id}")
+
+
+if __name__ == "__main__":
+    main()

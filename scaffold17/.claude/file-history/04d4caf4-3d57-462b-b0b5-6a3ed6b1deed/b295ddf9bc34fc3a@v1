@@ -1,0 +1,48 @@
+.my-tickets-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.my-tickets-page.loading,
+.my-tickets-page.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 1rem;
+  text-align: center;
+}
+
+.my-tickets-page.empty-state h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.my-tickets-page.empty-state p {
+  color: var(--sds-clr-gray-09);
+  margin: 0;
+}
+
+.tickets-header {
+  margin-bottom: 2rem;
+}
+
+.tickets-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.tickets-header p {
+  color: var(--sds-clr-gray-09);
+  margin: 0;
+}
+
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}

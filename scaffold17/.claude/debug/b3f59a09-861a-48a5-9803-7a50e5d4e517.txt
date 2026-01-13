@@ -1,0 +1,168 @@
+2026-01-07T18:40:16.796Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (39.8ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-01-07T18:40:16.831Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (33.5ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:16.885Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-07T18:40:16.885Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-07T18:40:16.885Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-07T18:40:16.888Z [DEBUG] LSP server manager initialized successfully
+2026-01-07T18:40:16.888Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-07T18:40:16.888Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-07T18:40:16.889Z [DEBUG] Stats cache is up to date
+2026-01-07T18:40:16.892Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-07T18:40:16.892Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-07T18:40:16.907Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (14.0ms): cursor --version
+2026-01-07T18:40:16.907Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-07T18:40:16.965Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-01-07T18:40:16.965Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2026-01-07T18:40:16.965Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2026-01-07T18:40:16.965Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2026-01-07T18:40:16.965Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767811216965-7s3v58.sh
+2026-01-07T18:40:16.965Z [DEBUG] Shell binary exists: true
+2026-01-07T18:40:16.965Z [DEBUG] Execution timeout: 10000ms
+2026-01-07T18:40:16.966Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/b3f59a09-861a-48a5-9803-7a50e5d4e517-agent-b3f59a09-861a-48a5-9803-7a50e5d4e517.json.tmp.69694.1767811216966
+2026-01-07T18:40:16.971Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-07T18:40:16.971Z [DEBUG] Renaming /Users/george/.claude/todos/b3f59a09-861a-48a5-9803-7a50e5d4e517-agent-b3f59a09-861a-48a5-9803-7a50e5d4e517.json.tmp.69694.1767811216966 to /Users/george/.claude/todos/b3f59a09-861a-48a5-9803-7a50e5d4e517-agent-b3f59a09-861a-48a5-9803-7a50e5d4e517.json
+2026-01-07T18:40:16.971Z [DEBUG] File /Users/george/.claude/todos/b3f59a09-861a-48a5-9803-7a50e5d4e517-agent-b3f59a09-861a-48a5-9803-7a50e5d4e517.json written atomically
+2026-01-07T18:40:16.979Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-07T18:40:16.979Z [DEBUG] Total plugin skills loaded: 0
+2026-01-07T18:40:16.979Z [DEBUG] Total plugin commands loaded: 0
+2026-01-07T18:40:16.979Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-07T18:40:17.002Z [DEBUG] Total plugin agents loaded: 0
+2026-01-07T18:40:17.002Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-07T18:40:17.003Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-07T18:40:17.013Z [DEBUG] Git remote URL: null
+2026-01-07T18:40:17.013Z [DEBUG] No git remote URL found
+2026-01-07T18:40:17.013Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-01-07T18:40:17.030Z [DEBUG] [SLOW OPERATION DETECTED] fs.readFileSync (7.5ms)
+2026-01-07T18:40:17.041Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-01-07T18:40:17.115Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811217115
+2026-01-07T18:40:17.115Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:17.120Z [DEBUG] Temp file written successfully, size: 60609 bytes
+2026-01-07T18:40:17.120Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:17.120Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811217115 to /Users/george/.claude.json
+2026-01-07T18:40:17.120Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:17.140Z [DEBUG] Failed to fetch and cache passes eligibility
+2026-01-07T18:40:17.140Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async L17 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9071)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9964
+2026-01-07T18:40:17.142Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async UT2 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1845:3609)
+2026-01-07T18:40:17.189Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-07T18:40:17.189Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-07T18:40:17.828Z [DEBUG] Shell snapshot created successfully (848 bytes)
+2026-01-07T18:40:20.710Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811220710
+2026-01-07T18:40:20.710Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:20.715Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.4ms)
+2026-01-07T18:40:20.715Z [DEBUG] Temp file written successfully, size: 60998 bytes
+2026-01-07T18:40:20.715Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:20.715Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811220710 to /Users/george/.claude.json
+2026-01-07T18:40:20.715Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:20.805Z [DEBUG] Failed to fetch Grove notice config: AxiosError: Request failed with status code 401
+2026-01-07T18:40:20.833Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (27.5ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:20.834Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-07T18:40:20.838Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-07T18:40:20.840Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811220840
+2026-01-07T18:40:20.840Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:20.846Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.7ms)
+2026-01-07T18:40:20.846Z [DEBUG] Temp file written successfully, size: 60998 bytes
+2026-01-07T18:40:20.846Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:20.846Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811220840 to /Users/george/.claude.json
+2026-01-07T18:40:20.846Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:20.851Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-07T18:40:20.851Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:40:20.851Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-07T18:40:20.855Z [DEBUG] Skills and commands included in Skill tool:
+2026-01-07T18:40:20.878Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (21.7ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:20.923Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-01-07T18:40:20.923Z [DEBUG] performStartupChecks called
+2026-01-07T18:40:20.923Z [DEBUG] Starting background plugin installations
+2026-01-07T18:40:20.923Z [DEBUG] performBackgroundPluginInstallations called
+2026-01-07T18:40:20.939Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.0ms): ps -o command= -p 68644
+2026-01-07T18:40:20.954Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (15.7ms): ps -o ppid= -p 68644
+2026-01-07T18:40:20.968Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.9ms): ps -o command= -p 90983
+2026-01-07T18:40:20.982Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.3ms): ps -o ppid= -p 90983
+2026-01-07T18:40:20.995Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.1ms): ps -o command= -p 90584
+2026-01-07T18:40:21.007Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.3ms): ps -o ppid= -p 90584
+2026-01-07T18:40:21.012Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T18:40:21.013Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-01-07T18:40:21.014Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-01-07T18:40:21.017Z [DEBUG] Failed to fetch and cache passes eligibility
+2026-01-07T18:40:21.017Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async L17 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9071)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9964
+2026-01-07T18:40:21.033Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.8ms): ps -o command= -p 68644
+2026-01-07T18:40:21.044Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (11.9ms): ps -o ppid= -p 68644
+2026-01-07T18:40:21.057Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.7ms): ps -o command= -p 90983
+2026-01-07T18:40:21.071Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (13.4ms): ps -o ppid= -p 90983
+2026-01-07T18:40:21.083Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.8ms): ps -o command= -p 90584
+2026-01-07T18:40:21.096Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.2ms): ps -o ppid= -p 90584
+2026-01-07T18:40:21.100Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-01-07T18:40:21.100Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:40:21.100Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-01-07T18:40:21.103Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-01-07T18:40:21.103Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:40:21.103Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-01-07T18:40:21.117Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811221117
+2026-01-07T18:40:21.117Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:21.122Z [DEBUG] Temp file written successfully, size: 60998 bytes
+2026-01-07T18:40:21.122Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:21.122Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811221117 to /Users/george/.claude.json
+2026-01-07T18:40:21.123Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:21.146Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (21.7ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:21.162Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811221162
+2026-01-07T18:40:21.162Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:21.166Z [DEBUG] Temp file written successfully, size: 61179 bytes
+2026-01-07T18:40:21.166Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:21.166Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811221162 to /Users/george/.claude.json
+2026-01-07T18:40:21.166Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:21.209Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (26.9ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:21.240Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (30.5ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:21.282Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (29.6ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:21.619Z [ERROR] Error: Error: 1: 1 
+    at Is3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1086:3956)
+    at async Js3 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1086:1579)
+2026-01-07T18:40:21.951Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.69694.1767811221951
+2026-01-07T18:40:21.952Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:40:21.958Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.4ms)
+2026-01-07T18:40:21.958Z [DEBUG] Temp file written successfully, size: 61179 bytes
+2026-01-07T18:40:21.958Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:40:21.958Z [DEBUG] Renaming /Users/george/.claude.json.tmp.69694.1767811221951 to /Users/george/.claude.json
+2026-01-07T18:40:21.959Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:40:22.000Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (39.9ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:22.029Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (29.3ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:22.071Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (22.6ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:40:23.122Z [DEBUG] Stream started - received first chunk
+2026-01-07T18:40:23.959Z [DEBUG] Stream started - received first chunk
+2026-01-07T18:40:24.421Z [DEBUG] Stream started - received first chunk
+2026-01-07T18:40:25.362Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T18:40:25.362Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:40:25.362Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T18:40:38.568Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T18:40:38.568Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:40:38.568Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T18:41:07.954Z [DEBUG] Getting matching hook commands for SessionEnd with query: prompt_input_exit
+2026-01-07T18:41:07.955Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T18:41:07.955Z [DEBUG] Matched 0 unique hooks for query "prompt_input_exit" (0 before deduplication)

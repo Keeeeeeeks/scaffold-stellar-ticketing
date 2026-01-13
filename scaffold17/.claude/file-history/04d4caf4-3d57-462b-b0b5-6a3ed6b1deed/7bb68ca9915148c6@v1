@@ -1,0 +1,13 @@
+export interface Event {
+  id: bigint;
+  name: string;
+  description: string;
+  venue: string;
+  date: Date;
+  imageUrl: string;
+  capacity: number;
+  sold: number;
+  xlmPrice: bigint;
+  usdcPrice: bigint;
+  isActive: boolean;
+}

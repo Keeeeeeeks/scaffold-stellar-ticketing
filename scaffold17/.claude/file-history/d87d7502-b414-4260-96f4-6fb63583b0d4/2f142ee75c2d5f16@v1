@@ -1,0 +1,29 @@
+import { EventCard } from "./EventCard";
+import type { Event } from "../../types/events";
+import "./EventGrid.css";
+
+interface EventGridProps {
+  events: Event[];
+  title?: string;
+}
+
+export const EventGrid = ({ events, title }: EventGridProps) => {
+  if (events.length === 0) {
+    return (
+      <div className="event-grid-empty">
+        <p>No events found</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="event-grid-container">
+      {title && <h2 className="event-grid-title">{title}</h2>}
+      <div className="event-grid">
+        {events.map((event) => (
+          <EventCard key={event.id.toString()} event={event} />
+        ))}
+      </div>
+    </div>
+  );
+};

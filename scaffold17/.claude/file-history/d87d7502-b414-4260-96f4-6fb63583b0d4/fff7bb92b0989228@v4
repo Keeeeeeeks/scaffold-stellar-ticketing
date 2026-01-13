@@ -1,0 +1,40 @@
+use soroban_sdk::{contracttype, Address, String};
+
+#[contracttype]
+pub enum DataKey {
+    Admin,
+    Event(u64),
+    EventCounter,
+    Ticket(u32),
+    TokenUri(u32), // Per-token URI for SEP-50
+    UsdcToken,
+}
+
+#[contracttype]
+#[derive(Clone)]
+pub struct EventData {
+    pub event_id: u64,
+    pub capacity: u32,
+    pub sold: u32,
+    pub xlm_price: i128,
+    pub usdc_price: i128,
+    pub is_active: bool,
+    pub metadata_uri: String,
+    pub image_uri: String, // Image URL for NFT display (SEP-50)
+}
+
+#[contracttype]
+#[derive(Clone)]
+pub struct TicketData {
+    pub event_id: u64,
+    pub ticket_number: u32,
+    pub purchase_timestamp: u64,
+    pub original_buyer: Address,
+}
+
+#[contracttype]
+#[derive(Clone, PartialEq)]
+pub enum PaymentToken {
+    Xlm,
+    Usdc,
+}

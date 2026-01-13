@@ -1,0 +1,643 @@
+2026-01-07T19:21:06.578Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (53.6ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-01-07T19:21:06.616Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (37.2ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T19:21:06.676Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-07T19:21:06.676Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-07T19:21:06.676Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-07T19:21:06.679Z [DEBUG] LSP server manager initialized successfully
+2026-01-07T19:21:06.679Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-07T19:21:06.679Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-07T19:21:06.682Z [DEBUG] Stats cache is up to date
+2026-01-07T19:21:06.684Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-07T19:21:06.684Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-01-07T19:21:06.764Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (78.8ms): ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|IntelliJ IDEA|PyCharm
+2026-01-07T19:21:06.765Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-07T19:21:06.797Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-01-07T19:21:06.797Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2026-01-07T19:21:06.797Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2026-01-07T19:21:06.797Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2026-01-07T19:21:06.797Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767813666797-rtohr9.sh
+2026-01-07T19:21:06.797Z [DEBUG] Shell binary exists: true
+2026-01-07T19:21:06.797Z [DEBUG] Execution timeout: 10000ms
+2026-01-07T19:21:06.798Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/b350dc71-5e31-491b-956c-eadf1f83c6bc-agent-b350dc71-5e31-491b-956c-eadf1f83c6bc.json.tmp.1302.1767813666798
+2026-01-07T19:21:06.802Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-07T19:21:06.802Z [DEBUG] Renaming /Users/george/.claude/todos/b350dc71-5e31-491b-956c-eadf1f83c6bc-agent-b350dc71-5e31-491b-956c-eadf1f83c6bc.json.tmp.1302.1767813666798 to /Users/george/.claude/todos/b350dc71-5e31-491b-956c-eadf1f83c6bc-agent-b350dc71-5e31-491b-956c-eadf1f83c6bc.json
+2026-01-07T19:21:06.802Z [DEBUG] File /Users/george/.claude/todos/b350dc71-5e31-491b-956c-eadf1f83c6bc-agent-b350dc71-5e31-491b-956c-eadf1f83c6bc.json written atomically
+2026-01-07T19:21:06.808Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-07T19:21:06.808Z [DEBUG] Total plugin skills loaded: 0
+2026-01-07T19:21:06.808Z [DEBUG] Total plugin commands loaded: 0
+2026-01-07T19:21:06.808Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-07T19:21:06.815Z [DEBUG] Total plugin agents loaded: 0
+2026-01-07T19:21:06.815Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-07T19:21:06.816Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-07T19:21:06.831Z [DEBUG] Git remote URL: null
+2026-01-07T19:21:06.831Z [DEBUG] No git remote URL found
+2026-01-07T19:21:06.831Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-01-07T19:21:06.883Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-01-07T19:21:06.987Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767813666987
+2026-01-07T19:21:06.987Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:21:06.991Z [DEBUG] Temp file written successfully, size: 62311 bytes
+2026-01-07T19:21:06.991Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:21:06.991Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767813666987 to /Users/george/.claude.json
+2026-01-07T19:21:06.992Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:21:07.047Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-07T19:21:07.047Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-07T19:21:07.655Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-01-07T19:21:07.660Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-01-07T19:21:07.662Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767813667662
+2026-01-07T19:21:07.662Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:21:07.672Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.3ms)
+2026-01-07T19:21:07.672Z [DEBUG] Temp file written successfully, size: 62312 bytes
+2026-01-07T19:21:07.672Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:21:07.672Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767813667662 to /Users/george/.claude.json
+2026-01-07T19:21:07.672Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:21:07.677Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2026-01-07T19:21:07.677Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:21:07.677Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2026-01-07T19:21:07.732Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767813667732
+2026-01-07T19:21:07.732Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:21:07.739Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.3ms)
+2026-01-07T19:21:07.739Z [DEBUG] Temp file written successfully, size: 62239 bytes
+2026-01-07T19:21:07.739Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:21:07.739Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767813667732 to /Users/george/.claude.json
+2026-01-07T19:21:07.740Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:21:07.742Z [DEBUG] Official marketplace auto-install skipped: already_attempted
+2026-01-07T19:21:07.743Z [DEBUG] performStartupChecks called
+2026-01-07T19:21:07.743Z [DEBUG] Starting background plugin installations
+2026-01-07T19:21:07.743Z [DEBUG] performBackgroundPluginInstallations called
+2026-01-07T19:21:07.746Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T19:21:07.748Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767813667748
+2026-01-07T19:21:07.748Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:21:07.752Z [DEBUG] Temp file written successfully, size: 62312 bytes
+2026-01-07T19:21:07.752Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:21:07.752Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767813667748 to /Users/george/.claude.json
+2026-01-07T19:21:07.752Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:21:07.753Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2026-01-07T19:21:07.755Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-01-07T19:21:07.756Z [DEBUG] Shell snapshot created successfully (801 bytes)
+2026-01-07T19:21:07.773Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767813667773
+2026-01-07T19:21:07.773Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:21:07.777Z [DEBUG] Temp file written successfully, size: 62883 bytes
+2026-01-07T19:21:07.777Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:21:07.777Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767813667773 to /Users/george/.claude.json
+2026-01-07T19:21:07.777Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:21:09.375Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:21:26.769Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2026-01-07T19:21:26.769Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:21:26.769Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2026-01-07T19:21:26.770Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2026-01-07T19:21:26.770Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:21:26.770Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2026-01-07T19:21:26.782Z [DEBUG] Skills and commands included in Skill tool:
+2026-01-07T19:21:26.818Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (9.6ms)
+2026-01-07T19:21:26.832Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.7ms)
+2026-01-07T19:21:27.374Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:21:28.325Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T19:21:28.325Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:21:28.325Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:21:29.010Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:21:34.470Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T19:21:34.470Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:21:34.470Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:35:45.282Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:35:45.282Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:35:45.283Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:35:45.283Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:35:45.320Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-07T19:35:45.320Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:35:45.320Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:35:45.331Z [DEBUG] FileHistory: Added snapshot for 653d41c9-c4bd-4255-816d-bbe97b2a0221, tracking 0 files
+2026-01-07T19:35:45.344Z [DEBUG] Total plugin output styles loaded: 0
+2026-01-07T19:35:46.242Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:35:47.733Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:37:04.771Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-07T19:37:04.776Z [DEBUG] Language not supported while highlighting code, falling back to markdown:
+2026-01-07T19:37:04.834Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-07T19:37:04.834Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:37:04.834Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:37:04.860Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767814624860
+2026-01-07T19:37:04.860Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:37:04.870Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (9.2ms)
+2026-01-07T19:37:04.870Z [DEBUG] Temp file written successfully, size: 62909 bytes
+2026-01-07T19:37:04.870Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:37:04.870Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767814624860 to /Users/george/.claude.json
+2026-01-07T19:37:04.870Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:37:04.873Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767814624873
+2026-01-07T19:37:04.873Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:37:04.877Z [DEBUG] Temp file written successfully, size: 62938 bytes
+2026-01-07T19:37:04.877Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:37:04.877Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767814624873 to /Users/george/.claude.json
+2026-01-07T19:37:04.878Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:37:06.916Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:37:12.289Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T19:37:12.289Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:37:12.289Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:37:31.775Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:37:31.775Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:37:31.775Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:37:31.775Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:37:31.783Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-07T19:37:31.783Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:37:31.783Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:37:31.784Z [DEBUG] FileHistory: Making snapshot for message 4ec306b0-00f4-4b40-83d3-809f3231fe88
+2026-01-07T19:37:31.784Z [DEBUG] FileHistory: Added snapshot for 4ec306b0-00f4-4b40-83d3-809f3231fe88, tracking 0 files
+2026-01-07T19:37:33.560Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:37:33.577Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:39:09.404Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (9.9ms)
+2026-01-07T19:39:22.767Z [DEBUG] [SLOW OPERATION DETECTED] fs.statSync (5.2ms)
+2026-01-07T19:39:29.130Z [WARN] Streaming stall detected: 112.2s gap between events (stall #1)
+2026-01-07T19:39:38.109Z [WARN] Streaming completed with 1 stall(s), total stall time: 112.2s
+2026-01-07T19:39:38.123Z [DEBUG] executePreToolHooks called for tool: Write
+2026-01-07T19:39:38.125Z [DEBUG] Getting matching hook commands for PreToolUse with query: Write
+2026-01-07T19:39:38.125Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:39:38.125Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-01-07T19:39:38.132Z [DEBUG] Permission suggestions for Write: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+2026-01-07T19:39:38.257Z [DEBUG] executePermissionRequestHooks called for tool: Write
+2026-01-07T19:39:38.279Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Write
+2026-01-07T19:39:38.279Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:39:38.279Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-01-07T19:39:44.266Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T19:39:44.266Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:39:44.266Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T19:41:47.288Z [DEBUG] Applying permission update: Setting mode to 'acceptEdits'
+2026-01-07T19:41:47.305Z [DEBUG] FileHistory: Tracked file modification for /Users/george/friend-test/personal-reconstruction-guide.md
+2026-01-07T19:41:47.318Z [DEBUG] [lspRecommendation] Looking for LSP plugins for .md
+2026-01-07T19:41:47.319Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T19:41:47.378Z [DEBUG] Writing to temp file: /Users/george/friend-test/personal-reconstruction-guide.md.tmp.1302.1767814907378
+2026-01-07T19:41:47.385Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.1ms)
+2026-01-07T19:41:47.385Z [DEBUG] Temp file written successfully, size: 18756 bytes
+2026-01-07T19:41:47.385Z [DEBUG] Renaming /Users/george/friend-test/personal-reconstruction-guide.md.tmp.1302.1767814907378 to /Users/george/friend-test/personal-reconstruction-guide.md
+2026-01-07T19:41:47.386Z [DEBUG] File /Users/george/friend-test/personal-reconstruction-guide.md written atomically
+2026-01-07T19:41:47.395Z [DEBUG] Getting matching hook commands for PostToolUse with query: Write
+2026-01-07T19:41:47.395Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:41:47.395Z [DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+2026-01-07T19:41:47.409Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:41:47.409Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:41:47.409Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:41:47.409Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:44:48.575Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (12.0ms)
+2026-01-07T19:46:48.088Z [ERROR] Error streaming, falling back to non-streaming mode: Request timed out.
+2026-01-07T19:46:59.558Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-07T19:46:59.558Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:46:59.558Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:46:59.591Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767815219591
+2026-01-07T19:46:59.591Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:46:59.595Z [DEBUG] Temp file written successfully, size: 62978 bytes
+2026-01-07T19:46:59.595Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:46:59.595Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767815219591 to /Users/george/.claude.json
+2026-01-07T19:46:59.596Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:46:59.608Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767815219608
+2026-01-07T19:46:59.608Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T19:46:59.612Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T19:46:59.612Z [DEBUG] Applied original permissions to temp file
+2026-01-07T19:46:59.612Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767815219608 to /Users/george/.claude.json
+2026-01-07T19:46:59.613Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T19:47:02.124Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:47:05.375Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T19:47:05.375Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:47:05.375Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:47:59.590Z [DEBUG] Getting matching hook commands for Notification with query: idle_prompt
+2026-01-07T19:47:59.591Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:47:59.591Z [DEBUG] Matched 0 unique hooks for query "idle_prompt" (0 before deduplication)
+2026-01-07T19:56:58.919Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:56:58.920Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:56:58.920Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:56:58.920Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:56:58.931Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2026-01-07T19:56:58.931Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:56:58.931Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T19:56:58.933Z [DEBUG] FileHistory: Making snapshot for message cb030934-f484-4ed8-a09f-7bd8bd0053c5
+2026-01-07T19:56:58.950Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (15.8ms)
+2026-01-07T19:56:58.951Z [DEBUG] FileHistory: Added snapshot for cb030934-f484-4ed8-a09f-7bd8bd0053c5, tracking 1 files
+2026-01-07T19:57:00.238Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:57:01.356Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:57:04.074Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T19:57:04.077Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T19:57:04.077Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:57:04.077Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:57:04.090Z [DEBUG] tree-sitter: WASM files not found
+2026-01-07T19:57:04.104Z [DEBUG] No session environment scripts found
+2026-01-07T19:57:05.477Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-07T19:57:05.477Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:57:05.477Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:57:05.482Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:57:05.482Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:57:05.482Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:57:05.482Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:57:07.894Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:57:12.252Z [DEBUG] executePreToolHooks called for tool: AskUserQuestion
+2026-01-07T19:57:12.258Z [DEBUG] Getting matching hook commands for PreToolUse with query: AskUserQuestion
+2026-01-07T19:57:12.258Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:57:12.258Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T19:57:12.270Z [DEBUG] executePermissionRequestHooks called for tool: AskUserQuestion
+2026-01-07T19:57:12.277Z [DEBUG] Getting matching hook commands for PermissionRequest with query: AskUserQuestion
+2026-01-07T19:57:12.277Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:57:12.277Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T19:57:18.278Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T19:57:18.278Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:57:18.278Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T19:58:18.807Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T19:58:18.816Z [DEBUG] Getting matching hook commands for PostToolUse with query: AskUserQuestion
+2026-01-07T19:58:18.816Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:58:18.816Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T19:58:18.826Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:58:18.826Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:58:18.826Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:58:18.826Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:58:21.601Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:58:22.890Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T19:58:22.895Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T19:58:22.895Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:58:22.895Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:58:23.440Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:58:23.537Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "brew install:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T19:58:23.559Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T19:58:23.567Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T19:58:23.567Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:58:23.567Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:58:29.566Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T19:58:29.566Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:58:29.566Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T19:59:03.179Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T19:59:13.791Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T19:59:13.791Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:59:13.791Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:59:13.797Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T19:59:13.797Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T19:59:13.797Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T19:59:13.797Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T19:59:15.282Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:59:16.719Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:59:20.090Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T19:59:20.094Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T19:59:20.094Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:59:20.094Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:59:20.928Z [DEBUG] Stream started - received first chunk
+2026-01-07T19:59:21.070Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "pandoc:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T19:59:21.086Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T19:59:21.089Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T19:59:21.089Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:59:21.089Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T19:59:27.091Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T19:59:27.091Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T19:59:27.091Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:00:02.843Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:00:03.331Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:00:03.331Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:00:04.803Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767816004803
+2026-01-07T20:00:04.803Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:00:04.814Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.7ms)
+2026-01-07T20:00:04.814Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:00:04.814Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:00:04.814Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767816004803 to /Users/george/.claude.json
+2026-01-07T20:00:04.814Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:00:05.772Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-07T20:00:05.772Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:00:05.772Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:00:05.774Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:00:05.777Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:00:05.777Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:00:05.777Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:00:06.447Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:00:06.489Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:00:06.621Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "pandoc:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:00:06.633Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:00:06.636Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:00:06.636Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:00:06.636Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:00:12.637Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:00:12.637Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:00:12.637Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:03:42.379Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:03:43.357Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:03:43.357Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:03:44.200Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767816224200
+2026-01-07T20:03:44.200Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:03:44.245Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (45.1ms)
+2026-01-07T20:03:44.245Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:03:44.245Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:03:44.245Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767816224200 to /Users/george/.claude.json
+2026-01-07T20:03:44.246Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:03:44.612Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-07T20:03:44.612Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:44.612Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:44.618Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:03:44.618Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:03:44.618Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:03:44.618Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:03:47.059Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:03:51.000Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:03:51.004Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:03:51.004Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:51.004Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:51.020Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "pandoc:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:03:51.027Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:03:51.032Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:03:51.032Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:51.032Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:54.328Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:03:55.243Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:03:55.243Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:03:55.873Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T20:03:55.873Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:55.873Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:55.876Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:03:55.880Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:03:55.880Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:55.880Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:56.044Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767816236044
+2026-01-07T20:03:56.044Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:03:56.054Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (10.0ms)
+2026-01-07T20:03:56.054Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:03:56.054Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:03:56.054Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767816236044 to /Users/george/.claude.json
+2026-01-07T20:03:56.054Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:03:56.404Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:03:56.996Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T20:03:56.996Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:03:56.996Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:03:57.001Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:03:57.001Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:03:57.001Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:03:57.001Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:03:57.678Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:03:59.372Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:04:04.569Z [DEBUG] executePreToolHooks called for tool: AskUserQuestion
+2026-01-07T20:04:04.574Z [DEBUG] Getting matching hook commands for PreToolUse with query: AskUserQuestion
+2026-01-07T20:04:04.574Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:04.574Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T20:04:04.585Z [DEBUG] executePermissionRequestHooks called for tool: AskUserQuestion
+2026-01-07T20:04:04.591Z [DEBUG] Getting matching hook commands for PermissionRequest with query: AskUserQuestion
+2026-01-07T20:04:04.591Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:04.591Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T20:04:10.592Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:04:10.592Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:10.592Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:04:18.372Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:04:18.377Z [DEBUG] Getting matching hook commands for PostToolUse with query: AskUserQuestion
+2026-01-07T20:04:18.377Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:18.377Z [DEBUG] Matched 0 unique hooks for query "AskUserQuestion" (0 before deduplication)
+2026-01-07T20:04:18.390Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:04:18.390Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:04:18.390Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:04:18.390Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:04:18.894Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:04:18.894Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:04:19.698Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767816259698
+2026-01-07T20:04:19.698Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:04:19.707Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (9.7ms)
+2026-01-07T20:04:19.707Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:04:19.707Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:04:19.707Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767816259698 to /Users/george/.claude.json
+2026-01-07T20:04:19.707Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:04:21.237Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:04:22.681Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:04:22.683Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:04:22.683Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:22.683Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:04:23.896Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:04:23.988Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "brew install:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:04:24.005Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:04:24.011Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:04:24.011Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:24.011Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:04:30.011Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:04:30.011Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:30.012Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:04:49.639Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:04:50.139Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:04:50.139Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:04:51.144Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767816291144
+2026-01-07T20:04:51.145Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:04:51.152Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (7.7ms)
+2026-01-07T20:04:51.152Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:04:51.152Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:04:51.152Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767816291144 to /Users/george/.claude.json
+2026-01-07T20:04:51.155Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:04:52.259Z [DEBUG] Getting matching hook commands for PostToolUseFailure with query: Bash
+2026-01-07T20:04:52.259Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:52.259Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:04:52.264Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:04:52.264Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:04:52.264Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:04:52.264Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:04:56.755Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:04:58.701Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:04:58.708Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:04:58.708Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:04:58.708Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:04:59.762Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:05:00.084Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "brew install:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:05:00.100Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:05:00.108Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:05:00.108Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:05:00.108Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:05:06.108Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:05:06.108Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:05:06.108Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:18:06.158Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:18:07.128Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:18:07.128Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:18:08.107Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767817088107
+2026-01-07T20:18:08.107Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:18:08.115Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (8.4ms)
+2026-01-07T20:18:08.115Z [DEBUG] Temp file written successfully, size: 62979 bytes
+2026-01-07T20:18:08.115Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:18:08.115Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767817088107 to /Users/george/.claude.json
+2026-01-07T20:18:08.116Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:19:02.475Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T20:19:02.475Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:19:02.475Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:19:02.483Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:19:02.483Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:19:02.483Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:19:02.483Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:19:03.954Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:19:06.253Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:19:10.565Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:19:10.572Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:19:10.572Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:19:10.572Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:19:11.032Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:19:11.167Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:19:11.891Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:19:11.989Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "pandoc:*"
+      },
+      {
+        "toolName": "Bash",
+        "ruleContent": "weasyprint:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:19:12.007Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:19:12.013Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:19:12.013Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:19:12.013Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:19:18.011Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:19:18.012Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:19:18.012Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:20:00.984Z [DEBUG] Persisting permission update: addRules to source 'localSettings'
+2026-01-07T20:20:00.984Z [DEBUG] Persisting 2 allow rule(s) to localSettings
+2026-01-07T20:20:00.987Z [DEBUG] Writing to temp file: /Users/george/friend-test/.claude/settings.local.json.tmp.1302.1767817200987
+2026-01-07T20:20:00.991Z [DEBUG] Temp file written successfully, size: 99 bytes
+2026-01-07T20:20:00.991Z [DEBUG] Renaming /Users/george/friend-test/.claude/settings.local.json.tmp.1302.1767817200987 to /Users/george/friend-test/.claude/settings.local.json
+2026-01-07T20:20:00.992Z [DEBUG] File /Users/george/friend-test/.claude/settings.local.json written atomically
+2026-01-07T20:20:01.000Z [DEBUG] Applying permission update: Adding 2 allow rule(s) to destination 'localSettings': ["Bash(pandoc:*)","Bash(weasyprint:*)"]
+2026-01-07T20:20:01.032Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:20:02.022Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:20:02.022Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:20:02.920Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767817202920
+2026-01-07T20:20:02.920Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:20:02.927Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.8ms)
+2026-01-07T20:20:02.927Z [DEBUG] Temp file written successfully, size: 63007 bytes
+2026-01-07T20:20:02.927Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:20:02.927Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767817202920 to /Users/george/.claude.json
+2026-01-07T20:20:02.927Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:20:04.317Z [DEBUG] [SLOW OPERATION DETECTED] fs.existsSync (83.3ms)
+2026-01-07T20:20:11.726Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T20:20:11.726Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:20:11.726Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:20:11.741Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:20:11.741Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:20:11.741Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:20:11.741Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:20:12.816Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:20:13.956Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:20:15.810Z [DEBUG] executePreToolHooks called for tool: Bash
+2026-01-07T20:20:15.815Z [DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+2026-01-07T20:20:15.815Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:20:15.815Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:20:16.365Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:20:16.528Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:20:16.669Z [DEBUG] Permission suggestions for Bash: [
+  {
+    "type": "addRules",
+    "rules": [
+      {
+        "toolName": "Bash",
+        "ruleContent": "ls:*"
+      }
+    ],
+    "behavior": "allow",
+    "destination": "localSettings"
+  }
+]
+2026-01-07T20:20:16.689Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-01-07T20:20:16.693Z [DEBUG] Getting matching hook commands for PermissionRequest with query: Bash
+2026-01-07T20:20:16.693Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:20:16.693Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:20:22.692Z [DEBUG] Getting matching hook commands for Notification with query: permission_prompt
+2026-01-07T20:20:22.692Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:20:22.692Z [DEBUG] Matched 0 unique hooks for query "permission_prompt" (0 before deduplication)
+2026-01-07T20:21:39.407Z [DEBUG] AutoUpdaterWrapper: Installation type: npm-global
+2026-01-07T20:21:40.380Z [DEBUG] AutoUpdater: Detected installation type: npm-global
+2026-01-07T20:21:40.380Z [DEBUG] AutoUpdater: Using global update method
+2026-01-07T20:21:40.647Z [DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+2026-01-07T20:21:40.647Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:21:40.647Z [DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+2026-01-07T20:21:40.654Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-01-07T20:21:40.654Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-01-07T20:21:40.654Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-01-07T20:21:40.654Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-01-07T20:21:41.183Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.1302.1767817301183
+2026-01-07T20:21:41.183Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T20:21:41.189Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (6.1ms)
+2026-01-07T20:21:41.189Z [DEBUG] Temp file written successfully, size: 63007 bytes
+2026-01-07T20:21:41.189Z [DEBUG] Applied original permissions to temp file
+2026-01-07T20:21:41.189Z [DEBUG] Renaming /Users/george/.claude.json.tmp.1302.1767817301183 to /Users/george/.claude.json
+2026-01-07T20:21:41.190Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T20:21:41.246Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:21:44.316Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:21:47.741Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2026-01-07T20:21:47.741Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:21:47.741Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2026-01-07T20:21:50.345Z [DEBUG] Stream started - received first chunk
+2026-01-07T20:21:54.543Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2026-01-07T20:21:54.543Z [DEBUG] Found 0 hook matchers in settings
+2026-01-07T20:21:54.543Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)

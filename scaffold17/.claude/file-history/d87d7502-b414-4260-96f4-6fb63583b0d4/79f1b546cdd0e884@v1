@@ -1,0 +1,7 @@
+# Stellar Explorer Environment Configuration - Local Network
+NEXT_PUBLIC_GRAPHQL_URL=http://localhost:8002/graphql
+NEXT_PUBLIC_GRAPHQL_WS_URL=ws://localhost:8002/graphql
+NEXT_PUBLIC_SOROBAN_RPC_URL=http://localhost:8000/soroban/rpc
+NEXT_PUBLIC_HORIZON_URL=http://localhost:8000
+NEXT_PUBLIC_NETWORK_PASSPHRASE="Standalone Network ; February 2017"
+NEXT_PUBLIC_NETWORK=local

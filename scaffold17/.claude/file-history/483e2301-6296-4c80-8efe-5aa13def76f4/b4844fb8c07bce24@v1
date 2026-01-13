@@ -1,0 +1,45 @@
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
+import { AccountDetail } from '@/components/account/AccountDetail';
+import { AccountSkeleton } from '@/components/shared/LoadingState';
+
+interface PageProps {
+  params: Promise<{ address: string }>;
+}
+
+export default async function AccountPage({ params }: PageProps) {
+  const { address } = await params;
+
+  // Validate address format (G for account, C for contract)
+  if (!/^[GC][A-Z0-9]{55}$/.test(address)) {
+    notFound();
+  }
+
+  // Redirect contracts to contract page
+  if (address.startsWith('C')) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Suspense fallback={<AccountSkeleton />}>
+          <AccountDetail address={address} isContract />
+        </Suspense>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Suspense fallback={<AccountSkeleton />}>
+        <AccountDetail address={address} />
+      </Suspense>
+    </div>
+  );
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { address } = await params;
+  const type = address.startsWith('C') ? 'Contract' : 'Account';
+  return {
+    title: `${type} ${address.slice(0, 8)}...`,
+    description: `View details for Stellar ${type.toLowerCase()} ${address}`,
+  };
+}

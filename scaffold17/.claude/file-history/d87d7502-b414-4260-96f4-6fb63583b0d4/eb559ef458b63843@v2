@@ -1,0 +1,122 @@
+import { useState } from "react";
+import { Button, Icon, Loader } from "@stellar/design-system";
+import { useMultiWallet } from "../../hooks/useMultiWallet";
+
+const FRIENDBOT_URL = "http://localhost:8000/friendbot";
+
+export const FundButton = () => {
+  const { activeAddress, updateBalances } = useMultiWallet();
+  const [isFunding, setIsFunding] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleFund = async () => {
+    if (!activeAddress) return;
+
+    setIsFunding(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      // Fund XLM via local friendbot
+      const xlmResponse = await fetch(
+        `${FRIENDBOT_URL}?addr=${activeAddress}`
+      );
+
+      if (!xlmResponse.ok) {
+        const text = await xlmResponse.text();
+        // Check if account already exists (which is fine)
+        if (!text.includes("account already exists")) {
+          console.warn("Friendbot warning:", text);
+        }
+      }
+
+      // Fund USDC via dev API endpoint
+      const usdcResponse = await fetch("/api/fund-usdc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address: activeAddress }),
+      });
+
+      if (!usdcResponse.ok) {
+        const data = await usdcResponse.json();
+        console.warn("USDC funding warning:", data.error);
+      }
+
+      // Refresh balances
+      await updateBalances();
+      setSuccess("Funded with XLM & USDC!");
+
+      // Clear success message after 3 seconds
+      setTimeout(() => setSuccess(null), 3000);
+    } catch (err) {
+      console.error("Funding failed:", err);
+      setError(err instanceof Error ? err.message : "Failed to fund account");
+    } finally {
+      setIsFunding(false);
+    }
+  };
+
+  if (!activeAddress) {
+    return null;
+  }
+
+  return (
+    <div style={{ position: "relative" }}>
+      <Button
+        variant="tertiary"
+        size="md"
+        onClick={() => void handleFund()}
+        disabled={isFunding}
+        title="Fund account with 10,000 XLM + 1,000,000 USDC (local network only)"
+      >
+        {isFunding ? (
+          <Loader />
+        ) : (
+          <>
+            <Icon.CurrencyDollarCircle />
+            Fund
+          </>
+        )}
+      </Button>
+      {error && (
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            right: 0,
+            background: "#fee2e2",
+            color: "#dc2626",
+            padding: "0.5rem",
+            borderRadius: "4px",
+            fontSize: "0.75rem",
+            whiteSpace: "nowrap",
+            marginTop: "0.25rem",
+            zIndex: 100,
+          }}
+        >
+          {error}
+        </div>
+      )}
+      {success && (
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            right: 0,
+            background: "#dcfce7",
+            color: "#16a34a",
+            padding: "0.5rem",
+            borderRadius: "4px",
+            fontSize: "0.75rem",
+            whiteSpace: "nowrap",
+            marginTop: "0.25rem",
+            zIndex: 100,
+          }}
+        >
+          {success}
+        </div>
+      )}
+    </div>
+  );
+};

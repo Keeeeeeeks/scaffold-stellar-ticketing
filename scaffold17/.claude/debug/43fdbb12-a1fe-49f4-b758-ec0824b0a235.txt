@@ -1,0 +1,86 @@
+2026-01-07T18:39:32.988Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (33.2ms): security find-generic-password -a $USER -w -s "Claude Code"
+2026-01-07T18:39:33.024Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (36.1ms): security find-generic-password -a "george" -w -s "Claude Code-credentials"
+2026-01-07T18:39:33.085Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-01-07T18:39:33.085Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-01-07T18:39:33.085Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-01-07T18:39:33.087Z [DEBUG] LSP server manager initialized successfully
+2026-01-07T18:39:33.087Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-01-07T18:39:33.088Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-01-07T18:39:33.090Z [DEBUG] Stats cache stale (2026-01-04), processing 2026-01-05 to 2026-01-06 in background
+2026-01-07T18:39:33.093Z [DEBUG] Loading skills from: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/george/.claude/skills, project=[]
+2026-01-07T18:39:33.093Z [DEBUG] Passes: Cache stale, returning cached data and refreshing in background
+2026-01-07T18:39:33.107Z [DEBUG] [SLOW OPERATION DETECTED] execSyncWithDefaults_DEPRECATED (12.8ms): cursor --version
+2026-01-07T18:39:33.107Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-01-07T18:39:33.124Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-01-07T18:39:33.124Z [DEBUG] Looking for shell config file: /Users/george/.zshrc
+2026-01-07T18:39:33.124Z [DEBUG] Shell config file not found: /Users/george/.zshrc, creating snapshot with Claude Code defaults only
+2026-01-07T18:39:33.124Z [DEBUG] Snapshots directory: /Users/george/.claude/shell-snapshots
+2026-01-07T18:39:33.125Z [DEBUG] Creating snapshot at: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767811173124-025zab.sh
+2026-01-07T18:39:33.125Z [DEBUG] Shell binary exists: true
+2026-01-07T18:39:33.125Z [DEBUG] Execution timeout: 10000ms
+2026-01-07T18:39:33.126Z [DEBUG] Writing to temp file: /Users/george/.claude/todos/43fdbb12-a1fe-49f4-b758-ec0824b0a235-agent-43fdbb12-a1fe-49f4-b758-ec0824b0a235.json.tmp.68930.1767811173126
+2026-01-07T18:39:33.132Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.9ms)
+2026-01-07T18:39:33.132Z [DEBUG] Temp file written successfully, size: 2 bytes
+2026-01-07T18:39:33.132Z [DEBUG] Renaming /Users/george/.claude/todos/43fdbb12-a1fe-49f4-b758-ec0824b0a235-agent-43fdbb12-a1fe-49f4-b758-ec0824b0a235.json.tmp.68930.1767811173126 to /Users/george/.claude/todos/43fdbb12-a1fe-49f4-b758-ec0824b0a235-agent-43fdbb12-a1fe-49f4-b758-ec0824b0a235.json
+2026-01-07T18:39:33.132Z [DEBUG] File /Users/george/.claude/todos/43fdbb12-a1fe-49f4-b758-ec0824b0a235-agent-43fdbb12-a1fe-49f4-b758-ec0824b0a235.json written atomically
+2026-01-07T18:39:33.138Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-01-07T18:39:33.138Z [DEBUG] Total plugin skills loaded: 0
+2026-01-07T18:39:33.138Z [DEBUG] Total plugin commands loaded: 0
+2026-01-07T18:39:33.139Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-01-07T18:39:33.149Z [DEBUG] Total plugin agents loaded: 0
+2026-01-07T18:39:33.149Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, legacy commands: 0)
+2026-01-07T18:39:33.149Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2026-01-07T18:39:33.166Z [DEBUG] Git remote URL: null
+2026-01-07T18:39:33.166Z [DEBUG] No git remote URL found
+2026-01-07T18:39:33.166Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-01-07T18:39:33.229Z [DEBUG] Stats cache saved successfully (lastComputedDate: 2026-01-06)
+2026-01-07T18:39:33.229Z [DEBUG] Stats cache updated with 1 new sessions
+2026-01-07T18:39:33.286Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.68930.1767811173286
+2026-01-07T18:39:33.286Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:39:33.291Z [DEBUG] Temp file written successfully, size: 60609 bytes
+2026-01-07T18:39:33.291Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:39:33.291Z [DEBUG] Renaming /Users/george/.claude.json.tmp.68930.1767811173286 to /Users/george/.claude.json
+2026-01-07T18:39:33.291Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:39:33.293Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.68930.1767811173293
+2026-01-07T18:39:33.293Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:39:33.297Z [DEBUG] Temp file written successfully, size: 60609 bytes
+2026-01-07T18:39:33.297Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:39:33.297Z [DEBUG] Renaming /Users/george/.claude.json.tmp.68930.1767811173293 to /Users/george/.claude.json
+2026-01-07T18:39:33.297Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:39:33.306Z [DEBUG] Writing to temp file: /Users/george/.claude.json.tmp.68930.1767811173306
+2026-01-07T18:39:33.306Z [DEBUG] Preserving file permissions: 100600
+2026-01-07T18:39:33.312Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (5.4ms)
+2026-01-07T18:39:33.312Z [DEBUG] Temp file written successfully, size: 60609 bytes
+2026-01-07T18:39:33.312Z [DEBUG] Applied original permissions to temp file
+2026-01-07T18:39:33.312Z [DEBUG] Renaming /Users/george/.claude.json.tmp.68930.1767811173306 to /Users/george/.claude.json
+2026-01-07T18:39:33.312Z [DEBUG] File /Users/george/.claude.json written atomically
+2026-01-07T18:39:33.332Z [DEBUG] Failed to fetch and cache passes eligibility
+2026-01-07T18:39:33.332Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async L17 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9071)
+    at async file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:2614:9964
+2026-01-07T18:39:33.333Z [ERROR] AxiosError: AxiosError: Request failed with status code 401
+    at bx (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:56:1137)
+    at IncomingMessage.<anonymous> (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:57:9852)
+    at IncomingMessage.emit (node:events:531:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at fzA.request (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:59:2130)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async UT2 (file:///Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/cli.js:1845:3609)
+2026-01-07T18:39:33.519Z [DEBUG] [SLOW OPERATION DETECTED] fs.writeFileSync (28.0ms)
+2026-01-07T18:39:33.519Z [DEBUG] Successfully refreshed marketplace: claude-plugins-official
+2026-01-07T18:39:33.519Z [DEBUG] Plugin autoupdate: checking installed plugins
+2026-01-07T18:39:33.679Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/george/.nvm/versions/node/v22.21.0/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+2026-01-07T18:39:34.442Z [DEBUG] Shell snapshot created successfully (848 bytes)
+2026-01-07T18:39:37.764Z [DEBUG] Skipping SessionEnd:other hook execution - workspace trust not accepted
+2026-01-07T18:39:37.764Z [DEBUG] Skipping SessionEnd:other hook execution - workspace trust not accepted
+2026-01-07T18:39:37.770Z [DEBUG] Cleaned up session snapshot: /Users/george/.claude/shell-snapshots/snapshot-zsh-1767811173124-025zab.sh

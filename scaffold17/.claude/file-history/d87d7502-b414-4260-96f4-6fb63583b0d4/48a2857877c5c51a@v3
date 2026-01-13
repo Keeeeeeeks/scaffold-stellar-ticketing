@@ -1,0 +1,319 @@
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
+  ISupportedWallet,
+  StellarWalletsKit,
+  WalletNetwork,
+  sep43Modules,
+} from "@creit.tech/stellar-wallets-kit";
+import storage, { ConnectedWallet } from "../util/storage";
+import { fetchBalances, MappedBalances } from "../util/wallet";
+import { networkPassphrase } from "../contracts/util";
+
+const POLL_INTERVAL = 3000;
+
+export interface MultiWalletContextType {
+  wallets: ConnectedWallet[];
+  activeWallet: ConnectedWallet | null;
+  activeAddress: string | undefined;
+  balances: MappedBalances;
+  isPending: boolean;
+  connectWallet: () => Promise<void>;
+  disconnectWallet: (walletId: string) => Promise<void>;
+  switchActiveWallet: (walletId: string) => void;
+  signTransaction: (xdr: string) => Promise<string>;
+  updateBalances: () => Promise<void>;
+}
+
+export const MultiWalletContext = createContext<MultiWalletContextType>({
+  wallets: [],
+  activeWallet: null,
+  activeAddress: undefined,
+  balances: {},
+  isPending: false,
+  connectWallet: async () => {},
+  disconnectWallet: async () => {},
+  switchActiveWallet: () => {},
+  signTransaction: async () => "",
+  updateBalances: async () => {},
+});
+
+export const MultiWalletProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [wallets, setWallets] = useState<ConnectedWallet[]>([]);
+  const [activeWalletId, setActiveWalletId] = useState<string | null>(null);
+  const [balances, setBalances] = useState<MappedBalances>({});
+  const [isPending, setIsPending] = useState(false);
+  const kitsRef = useRef<Map<string, StellarWalletsKit>>(new Map());
+
+  const getOrCreateKit = useCallback((walletId: string) => {
+    if (!kitsRef.current.has(walletId)) {
+      const kit = new StellarWalletsKit({
+        network: networkPassphrase as WalletNetwork,
+        modules: sep43Modules(),
+      });
+      kit.setWallet(walletId);
+      kitsRef.current.set(walletId, kit);
+    }
+    return kitsRef.current.get(walletId)!;
+  }, []);
+
+  const activeWallet = useMemo(
+    () => wallets.find((w) => w.id === activeWalletId) ?? null,
+    [wallets, activeWalletId]
+  );
+
+  const activeAddress = activeWallet?.address;
+
+  // Load persisted wallets on mount
+  useEffect(() => {
+    const saved = storage.getItem("connectedWallets") ?? [];
+    const savedActive = storage.getItem("activeWalletId");
+
+    if (saved.length > 0) {
+      setWallets(saved);
+      setActiveWalletId(savedActive ?? saved[0].id);
+
+      // Pre-create kits for all saved wallets
+      saved.forEach((w: ConnectedWallet) => getOrCreateKit(w.id));
+    }
+  }, [getOrCreateKit]);
+
+  // Persist wallets on change
+  useEffect(() => {
+    if (wallets.length > 0) {
+      storage.setItem("connectedWallets", wallets);
+    }
+    if (activeWalletId) {
+      storage.setItem("activeWalletId", activeWalletId);
+    }
+  }, [wallets, activeWalletId]);
+
+  // Fetch balances when active wallet changes
+  const updateBalances = useCallback(async () => {
+    if (!activeAddress) {
+      setBalances({});
+      return;
+    }
+    const newBalances = await fetchBalances(activeAddress);
+    setBalances(newBalances);
+  }, [activeAddress]);
+
+  useEffect(() => {
+    void updateBalances();
+  }, [updateBalances]);
+
+  // Poll for wallet changes (accountsChanged simulation)
+  // Only poll Freighter since it supports silent address checks
+  useEffect(() => {
+    if (wallets.length === 0) return;
+
+    let isPolling = false;
+
+    const checkForChanges = async () => {
+      // Prevent overlapping polls
+      if (isPolling || isPending) return;
+      isPolling = true;
+
+      for (const wallet of wallets) {
+        // Only check Freighter as other wallets may trigger popups
+        if (wallet.id !== "freighter") continue;
+
+        try {
+          const kit = getOrCreateKit(wallet.id);
+          const { address } = await kit.getAddress();
+
+          if (address && address !== wallet.address) {
+            // Wallet address changed
+            setWallets((prev) =>
+              prev.map((w) =>
+                w.id === wallet.id ? { ...w, address } : w
+              )
+            );
+          }
+        } catch {
+          // Wallet may have disconnected externally - ignore
+        }
+      }
+
+      isPolling = false;
+    };
+
+    const interval = setInterval(() => void checkForChanges(), POLL_INTERVAL);
+    return () => clearInterval(interval);
+  }, [wallets, getOrCreateKit, isPending]);
+
+  const connectWallet = useCallback(async () => {
+    // Don't block on popupLock for initial modal - only for getAddress calls
+    setIsPending(true);
+
+    const kit = new StellarWalletsKit({
+      network: networkPassphrase as WalletNetwork,
+      modules: sep43Modules(),
+    });
+
+    await kit.openModal({
+      modalTitle: "Connect Wallet",
+      onWalletSelected: async (option: ISupportedWallet) => {
+        console.log("Wallet selected:", option.id);
+        kit.setWallet(option.id);
+        kitsRef.current.set(option.id, kit);
+
+        try {
+          console.log("Getting address from", option.id);
+          const [addressResult, networkResult] = await Promise.all([
+            kit.getAddress(),
+            kit.getNetwork(),
+          ]);
+          console.log("Got address:", addressResult.address);
+
+          if (!addressResult.address) {
+            console.error("No address returned from wallet");
+            setIsPending(false);
+            return;
+          }
+
+          // Check if already connected with same address
+          const existing = wallets.find(
+            (w) => w.id === option.id && w.address === addressResult.address
+          );
+
+          if (existing) {
+            setActiveWalletId(existing.id);
+            setIsPending(false);
+            return;
+          }
+
+          // Check if same wallet ID exists (user switched address in wallet)
+          const existingWalletIndex = wallets.findIndex(
+            (w) => w.id === option.id
+          );
+
+          const newWallet: ConnectedWallet = {
+            id: option.id,
+            address: addressResult.address,
+            network: networkResult.network || "",
+            networkPassphrase: networkResult.networkPassphrase || "",
+            connectedAt: Date.now(),
+          };
+
+          if (existingWalletIndex >= 0) {
+            // Update existing wallet entry
+            setWallets((prev) =>
+              prev.map((w, i) => (i === existingWalletIndex ? newWallet : w))
+            );
+          } else {
+            // Add new wallet
+            setWallets((prev) => [...prev, newWallet]);
+          }
+
+          setActiveWalletId(option.id);
+        } catch (e) {
+          console.error("Failed to connect wallet:", e);
+        } finally {
+          setIsPending(false);
+        }
+      },
+    });
+
+    // Modal closed without selection
+    setIsPending(false);
+  }, [wallets]);
+
+  const disconnectWallet = useCallback(
+    async (walletId: string) => {
+      const kit = kitsRef.current.get(walletId);
+      if (kit) {
+        try {
+          await kit.disconnect();
+        } catch {
+          // Ignore disconnect errors
+        }
+        kitsRef.current.delete(walletId);
+      }
+
+      const newWallets = wallets.filter((w) => w.id !== walletId);
+      setWallets(newWallets);
+
+      // If disconnecting active wallet, switch to another
+      if (activeWalletId === walletId) {
+        setActiveWalletId(newWallets[0]?.id ?? null);
+      }
+
+      // Clear storage if no wallets left
+      if (newWallets.length === 0) {
+        storage.removeItem("connectedWallets");
+        storage.removeItem("activeWalletId");
+      }
+    },
+    [wallets, activeWalletId]
+  );
+
+  const switchActiveWallet = useCallback(
+    (walletId: string) => {
+      if (wallets.some((w) => w.id === walletId)) {
+        setActiveWalletId(walletId);
+      }
+    },
+    [wallets]
+  );
+
+  const signTransaction = useCallback(
+    async (xdr: string): Promise<string> => {
+      if (!activeWalletId) throw new Error("No active wallet");
+
+      const kit = getOrCreateKit(activeWalletId);
+      setIsPending(true);
+
+      try {
+        const result = await kit.signTransaction(xdr, {
+          networkPassphrase: networkPassphrase as WalletNetwork,
+        });
+        return result.signedTxXdr;
+      } finally {
+        setIsPending(false);
+      }
+    },
+    [activeWalletId, getOrCreateKit]
+  );
+
+  const contextValue = useMemo(
+    () => ({
+      wallets,
+      activeWallet,
+      activeAddress,
+      balances,
+      isPending,
+      connectWallet,
+      disconnectWallet,
+      switchActiveWallet,
+      signTransaction,
+      updateBalances,
+    }),
+    [
+      wallets,
+      activeWallet,
+      activeAddress,
+      balances,
+      isPending,
+      connectWallet,
+      disconnectWallet,
+      switchActiveWallet,
+      signTransaction,
+      updateBalances,
+    ]
+  );
+
+  return (
+    <MultiWalletContext value={contextValue}>{children}</MultiWalletContext>
+  );
+};

@@ -1,0 +1,62 @@
+import { exec } from "child_process";
+import { promisify } from "util";
+import type { Plugin, ViteDevServer } from "vite";
+
+const execAsync = promisify(exec);
+
+const USDC_CONTRACT = "CBGDS5COR4R32Q3RHQT2H3HPH4NUWEBMQEVC5HGMPFB2BN654A4ENGVN";
+const FUND_AMOUNT = "10000000000000"; // 1,000,000 USDC (7 decimals)
+
+export function fundPlugin(): Plugin {
+  return {
+    name: "fund-plugin",
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use("/api/fund-usdc", async (req, res) => {
+        if (req.method !== "POST") {
+          res.statusCode = 405;
+          res.end(JSON.stringify({ error: "Method not allowed" }));
+          return;
+        }
+
+        let body = "";
+        req.on("data", (chunk) => {
+          body += chunk;
+        });
+
+        req.on("end", async () => {
+          try {
+            const { address } = JSON.parse(body);
+
+            if (!address || typeof address !== "string") {
+              res.statusCode = 400;
+              res.end(JSON.stringify({ error: "Address is required" }));
+              return;
+            }
+
+            // Mint USDC to the address using stellar CLI
+            const cmd = `stellar contract invoke --id ${USDC_CONTRACT} --source me --network local -- mint --to ${address} --amount ${FUND_AMOUNT}`;
+
+            console.log(`[fund-plugin] Minting USDC to ${address}...`);
+            const { stdout, stderr } = await execAsync(cmd);
+
+            if (stderr && !stderr.includes("Signing transaction")) {
+              console.error(`[fund-plugin] Error: ${stderr}`);
+            }
+
+            console.log(`[fund-plugin] Success: ${stdout || "USDC minted"}`);
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify({ success: true, amount: "1000000" }));
+          } catch (err) {
+            console.error("[fund-plugin] Error:", err);
+            res.statusCode = 500;
+            res.end(
+              JSON.stringify({
+                error: err instanceof Error ? err.message : "Failed to mint USDC",
+              })
+            );
+          }
+        });
+      });
+    },
+  };
+}

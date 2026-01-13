@@ -1,0 +1,576 @@
+# StellarTix: NFT Ticketing dApp Specification
+
+A scaffold-eth inspired ticketing application for Stellar using Soroban smart contracts, SEP-50 NFTs, and multi-wallet support via stellar-wallets-kit.
+
+---
+
+## Quick Reference
+
+| Item | Value |
+|------|-------|
+| **MVP Ticket Price** | 1 USDC / 5 XLM (fixed) |
+| **Storage Model** | V1: Hybrid (metadata off-chain), V2: Fully on-chain |
+| **Wallet Support** | Multiple wallet apps simultaneously (Freighter, Lobstr, Albedo) |
+| **NFT Standard** | SEP-50 via OpenZeppelin stellar-tokens |
+
+---
+
+## 1. Smart Contract Specification
+
+### 1.1 File Structure
+
+```
+contracts/ticketing/
+├── Cargo.toml
+└── src/
+    ├── lib.rs          # Module exports
+    ├── contract.rs     # Main contract logic
+    ├── types.rs        # Data structures
+    ├── events.rs       # Event emissions
+    └── test.rs         # Unit tests
+```
+
+### 1.2 Data Types (`types.rs`)
+
+```rust
+#[contracttype]
+pub enum DataKey {
+    Admin,
+    Event(u64),           // EventId -> EventData
+    EventCounter,
+    Ticket(u32),          // TokenId -> TicketData
+    XlmToken,
+    UsdcToken,
+}
+
+#[contracttype]
+#[derive(Clone)]
+pub struct EventData {
+    pub event_id: u64,
+    pub capacity: u32,
+    pub sold: u32,
+    pub xlm_price: i128,      // stroops (5 XLM = 50_000_000)
+    pub usdc_price: i128,     // smallest unit (1 USDC = 10_000_000)
+    pub is_active: bool,
+    pub metadata_uri: String, // IPFS/Arweave URI (V1 hybrid)
+}
+
+#[contracttype]
+#[derive(Clone)]
+pub struct TicketData {
+    pub event_id: u64,
+    pub ticket_number: u32,
+    pub purchase_timestamp: u64,
+    pub original_buyer: Address,
+}
+
+#[contracttype]
+pub enum PaymentToken {
+    Xlm,
+    Usdc,
+}
+```
+
+### 1.3 Contract Functions
+
+| Function | Access | Description |
+|----------|--------|-------------|
+| `__constructor(admin, xlm_token, usdc_token)` | Deploy | Initialize with admin and SAC addresses |
+| `create_event(capacity, xlm_price, usdc_price, metadata_uri) -> u64` | Admin | Create event, returns event_id |
+| `deactivate_event(event_id)` | Admin | Stop ticket sales |
+| `withdraw(token, amount, to)` | Admin | Withdraw collected funds |
+| `upgrade(new_wasm_hash)` | Admin | Upgrade contract |
+| `purchase_ticket(event_id, buyer, payment_token) -> u32` | Public | Buy ticket, returns token_id |
+| `get_event(event_id) -> EventData` | View | Get event details |
+| `get_ticket(token_id) -> TicketData` | View | Get ticket metadata |
+| `tickets_remaining(event_id) -> u32` | View | Available tickets |
+| `admin() -> Address` | View | Current admin |
+
+### 1.4 NFT Implementation
+
+Extends OpenZeppelin's `NonFungibleEnumerable`:
+
+```rust
+#[default_impl]
+#[contractimpl]
+impl NonFungibleToken for TicketingContract {
+    type ContractType = Enumerable;
+}
+
+#[default_impl]
+#[contractimpl]
+impl NonFungibleEnumerable for TicketingContract {}
+```
+
+Key inherited functions:
+- `balance(owner) -> u32` - User's ticket count
+- `get_owner_token_id(owner, index) -> u32` - Get nth ticket ID for owner
+- `owner_of(token_id) -> Address` - Ticket owner
+- `transfer(from, to, token_id)` - Transfer ticket
+
+### 1.5 Payment Flow
+
+```
+1. User calls purchase_ticket(event_id, buyer, PaymentToken::Xlm)
+2. Contract validates: event active, capacity available
+3. Contract calls SAC.transfer(buyer -> contract, price)
+4. Contract mints NFT via Enumerable::sequential_mint(buyer)
+5. Contract stores TicketData with event_id, ticket_number
+6. Contract emits purchase event
+7. Returns token_id
+```
+
+### 1.6 V2 Extension: Fully On-Chain Metadata
+
+Extend `EventData` to store all metadata:
+
+```rust
+#[contracttype]
+#[derive(Clone)]
+pub struct EventDataV2 {
+    // V1 fields
+    pub event_id: u64,
+    pub capacity: u32,
+    pub sold: u32,
+    pub xlm_price: i128,
+    pub usdc_price: i128,
+    pub is_active: bool,
+
+    // V2 on-chain metadata
+    pub name: String,           // Max 64 chars
+    pub description: String,    // Max 256 chars
+    pub venue: String,          // Max 128 chars
+    pub date: u64,              // Unix timestamp
+    pub image_uri: String,      // IPFS URI for image only
+}
+```
+
+Migration strategy:
+1. Add `create_event_v2()` with full metadata params
+2. Keep `create_event()` for backward compatibility
+3. Add `get_event_v2()` returning enriched data
+4. Use TTL-based storage archival for past events
+
+---
+
+## 2. Frontend Architecture
+
+### 2.1 New File Structure
+
+```
+src/
+├── providers/
+│   └── MultiWalletProvider.tsx    # NEW: Multi-wallet context
+├── hooks/
+│   ├── useMultiWallet.ts          # NEW: Multi-wallet hook
+│   ├── useTicketContract.ts       # NEW: Contract interactions
+│   ├── useEvents.ts               # NEW: Event data
+│   └── useUserTickets.ts          # NEW: User's tickets
+├── pages/
+│   ├── Home.tsx                   # UPDATE: Add hero, featured events
+│   ├── EventsPage.tsx             # NEW: Browse all events
+│   ├── EventDetailPage.tsx        # NEW: Single event + purchase
+│   └── MyTicketsPage.tsx          # NEW: User's tickets
+├── components/
+│   ├── events/
+│   │   ├── EventCard.tsx          # NEW
+│   │   ├── EventGrid.tsx          # NEW
+│   │   └── FeaturedEvents.tsx     # NEW
+│   ├── tickets/
+│   │   ├── TicketCard.tsx         # NEW
+│   │   ├── TicketGrid.tsx         # NEW
+│   │   └── PurchaseModal.tsx      # NEW
+│   └── wallet/
+│       ├── MultiWalletButton.tsx  # NEW
+│       ├── WalletList.tsx         # NEW
+│       └── WalletSwitcher.tsx     # NEW
+├── types/
+│   ├── events.ts                  # NEW
+│   ├── tickets.ts                 # NEW
+│   └── wallet.ts                  # NEW
+└── data/
+    └── mockEvents.ts              # NEW: Hardcoded example events
+```
+
+### 2.2 Page Specifications
+
+#### Home Page (`/`)
+- Hero section with tagline
+- Featured events carousel (3-4 events)
+- "How It Works" section (connect wallet, browse, purchase, receive NFT)
+- CTA buttons to browse events
+
+#### Events Page (`/events`)
+- Grid of EventCards
+- Filter by: date, price range, availability
+- Search by event name
+- "Sold Out" badge for full events
+
+#### Event Detail Page (`/events/:eventId`)
+- Event image, name, description
+- Venue and date
+- Price display (XLM and USDC options)
+- Tickets remaining counter
+- "Buy Ticket" button -> opens PurchaseModal
+- Requires wallet connection
+
+#### My Tickets Page (`/my-tickets`)
+- Grid of TicketCards for active wallet
+- Each card shows: event name, date, ticket #, QR code placeholder
+- Empty state if no tickets
+- Links to event detail pages
+
+### 2.3 Example Events Data
+
+```typescript
+// src/data/mockEvents.ts
+export const mockEvents = [
+  {
+    id: 1n,
+    name: "Stellar Summit 2026",
+    description: "The premier blockchain conference for the Stellar ecosystem.",
+    venue: "San Francisco Convention Center",
+    date: new Date("2026-03-15"),
+    imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87",
+    capacity: 500,
+    sold: 127,
+    xlmPrice: 50_000_000n,  // 5 XLM
+    usdcPrice: 10_000_000n, // 1 USDC
+    isActive: true,
+  },
+  {
+    id: 2n,
+    name: "DeFi Night: Liquidity Deep Dive",
+    description: "Evening workshop on liquidity protocols.",
+    venue: "The Crypto Lounge, NYC",
+    date: new Date("2026-02-20"),
+    // ...
+  },
+  {
+    id: 3n,
+    name: "Soroban Smart Contract Workshop",
+    description: "Hands-on Soroban development. Bring your laptop!",
+    venue: "TechHub Berlin",
+    date: new Date("2026-04-10"),
+    // ...
+  },
+  {
+    id: 4n,
+    name: "Stellar Music Festival",
+    description: "Music festival with NFT tickets on Stellar.",
+    venue: "Austin Amphitheater",
+    date: new Date("2026-05-25"),
+    // ...
+  },
+  {
+    id: 5n,
+    name: "Anchor Integration Hackathon",
+    description: "24-hour hackathon for anchor integrations.",
+    venue: "Online",
+    date: new Date("2026-06-15"),
+    // ...
+  },
+];
+```
+
+---
+
+## 3. Multi-Wallet Architecture
+
+### 3.1 Core Concept
+
+Users can connect **multiple wallet apps** (Freighter, Lobstr, Albedo) simultaneously and switch between them. Each wallet maintains its own connection state.
+
+### 3.2 Storage Schema Extension
+
+Update `src/util/storage.ts`:
+
+```typescript
+type Schema = {
+  // Existing
+  walletId: string;
+  walletAddress: string;
+  walletNetwork: string;
+  networkPassphrase: string;
+
+  // NEW: Multi-wallet
+  connectedWallets: ConnectedWallet[];
+  activeWalletId: string;
+};
+
+interface ConnectedWallet {
+  id: string;              // Wallet app ID (freighter, lobstr, etc.)
+  address: string;
+  network: string;
+  networkPassphrase: string;
+  connectedAt: number;
+}
+```
+
+### 3.3 MultiWalletProvider State
+
+```typescript
+interface MultiWalletContextType {
+  // All connected wallets
+  wallets: ConnectedWallet[];
+
+  // Currently active wallet
+  activeWallet: ConnectedWallet | null;
+  activeAddress: string | undefined;
+
+  // Actions
+  connectWallet: () => Promise<void>;           // Opens modal, adds wallet
+  disconnectWallet: (walletId: string) => void; // Removes specific wallet
+  switchActiveWallet: (walletId: string) => void; // Changes active
+
+  // Transaction signing (uses active wallet)
+  signTransaction: (xdr: string) => Promise<string>;
+
+  // Balances for active wallet
+  balances: MappedBalances;
+  updateBalances: () => Promise<void>;
+
+  isPending: boolean;
+}
+```
+
+### 3.4 accountsChanged Detection
+
+Polling-based approach (matching existing WalletProvider pattern):
+
+```typescript
+// Poll every 3 seconds for each connected wallet
+useEffect(() => {
+  const checkForChanges = async () => {
+    for (const wallet of wallets) {
+      const kit = getKit(wallet.id);
+      const { address } = await kit.getAddress();
+
+      if (address !== wallet.address) {
+        // Wallet address changed - update state
+        updateWallet(wallet.id, { address });
+      }
+    }
+  };
+
+  const interval = setInterval(checkForChanges, 3000);
+  return () => clearInterval(interval);
+}, [wallets]);
+```
+
+### 3.5 UI Components
+
+**MultiWalletButton**: Main header component
+- Shows active wallet address (truncated)
+- Badge showing `+N` for additional wallets
+- Click opens wallet management modal
+
+**WalletList** (in modal):
+- List of all connected wallets
+- Active wallet highlighted
+- Click to switch active
+- Disconnect button per wallet
+- "Add Wallet" button at bottom
+
+---
+
+## 4. Data Flow Diagrams
+
+### 4.1 Ticket Purchase
+
+```
+User clicks "Buy Ticket"
+        ↓
+PurchaseModal opens
+        ↓
+User selects payment token (XLM/USDC)
+        ↓
+useTicketContract.purchaseTicket()
+        ↓
+ticketing.purchase_ticket() builds TX
+        ↓
+signTransaction() → active wallet signs
+        ↓
+TX submitted to network
+        ↓
+Contract: validate → transfer payment → mint NFT
+        ↓
+Success: invalidate queries → refresh balances → show confirmation
+```
+
+### 4.2 Wallet Connection
+
+```
+User clicks "Add Wallet"
+        ↓
+StellarWalletsKit.openModal()
+        ↓
+User selects wallet app (Freighter)
+        ↓
+kit.setWallet() + kit.getAddress()
+        ↓
+Wallet extension prompts for approval
+        ↓
+Address returned → add to wallets array
+        ↓
+Set as activeWallet
+        ↓
+Persist to localStorage
+        ↓
+UI updates with new wallet in list
+```
+
+### 4.3 Wallet Switch
+
+```
+User opens wallet modal
+        ↓
+Clicks different wallet in list
+        ↓
+switchActiveWallet(walletId)
+        ↓
+setActiveWalletId(walletId)
+        ↓
+Context updates → all consumers re-render
+        ↓
+Balances refresh for new active wallet
+        ↓
+Transaction signing now uses new wallet
+```
+
+---
+
+## 5. Configuration Updates
+
+### 5.1 environments.toml
+
+```toml
+[development.contracts.ticketing]
+client = true
+constructor_args = """
+--admin me
+--xlm_token native
+--usdc_token CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC
+"""
+
+[staging.contracts.ticketing]
+id = "PENDING_DEPLOYMENT"
+
+[production.contracts.ticketing]
+id = "PENDING_DEPLOYMENT"
+```
+
+### 5.2 Cargo.toml (workspace)
+
+Add to `[workspace.members]`:
+```toml
+members = [
+    "contracts/guess-the-number",
+    "contracts/fungible-allowlist",
+    "contracts/nft-enumerable",
+    "contracts/ticketing",  # NEW
+]
+```
+
+### 5.3 App Routing
+
+```typescript
+// src/App.tsx
+<Routes>
+  <Route element={<AppLayout />}>
+    <Route path="/" element={<Home />} />
+    <Route path="/events" element={<EventsPage />} />
+    <Route path="/events/:eventId" element={<EventDetailPage />} />
+    <Route path="/my-tickets" element={<MyTicketsPage />} />
+    <Route path="/debug" element={<Debugger />} />
+  </Route>
+</Routes>
+```
+
+---
+
+## 6. Implementation Phases
+
+### Phase 1: Smart Contract
+1. Create `contracts/ticketing/` directory
+2. Implement `types.rs` with data structures
+3. Implement `contract.rs` with core logic
+4. Implement `events.rs` for event emissions
+5. Write unit tests in `test.rs`
+6. Add to workspace `Cargo.toml`
+7. Deploy to local network and verify
+
+### Phase 2: Multi-Wallet Provider
+1. Extend `storage.ts` schema
+2. Create `MultiWalletProvider.tsx`
+3. Implement `useMultiWallet.ts` hook
+4. Create wallet UI components
+5. Replace existing WalletButton with MultiWalletButton
+6. Test with Freighter + Albedo simultaneously
+
+### Phase 3: Frontend Pages
+1. Create mock events data
+2. Implement EventCard and EventGrid components
+3. Create EventsPage with grid layout
+4. Create EventDetailPage with event info
+5. Create MyTicketsPage for user tickets
+6. Update Home page with hero and featured events
+7. Configure routing in App.tsx
+
+### Phase 4: Contract Integration
+1. Create `useTicketContract.ts` hook
+2. Create `useEvents.ts` hook (merge mock + on-chain)
+3. Create `useUserTickets.ts` hook
+4. Implement PurchaseModal with payment selection
+5. Connect purchase flow to contract
+6. Add balance refresh after purchase
+
+### Phase 5: Polish
+1. Add loading states and skeletons
+2. Add error handling and notifications
+3. Implement event filters/search
+4. Add purchase confirmation screen
+5. Mobile responsiveness
+6. End-to-end testing on testnet
+
+---
+
+## 7. Critical Files to Modify/Create
+
+### Smart Contract
+- `contracts/ticketing/Cargo.toml` - NEW
+- `contracts/ticketing/src/lib.rs` - NEW
+- `contracts/ticketing/src/contract.rs` - NEW
+- `contracts/ticketing/src/types.rs` - NEW
+- `contracts/ticketing/src/events.rs` - NEW
+- `Cargo.toml` - ADD ticketing to workspace
+
+### Frontend
+- `src/util/storage.ts` - EXTEND schema
+- `src/providers/MultiWalletProvider.tsx` - NEW
+- `src/hooks/useMultiWallet.ts` - NEW
+- `src/hooks/useTicketContract.ts` - NEW
+- `src/hooks/useEvents.ts` - NEW
+- `src/hooks/useUserTickets.ts` - NEW
+- `src/pages/EventsPage.tsx` - NEW
+- `src/pages/EventDetailPage.tsx` - NEW
+- `src/pages/MyTicketsPage.tsx` - NEW
+- `src/pages/Home.tsx` - UPDATE
+- `src/components/wallet/MultiWalletButton.tsx` - NEW
+- `src/components/tickets/PurchaseModal.tsx` - NEW
+- `src/data/mockEvents.ts` - NEW
+- `src/App.tsx` - UPDATE routing
+
+### Configuration
+- `environments.toml` - ADD ticketing contract
+
+---
+
+## 8. Security Considerations
+
+1. **Admin authorization**: All admin functions use `require_auth()`
+2. **Price validation**: Prices stored on-chain, not passed by caller
+3. **Capacity enforcement**: Contract validates before minting
+4. **Wallet isolation**: Each wallet kit instance is independent
+5. **No private keys stored**: All signing delegated to wallet apps
+6. **Payment token validation**: Only accept configured XLM/USDC SACs

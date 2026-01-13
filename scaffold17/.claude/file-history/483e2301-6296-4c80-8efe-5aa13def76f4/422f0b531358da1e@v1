@@ -1,0 +1,15 @@
+import { Metadata } from 'next';
+import { TokenTracker } from '@/components/tokens/TokenTracker';
+
+export const metadata: Metadata = {
+  title: 'Token Tracker',
+  description: 'Track SEP-41 and Stellar Asset Contract (SAC) tokens on the Stellar network.',
+};
+
+export default function TokensPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <TokenTracker />
+    </div>
+  );
+}

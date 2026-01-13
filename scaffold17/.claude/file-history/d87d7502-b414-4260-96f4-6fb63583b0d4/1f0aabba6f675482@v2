@@ -1,0 +1,10 @@
+import { useContext } from "react";
+import { MultiWalletContext } from "../providers/MultiWalletProvider";
+
+export const useMultiWallet = () => {
+  const context = useContext(MultiWalletContext);
+  if (!context) {
+    throw new Error("useMultiWallet must be used within a MultiWalletProvider");
+  }
+  return context;
+};

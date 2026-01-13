@@ -1,0 +1,130 @@
+import { Link } from "react-router-dom";
+import { Button, Layout, Icon } from "@stellar/design-system";
+import { EventGrid } from "../components/events/EventGrid";
+import { useEvents } from "../hooks/useEvents";
+import "./Home.css";
+
+const Home = () => {
+  const { data: events } = useEvents();
+  const featuredEvents = events?.slice(0, 3) ?? [];
+
+  return (
+    <Layout.Content>
+      <div className="home-hero">
+        <div className="hero-content">
+          <h1>StellarTix</h1>
+          <p className="hero-subtitle">
+            NFT Tickets on Stellar. Buy, hold, and trade event tickets as
+            SEP-50 NFTs.
+          </p>
+          <div className="hero-actions">
+            <Link to="/events">
+              <Button variant="primary" size="lg">
+                Browse Events
+              </Button>
+            </Link>
+            <Link to="/my-tickets">
+              <Button variant="secondary" size="lg">
+                My Tickets
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <Layout.Inset>
+        <section className="home-section">
+          <div className="section-header">
+            <h2>Featured Events</h2>
+            <Link to="/events" className="view-all">
+              View all <Icon.ArrowRight />
+            </Link>
+          </div>
+          <EventGrid events={featuredEvents} />
+        </section>
+
+        <section className="home-section how-it-works">
+          <h2>How It Works</h2>
+          <div className="steps-grid">
+            <div className="step">
+              <div className="step-icon">
+                <Icon.Wallet01 />
+              </div>
+              <h3>1. Connect Wallet</h3>
+              <p>
+                Connect your Stellar wallet using Freighter, Lobstr, or other
+                supported wallets.
+              </p>
+            </div>
+            <div className="step">
+              <div className="step-icon">
+                <Icon.SearchLg />
+              </div>
+              <h3>2. Browse Events</h3>
+              <p>
+                Explore upcoming events and find something you're interested
+                in attending.
+              </p>
+            </div>
+            <div className="step">
+              <div className="step-icon">
+                <Icon.CreditCard01 />
+              </div>
+              <h3>3. Purchase Ticket</h3>
+              <p>
+                Pay with XLM or USDC to purchase your ticket as an NFT on
+                Stellar.
+              </p>
+            </div>
+            <div className="step">
+              <div className="step-icon">
+                <Icon.Ticket01 />
+              </div>
+              <h3>4. Receive NFT</h3>
+              <p>
+                Your ticket is minted as a SEP-50 NFT that you own and can
+                transfer.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="home-section features">
+          <h2>Why StellarTix?</h2>
+          <div className="features-grid">
+            <div className="feature">
+              <h3>True Ownership</h3>
+              <p>
+                Your tickets are NFTs that you truly own. No more locked
+                accounts or platform restrictions.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Low Fees</h3>
+              <p>
+                Stellar's low transaction costs mean more of your money goes
+                to the event, not fees.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Instant Transfers</h3>
+              <p>
+                Transfer or sell your tickets instantly on the Stellar
+                network with near-zero fees.
+              </p>
+            </div>
+            <div className="feature">
+              <h3>Multi-Token Payments</h3>
+              <p>
+                Pay with XLM, USDC, or other Stellar assets. Choose what
+                works best for you.
+              </p>
+            </div>
+          </div>
+        </section>
+      </Layout.Inset>
+    </Layout.Content>
+  );
+};
+
+export default Home;

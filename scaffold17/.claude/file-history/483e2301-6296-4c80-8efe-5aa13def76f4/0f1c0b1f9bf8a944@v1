@@ -1,0 +1,149 @@
+'use client';
+
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, ArrowRight, Loader2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { parseSearchQuery, getTypeLabel, getTypeColor } from '@/lib/utils/search';
+import { cn } from '@/lib/utils';
+import { SPRING, DURATION } from '@/lib/utils/constants';
+import type { SearchResultType } from '@/lib/utils/search';
+
+export function SearchBar() {
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [detectedType, setDetectedType] = useState<SearchResultType | null>(null);
+
+  // Update detected type as user types
+  useEffect(() => {
+    if (query.length > 5) {
+      const result = parseSearchQuery(query);
+      setDetectedType(result.type);
+    } else {
+      setDetectedType(null);
+    }
+  }, [query]);
+
+  // Keyboard shortcut: Cmd/Ctrl + K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+      // Escape to blur
+      if (e.key === 'Escape' && document.activeElement === inputRef.current) {
+        inputRef.current?.blur();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const handleSearch = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!query.trim()) return;
+
+      setIsSearching(true);
+      const result = parseSearchQuery(query);
+
+      // Small delay for UX feedback
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      router.push(result.route);
+      setIsSearching(false);
+      setQuery('');
+    },
+    [query, router]
+  );
+
+  return (
+    <form onSubmit={handleSearch} className="relative w-full">
+      <motion.div
+        animate={{
+          boxShadow: isFocused
+            ? '0 0 0 2px hsl(var(--primary) / 0.2)'
+            : '0 0 0 0px transparent',
+        }}
+        transition={{ duration: DURATION.fast }}
+        className="relative rounded-lg"
+      >
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+        <Input
+          ref={inputRef}
+          type="text"
+          placeholder="Search by Address / Txn Hash / Block / Contract..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className={cn(
+            'pl-10 pr-28 h-11 text-sm bg-muted/50 border-muted-foreground/20',
+            'placeholder:text-muted-foreground/60',
+            'focus-visible:ring-1 focus-visible:ring-primary/50'
+          )}
+        />
+
+        {/* Type indicator badge */}
+        <AnimatePresence mode="wait">
+          {detectedType && detectedType !== 'unknown' && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, x: 10 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.8, x: 10 }}
+              transition={SPRING.snappy}
+              className="absolute right-14 top-1/2 -translate-y-1/2"
+            >
+              <span
+                className={cn(
+                  'px-2 py-0.5 rounded-full text-xs font-medium border',
+                  getTypeColor(detectedType)
+                )}
+              >
+                {getTypeLabel(detectedType)}
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Submit button */}
+        <motion.button
+          type="submit"
+          disabled={isSearching || !query.trim()}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={SPRING.snappy}
+          className={cn(
+            'absolute right-1.5 top-1/2 -translate-y-1/2',
+            'px-3 py-1.5 rounded-md text-sm font-medium',
+            'bg-primary text-primary-foreground',
+            'disabled:opacity-50 disabled:cursor-not-allowed',
+            'transition-colors duration-200'
+          )}
+        >
+          {isSearching ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <ArrowRight className="h-4 w-4" />
+          )}
+        </motion.button>
+      </motion.div>
+
+      {/* Keyboard hint - Desktop only */}
+      <div className="hidden lg:block absolute -bottom-5 left-0 text-xs text-muted-foreground/60">
+        Press{' '}
+        <kbd className="px-1.5 py-0.5 bg-muted rounded text-[10px] font-mono">
+          {typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent)
+            ? '⌘K'
+            : 'Ctrl+K'}
+        </kbd>{' '}
+        to search
+      </div>
+    </form>
+  );
+}

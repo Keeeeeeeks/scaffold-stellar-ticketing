@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Check Docker is installed and running",
+    "status": "completed",
+    "activeForm": "Checking Docker installation"
+  },
+  {
+    "content": "Clone wallet-backend repository",
+    "status": "completed",
+    "activeForm": "Cloning wallet-backend repository"
+  },
+  {
+    "content": "Generate Stellar keypairs for configuration",
+    "status": "completed",
+    "activeForm": "Generating Stellar keypairs"
+  },
+  {
+    "content": "Configure environment variables",
+    "status": "completed",
+    "activeForm": "Configuring environment variables"
+  },
+  {
+    "content": "Start wallet-backend with Docker Compose",
+    "status": "in_progress",
+    "activeForm": "Starting wallet-backend"
+  },
+  {
+    "content": "Update Soroscan to connect to local backend",
+    "status": "pending",
+    "activeForm": "Updating Soroscan configuration"
+  }
+]

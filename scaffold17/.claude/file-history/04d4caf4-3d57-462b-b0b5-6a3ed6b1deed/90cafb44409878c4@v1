@@ -1,0 +1,48 @@
+import { useState } from "react";
+import { Button, Modal, Profile, Badge, Icon } from "@stellar/design-system";
+import { useMultiWallet } from "../../hooks/useMultiWallet";
+import { WalletList } from "./WalletList";
+import "./MultiWalletButton.css";
+
+export const MultiWalletButton = () => {
+  const [showModal, setShowModal] = useState(false);
+  const { wallets, activeWallet, connectWallet, isPending } = useMultiWallet();
+
+  if (wallets.length === 0) {
+    return (
+      <Button
+        variant="secondary"
+        size="md"
+        onClick={() => void connectWallet()}
+        disabled={isPending}
+      >
+        {isPending ? "Connecting..." : "Connect Wallet"}
+      </Button>
+    );
+  }
+
+  return (
+    <>
+      <div className="multi-wallet-button" onClick={() => setShowModal(true)}>
+        <Profile
+          publicAddress={activeWallet?.address ?? ""}
+          size="sm"
+          isShort
+        />
+        {wallets.length > 1 && (
+          <Badge variant="tertiary" size="sm">
+            +{wallets.length - 1}
+          </Badge>
+        )}
+        <Icon.ChevronDown />
+      </div>
+
+      <Modal visible={showModal} onClose={() => setShowModal(false)}>
+        <Modal.Heading>Connected Wallets</Modal.Heading>
+        <Modal.Body>
+          <WalletList onClose={() => setShowModal(false)} />
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+};
